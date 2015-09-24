@@ -1,0 +1,12 @@
+ruby:
+  enabled: true
+  config_file: config/.rubocop.yml
+
+coffee_script:
+  enabled: true
+
+java_script:
+  enabled: true
+
+# Show cop names by default; can commment out if needed
+ShowCopNames: true

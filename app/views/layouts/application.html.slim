@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    title= title
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    meta content="Your description here" name="description"
+
+    = render "fb_meta_tags"
+
+    = include_gon
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    / = javascript_include_tag "vendor/modernizr", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  body class="#{body_class}"
+    = render "flash"
+
+    = yield
+
+    = render "ga_boiler"
