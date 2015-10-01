@@ -1,3 +1,5 @@
+@import "variables.css.scss";
+
 #login-bg {
   position: absolute;
   z-index: 99;
@@ -5,7 +7,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: #fff;
+  background: $white;
 }
 
 .wrap {
@@ -22,7 +24,7 @@
   border-radius: 100px;
   height: 98px;
   padding: 6px;
-  background: #19bc9c;
+  background: $green;
   margin-bottom: 15px;
 }
 
@@ -35,14 +37,14 @@
 }
 .wrap input {
   border: none;
-  background: #fff;
+  background: $white;
   display: block;
   height: 40px;
   outline: none;
   width: calc(100% - 24px);
   margin: auto;
   padding: 6px 12px 6px 12px;
-  border: 1px solid #d3d3d3;
+  border: 1px solid $light-gray;
 }
 #login-top {
   border-bottom: none;
@@ -54,7 +56,7 @@
 .bar {
   width: 100%;
   height: 1px;
-  background: #fff;
+  background: $white;
 }
 .bar i {
   width: 100%;
@@ -64,7 +66,7 @@
   left: 1px;
   z-index: 1;
   display: block;
-  background: #d3d3d3;
+  background: $light-gray;
 }
 .wrap input[type="text"] {
   border-radius: 7px 7px 0px 0px;
@@ -78,11 +80,11 @@
 .wrap button {
   width: 100%;
   border-radius: 7px;
-  background: #19bc9c;
+  background: $green;
   font-weight: 600;
   text-decoration: center;
   border: none;
-  color: #fff;
+  color: $white;
   margin-top: 15px;
   padding-top: 14px;
   padding-bottom: 14px;
@@ -100,11 +102,11 @@
   padding: none;
   width: 100%;
   border-radius: 7px;
-  background: #19bc9c;
+  background: $green;
   font-weight: 600;
   text-decoration: center;
   border: none;
-  color: #fff;
+  color: $white;
   margin-top: 16px;
   padding-top: 14px;
   padding-bottom: 14px;
@@ -115,7 +117,7 @@
 }
 
 .wrap input[type="submit"]:hover, .wrap input[type="button"]:hover {
-  background: #16967d;
+  background: $dark-green;
 }
 
 @-moz-keyframes three-quarters-loader {
@@ -157,7 +159,7 @@
   -moz-animation: three-quarters-loader 1250ms infinite linear;
   -webkit-animation: three-quarters-loader 1250ms infinite linear;
   animation: three-quarters-loader 1250ms infinite linear;
-  border: 6px solid #19bc9c;
+  border: 6px solid $green;
   border-right-color: transparent;
   border-radius: 100px;
   display: inline-block;
@@ -178,7 +180,7 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: #fff;
+  background: $white;
 }
 
 #alt-leaf {
