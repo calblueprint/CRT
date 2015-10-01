@@ -1,0 +1,34 @@
+<div id="login-bg">
+  <div class="wrap">
+    <form>
+      <div class="avatar">
+        <img src="<%= asset_path("leaf.svg") %>"/>
+      </div>
+      <input id="login-top" placeholder="Username" type="text"></input>
+      <div class="bar">
+        <i></i>
+      </div>
+      <input id="login-botom-2" placeholder="Password" type="password"></input>
+      <input type="button" value="Sign In" id="loadload"></form>
+    </form>
+  </div>
+</div>
+<div class="back">
+  <div class="three-quarters-loader">
+    Loading…
+  </div>
+  <div id="alt-leaf">
+    <img src="<%= asset_path('leaf.svg') %>"/>
+  </div>
+</div>
+<div class="further-back">
+</div>
+<script>
+$(document).ready(function(){
+  $("#loadload").click(function(){
+    console.log(1);
+    $("#login-bg").fadeOut(500);
+    $(".back").delay(2000).fadeOut(500);
+  });
+});
+</script>

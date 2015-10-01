@@ -4,6 +4,8 @@
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *= require_self
+ *= require_tree .
  */
 
 @charset 'utf-8';

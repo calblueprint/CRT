@@ -1,0 +1,19 @@
+@import "variables.css.scss";
+
+body, html, input, textarea, select, button {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  color: $black;
+  outline: none;
+  resize: none;
+  background: transparent;
+}
+
+html {
+  background: transparent;
+  overflow: auto;
+  min-height: 100%;
+}
