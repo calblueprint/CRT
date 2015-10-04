@@ -173,13 +173,13 @@
   margin-top: 10%;
 }
 
-.back {
+.front-loader {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: 99;
   background: $white;
 }
 
@@ -196,14 +196,4 @@
   width: 98px;
   height: 98px;
   margin: auto;
-}
-
-.further-back {
-  position: absolute;
-  background-size: 200px 200px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -2;
 }
