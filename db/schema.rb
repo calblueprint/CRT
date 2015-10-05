@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20151005020145) do
 
   create_table "years", force: :cascade do |t|
     t.integer  "date"
-    t.integer  "attribute"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
