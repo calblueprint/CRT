@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001010023) do
+ActiveRecord::Schema.define(version: 20151005020145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20151001010023) do
     t.decimal  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "year_id"
   end
+
+  add_index "attributes", ["year_id"], name: "index_attributes_on_year_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -37,4 +40,11 @@ ActiveRecord::Schema.define(version: 20151001010023) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "years", force: :cascade do |t|
+    t.integer  "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "attributes", "years"
 end
