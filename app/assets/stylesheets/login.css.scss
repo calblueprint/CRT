@@ -69,17 +69,17 @@
   background: $light-gray;
 }
 .wrap input[type="text"] {
-  border-radius: 7px 7px 0px 0px;
+  border-radius: 4px 4px 0px 0px;
 }
 .wrap input[type="password"] {
   border-top: none;
-  border-radius: 0px 0px 7px 7px;
+  border-radius: 0px 0px 4px 4px;
   position: relative;
   top: -1px;
 }
 .wrap button {
   width: 100%;
-  border-radius: 7px;
+  border-radius: 4px;
   background: $green;
   font-weight: 600;
   text-decoration: center;
@@ -101,7 +101,7 @@
   margin: auto;
   padding: none;
   width: 100%;
-  border-radius: 7px;
+  border-radius: 4px;
   background: $green;
   font-weight: 600;
   text-decoration: center;
