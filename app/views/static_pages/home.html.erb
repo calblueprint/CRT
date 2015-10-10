@@ -1,3 +1,17 @@
+<div class="menu menu-fade">
+  <a class="tab index tooltip" href="/index" name="Projects">
+    <img src="<%= asset_path('leaf-white.svg') %>">
+  </a>
+  <a class="tab tooltip active" href="/attributes" name="Attributes">
+    <img src="<%= asset_path('edit-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/information" name="Information">
+    <img src="<%= asset_path('info-white.svg') %>">
+  </a>
+  <a class="tab logout tooltip" href="/.." name="Log Out">
+    <img src="<%= asset_path('logout-black.svg') %>">
+  </a>
+</div>
 <div id="login-bg">
   <div class="wrap">
     <form>
@@ -5,11 +19,11 @@
         <img src="<%= asset_path("leaf.svg") %>"/>
       </div>
       <div id="loginzo">
-        <input id="login-top" placeholder="Username" type="text"></input>
+<!--         <input id="login-top" placeholder="Username" type="text"></input>
         <div class="bar">
           <i></i>
-        </div>
-        <input id="login-botom-2" placeholder="Password" type="password"></input>
+        </div> -->
+        <input id="login-bottom-2" placeholder="Password" type="password"></input>
         <input type="button" value="Sign In" id="loadload"></form>
       </div>
     </form>
@@ -19,6 +33,7 @@
 $(document).ready(function(){
   $("#loadload").click(function(){
     $("#loginzo").fadeOut(300);
+    $(".menu-fade").delay(100).fadeIn(300);
     window.location.replace("index");
   });
 });

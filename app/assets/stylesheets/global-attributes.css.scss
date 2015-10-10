@@ -1,0 +1,11 @@
+@import "variables.css.scss";
+
+.button-td {
+  color: $teal;
+}
+
+.button-td:hover {
+  cursor: pointer;
+  color: $dark-teal;
+  text-decoration: underline;
+}

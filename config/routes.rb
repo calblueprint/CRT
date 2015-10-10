@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/index', to: 'static_pages#index'
   get '/project', to: 'static_pages#project'
+  get '/attributes', to: 'static_pages#attributes'
   get '/information', to: 'static_pages#information'
 end
