@@ -4,7 +4,7 @@ body, html, input, textarea, select, button {
   margin: 0;
   padding: 0;
   font-size: 14px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Signika', sans-serif;
   font-weight: 300;
   color: $black;
   outline: none;
@@ -14,24 +14,184 @@ body, html, input, textarea, select, button {
 
 html {
   background: transparent;
-  overflow: auto;
+  overflow: hidden;
+  height: 100%;
   min-height: 100%;
+  width: 75px;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+  width: 75px;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tab {
+  float: left;
+  width: 35px;
+  padding: 20px;
+  padding-bottom: 0;
+  opacity: 0.5;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+.tab:hover {
+  opacity: 1;
 }
 
 .content {
   position: fixed;
+  overflow: auto;
+  left: 75px;
   top: 0;
-  left: 300px;
-  right: 0;
   bottom: 0;
-  padding: 50px;
+  right: 0;
+  box-sizing: border-box;
+  z-index: -1;
+  padding: 30px;
+  background: $lightest-gray;
+}
+
+.card {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px 20px 0;
+  background: $white;
+  border-radius: 4px;
+}
+
+.card h1 {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  padding: 20px 30px;
+  margin: 0;
+  font-size: 18px;
+  color: $white;
+  background: $green;
+  font-weight: 400;
+  border-radius: 4px 4px 0 0;
+}
+
+a.card h1 {
+  border-radius: 4px;
+  transition: $transition;
+  -webkit-transition: $transition;
+}
+
+a.card h1:hover {
+  background: $dark-green;
+}
+
+.h1-alt {
+  background: $teal !important;
+}
+
+.h1-alt:hover {
+  background: $dark-teal !important;
+}
+
+.card-content {
+  padding: 30px;
+}
+
+h2, h3, p {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.heavy {
+  display: inline-block;
+  font-weight: 400;
+  min-width: 100px;
+}
+
+.light {
+  display: inline-block;
+  font-weight: 300;
 }
 
 .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
+  display: inline-block;
+  height: 100%;
+  width: 75px;
   background: $gray;
+  color: $white;
 }
+
+.tooltip {
+  display: inline;
+  position: relative;
+  transition: $transition;
+  -webkit-transition: $transition;
+}
+
+.tooltip:hover {
+  color: #c00;
+  text-decoration: none;
+}
+
+.tooltip:hover:after {
+  background: $teal;
+  border-radius: 4px;
+  top: 13px;
+  left: 70px;
+  color: $white;
+  content: attr(name);
+  display: block;
+  padding: 15px 20px;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 98;
+}
+
+.tooltip:hover:before {
+  border: solid;
+  border-color: transparent $teal;
+  border-width: 6px 6px 6px 0;
+  top: 30px;
+  left: 65px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 99;
+}
+
+.index {
+  padding-top: 22px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 18px;
+  left: -2px;
+  width: 39px;
+  height: 39px;
+  opacity: 0.3;
+}
+
+// .menu-header {
+//   background: $black;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 300px;
+//   height: 32px;
+//   padding: 20px;
+//   font-size: 24px;
+// }
