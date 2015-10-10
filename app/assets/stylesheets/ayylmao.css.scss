@@ -44,6 +44,10 @@ a {
   transition: $transition;
 }
 
+.active {
+  opacity: 1;
+}
+
 .tab:hover {
   opacity: 1;
 }
@@ -56,9 +60,21 @@ a {
   bottom: 0;
   right: 0;
   box-sizing: border-box;
-  z-index: -1;
+  z-index: -2;
   padding: 30px;
-  background: $lightest-gray;
+  background: $content-gray;
+}
+
+.footer {
+  position: fixed;
+  left: 75px;
+  bottom: 0;
+  height: 85px;
+  right: 0;
+  background: $white;
+  z-index: -1;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
 .card {
@@ -94,11 +110,23 @@ a.card h1:hover {
 }
 
 .h1-alt {
-  background: $teal !important;
+  padding: 15px 20px !important;
+  font-size: 14px !important;
+  background: $gray !important;
+  opacity: 0.8;
 }
 
 .h1-alt:hover {
-  background: $dark-teal !important;
+  opacity: 1;
+}
+
+.gray {
+  background: $gray !important;
+  opacity: 0.8;
+}
+
+.gray:hover {
+  opacity: 1;
 }
 
 .card-content {
@@ -132,6 +160,12 @@ h2, h3, p {
   width: 75px;
   background: $gray;
   color: $white;
+  z-index: 99;
+  position: relative;
+}
+
+.menu-fade {
+  display: none;
 }
 
 .tooltip {

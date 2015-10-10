@@ -73,6 +73,10 @@ th {
   text-align: center;
 }
 
+.type:hover {
+  cursor: pointer;
+}
+
 table {
   form {
     padding-bottom: 50px;
@@ -105,6 +109,7 @@ table {
 
 .highlight {
   background: $green;
+  color: $white;
   box-shadow: -1px -1px 0px 0px $green;
   border-right: 1px solid $green !important;
   border-bottom: 1px solid $green !important;
@@ -115,14 +120,17 @@ table {
   border-left: 1px solid $green !important;
 }
 
-td:hover {
-  z-index: 99;
-  box-shadow: -1px -1px 0px 0px $green;
-  border-right: 1px solid $green !important;
-  border-bottom: 1px solid $green !important;
-}
+// td:hover {
+//   z-index: 99;
+//   box-shadow: -1px -1px 0px 0px $green;
+//   border-right: 1px solid $green !important;
+//   border-bottom: 1px solid $green !important;
+// }
 
 .type:hover {
+  z-index: 99;
   box-shadow: 0px -1px 0px 0px $green;
   border-left: 1px solid $green !important;
+  border-right: 1px solid $green !important;
+  border-bottom: 1px solid $green !important;
 }
