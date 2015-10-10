@@ -1,0 +1,51 @@
+<div class="front-loader">
+  <div id="alt-leaf">
+    <img src="<%= asset_path('leaf.svg') %>"/>
+  </div>
+  <div class="three-quarters-loader">
+    Loading…
+  </div>
+</div>
+<div class="menu">
+  <a class="tab index tooltip active" href="/index" name="Projects">
+    <img src="<%= asset_path('leaf-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/attributes" name="Attributes">
+    <img src="<%= asset_path('edit-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/information" name="Information">
+    <img src="<%= asset_path('info-white.svg') %>">
+  </a>
+  <a class="tab logout tooltip" href="/.." name="Log Out">
+    <img src="<%= asset_path('logout-black.svg') %>">
+  </a>
+
+</div>
+<div class="content">
+  <div class="card">
+    <h1> New Attribute </h1>
+    <div class="card-content">
+      <p>
+        <span class="heavy"> Name </span>
+        <input type="text"> </input>
+      </p>
+      <p class="no-margin"> 
+        <span class="heavy"> Formula </span>
+        <input type="text"> </input>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Create </h1>
+  </a>
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Cancel </h1>
+  </a>
+</div>
+<script>
+$(document).ready(function(){
+  $(".front-loader").delay(500).fadeOut(500);
+});
+</script>

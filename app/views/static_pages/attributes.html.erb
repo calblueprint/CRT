@@ -32,107 +32,107 @@
         </tr>
         <tr>
           <td class="type">PAR</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Professional Services</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Overhead</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Temp Restricted Balance</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Endowment Balance</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Up Front</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Earnings</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Funds Available</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Max Overhead</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Inflator</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Expenses</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Total Expenses</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Net</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Temp Restricted Draw</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Max Possible Draw</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Admin Draw Max</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Restricted Draw Max</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Admin Draw</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Restricted Draw</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type highlight">Total Draw</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
         <tr>
           <td class="type">Endowment Add Back</td>
-          <td class="button-td">Edit</td>
+          <td class="button-td" onclick="window.location.href = '/edit-attribute';">Edit</td>
           <td class="button-td">Delete</td>
         </tr>
       </table>
@@ -142,16 +142,18 @@
     <h1> Total Draw </h1>
     <div class="card-content variables">
       <p> <span class="heavy">Attributes Required</span> </p>
-      <p class="no-margin"> Admin Draw, Restricted Draw, Max Possible Draw, Temp Restricted Draw </p>
+      <p> Admin Draw, Restricted Draw, Max Possible Draw, Temp Restricted Draw </p>
+      <p> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> ('Admin Draw' * 'Restricted Draw' / 'Max Possible Draw' + 'Temp Restricted Draw') / 100 </p>
     </div>
   </div>
   <br>
 </div>
 <div class="footer">
-  <a class="card" href="#">
+  <a class="card" href="/new-attribute">
     <h1 class="h1-alt"> Add New Attribute </h1>
   </a>
-  <a class="card" href="#">
+  <a class="card" href="/rearrange-attributes">
     <h1 class="h1-alt"> Rearrange Attributes </h1>
   </a>
 </div>
