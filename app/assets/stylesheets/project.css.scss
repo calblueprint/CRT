@@ -120,12 +120,29 @@ table {
   border-left: 1px solid $green !important;
 }
 
-// td:hover {
-//   z-index: 99;
-//   box-shadow: -1px -1px 0px 0px $green;
-//   border-right: 1px solid $green !important;
-//   border-bottom: 1px solid $green !important;
-// }
+.form-table td[contenteditable="true"]:hover {
+  z-index: 99;
+  box-shadow: -1px -1px 0px 0px $green;
+  border-right: 1px solid $green !important;
+  border-bottom: 1px solid $green !important;
+}
+
+.form-table td[contenteditable="true"] {
+  outline: none !important;
+}
+
+.form-table td[contenteditable="true"]:focus {
+  z-index: 99;
+  box-shadow: -1px -1px 0px 0px $green;
+  border-right: 1px solid $green !important;
+  border-bottom: 1px solid $green !important;
+  // background: $green;
+  // color: $white;
+}
+
+.formula {
+  background: $lighter-gray;
+}
 
 .type:hover {
   z-index: 99;
@@ -133,4 +150,12 @@ table {
   border-left: 1px solid $green !important;
   border-right: 1px solid $green !important;
   border-bottom: 1px solid $green !important;
+}
+
+.card-content input {
+  width: 300px;
+  padding: 15px 20px;
+  background: $lighter-gray;
+  border: none;
+  border-radius: 4px;
 }

@@ -9,3 +9,14 @@
   color: $dark-teal;
   text-decoration: underline;
 }
+
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 101%; }
+
+#sortable li { margin: 0 5px 5px 5px; padding: 5px; background: $light-gray; border-radius: 4px; text-align: center; transition: background 0.2s; -webkit-transition: background 0.2s;}
+
+#sortable li span { position: absolute; }
+
+#sortable li:hover {
+  background: $medium-gray;
+  cursor: pointer;
+}

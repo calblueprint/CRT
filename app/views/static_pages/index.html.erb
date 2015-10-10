@@ -24,9 +24,23 @@
 <div class="content">
   <div class="search-wrapper">
     <div class="container-1">
-      <span class="icon"><i class="fa fa-search"></i></span>
       <input type="search" id="search" placeholder="Search..." autocomplete="off"/>
+      <span class="icon"><i class="fa fa-search"></i></span>
     </div>
+    <select name="Sort By">
+      <option value="recent">Sort By Most Recent</option>
+      <option value="name">Sort By Name</option>
+      <option value="earliest">Sort By Newest</option>
+      <option value="earliest">Sort By Oldest</option>
+      <option value="earliest">Sort By Smallest</option>
+      <option value="earliest">Sort By Largest</option>
+    </select>
+    <select name="Display">
+      <option value="recent">Display Top 10</option>
+      <option value="recent" selected="true">Display Top 30</option>
+      <option value="recent">Display Top 50</option>
+      <option value="name">Display All</option>
+    </select>
   </div>
   <div>
     <a class="card" href="/project">
@@ -89,6 +103,21 @@
     <a class="card" href="/project">
       <h1> Best Potato </h1>
     </a>
+        <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
     <a class="card" href="/project">
       <h1> Worst Tomato </h1>
     </a>
@@ -104,22 +133,13 @@
     <a class="card" href="/project">
       <h1> Best Potato </h1>
     </a>
-    <a class="card" href="/project">
-      <h1> Worst Tomato </h1>
-    </a>
-    <a class="card" href="/project">
-      <h1> Rangeland Trust </h1>
-    </a>
-    <a class="card" href="/project">
-      <h1> Cat Daddy </h1>
-    </a>
-    <a class="card" href="#">
+    <!--  <a class="card" href="#">
       <h1 class="gray"> Show All Projects </h1>
-    </a>
+    </a> -->
     <br>
   </div>
   <div class="footer">
-    <a class="card" href="#">
+    <a class="card" href="/new-project">
       <h1 class="h1-alt"> Add New Project </h1>
     </a>
   </div>
