@@ -34,6 +34,16 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background: $green; /* WebKit/Blink Browsers */
+  color: $white;
+}
+
+::-moz-selection {
+  background: $green; /* Gecko Browsers */
+  color: $white;
+}
+
 .tab {
   float: left;
   width: 35px;
