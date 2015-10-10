@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get '/rearrange-attributes', to: 'static_pages#rearrange-attributes'
   get '/edit-attribute', to: 'static_pages#edit-attribute'
   get '/information', to: 'static_pages#information'
+
 end
