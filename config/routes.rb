@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   
   get '/home', to: 'static_pages#home'
   get '/help', to: 'static_pages#help'
+  get '/index', to: 'static_pages#index'
 end

@@ -17,3 +17,21 @@ html {
   overflow: auto;
   min-height: 100%;
 }
+
+.content {
+  position: fixed;
+  top: 0;
+  left: 300px;
+  right: 0;
+  bottom: 0;
+  padding: 50px;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  background: $gray;
+}
