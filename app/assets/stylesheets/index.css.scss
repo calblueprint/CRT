@@ -4,7 +4,7 @@
   display: block;
   width: 100%;
   overflow: auto;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .container-1 {
@@ -50,14 +50,19 @@
 #search {
   transition: $transition;
   -webkit-transition: $transition;
+  border: 1px solid $white !important;
 }
 
 .container-1:hover .icon {
-  color: $green !important;
+  color: $teal !important;
 }
 
 #search:focus ~ .icon {
-  color: $green !important;
+  color: $teal !important;
+}
+
+#search:focus, #search:hover {
+  border: 1px solid $teal !important;
 }
 
 .search-wrapper select {
@@ -67,9 +72,29 @@
   float: left;
   color: $black;
   margin-left: 20px;
-  border-left: 18px solid $white;
-  border-right: 20px solid $white;
+  border: 1px solid $white;
+  padding-left: 20px !important;
+  padding-right: 50px !important;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+select:hover ~ .select-icon, select:focus ~ .select-icon {
+  color: $teal;
+}
+
+select:hover, select:focus {
+  border: 1px solid $teal;
+}
+
+.select-icon {
+  position: relative;
+  right: 33px;
+  top: 16px;
 }

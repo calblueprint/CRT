@@ -10,13 +10,36 @@
   text-decoration: underline;
 }
 
-#sortable { list-style-type: none; margin: 0; padding: 0; width: 101%; }
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 101%; font-weight: 400; }
 
-#sortable li { margin: 0 5px 5px 5px; padding: 5px; background: $light-gray; border-radius: 4px; text-align: center; transition: background 0.2s; -webkit-transition: background 0.2s;}
+#sortable li { margin: 0 2px 2px 2px; padding: 5px; background: $light-gray; border-radius: 4px; text-align: center; transition: background 0.2s; -webkit-transition: background 0.2s;}
 
 #sortable li span { position: absolute; }
 
 #sortable li:hover {
   background: $medium-gray;
   cursor: pointer;
+}
+
+textarea {
+  width: 400px;
+  height: 300px;
+  padding: 15px 20px;
+  background: $lighter-gray;
+  border: none;
+  border-radius: 4px;
+  vertical-align: top;
+  border: 1px solid $white;
+}
+
+textarea:focus, textarea:hover {
+  border: 1px solid $teal;
+}
+
+.teal-bg input {
+  width: 400px !important;
+}
+
+.teal-bg .no-margin .heavy {
+  padding-top: 15px;
 }

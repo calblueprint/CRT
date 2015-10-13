@@ -10,12 +10,12 @@ table {
 }
 
 table tr th {
-  border-right: 1px solid $dark-green;
-  border-bottom: 1px solid $dark-green;
+  border-right: 1px solid $darker-border;
+  border-bottom: 1px solid $border;
 }
 
 table tr th:first-child {
-  border-left: 1px solid $dark-green;
+  border-left: 1px solid $border;
 }
 
 table tr td {
@@ -28,9 +28,8 @@ table tr td:first-child {
 }
 
 table tr th {
-  background: $green;
-  color: $white;
-  border-top: 1px solid $dark-green;
+  background: $th-bg;
+  border-top: 1px solid $border;
 }
 
 table tr:first-child th:first-child {
@@ -39,6 +38,7 @@ table tr:first-child th:first-child {
 
 table tr:first-child th:last-child {
   border-top-right-radius: 4px;
+  border-right: 1px solid $border;
 }
 
 table tr:last-child td:first-child {
@@ -60,16 +60,27 @@ th, td {
   position: relative;
   overflow: hidden;
   text-align: right;
+  min-width: 100px;
 }
 
 th {
   font-weight: 400;
-  text-align: center;
+  text-align: right;
+}
+
+.top {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top: 1px solid $light-gray;
 }
 
 .type {
   background: $lighter-gray;
   font-weight: 400;
+  text-align: center;
+}
+
+.attributes {
   text-align: center;
 }
 
@@ -108,23 +119,23 @@ table {
 }
 
 .highlight {
-  background: $green;
+  background: $teal;
   color: $white;
-  box-shadow: -1px -1px 0px 0px $green;
-  border-right: 1px solid $green !important;
-  border-bottom: 1px solid $green !important;
+  box-shadow: -1px -1px 0px 0px $teal;
+  border-right: 1px solid $teal !important;
+  border-bottom: 1px solid $teal !important;
 }
 
 .highlight.type {
-  box-shadow: 0px -1px 0px 0px $green;
-  border-left: 1px solid $green !important;
+  box-shadow: 0px -1px 0px 0px $teal;
+  border-left: 1px solid $teal !important;
 }
 
 .form-table td[contenteditable="true"]:hover {
   z-index: 99;
-  box-shadow: -1px -1px 0px 0px $green;
-  border-right: 1px solid $green !important;
-  border-bottom: 1px solid $green !important;
+  box-shadow: -1px -1px 0px 0px $teal;
+  border-right: 1px solid $teal !important;
+  border-bottom: 1px solid $teal !important;
 }
 
 .form-table td[contenteditable="true"] {
@@ -133,27 +144,27 @@ table {
 
 .form-table td[contenteditable="true"]:focus {
   z-index: 99;
-  box-shadow: -1px -1px 0px 0px $green;
-  border-right: 1px solid $green !important;
-  border-bottom: 1px solid $green !important;
+  box-shadow: -1px -1px 0px 0px $teal;
+  border-right: 1px solid $teal !important;
+  border-bottom: 1px solid $teal !important;
   // background: $green;
   // color: $white;
 }
 
 .formula {
-  background: $lighter-gray;
+  color: $medium-gray;
 }
 
 .type:hover {
   z-index: 99;
-  box-shadow: 0px -1px 0px 0px $green;
-  border-left: 1px solid $green !important;
-  border-right: 1px solid $green !important;
-  border-bottom: 1px solid $green !important;
+  box-shadow: 0px -1px 0px 0px $teal;
+  border-left: 1px solid $teal !important;
+  border-right: 1px solid $teal !important;
+  border-bottom: 1px solid $teal !important;
 }
 
 .card-content input {
-  width: 300px;
+  width: 150px;
   padding: 15px 20px;
   background: $lighter-gray;
   border: none;

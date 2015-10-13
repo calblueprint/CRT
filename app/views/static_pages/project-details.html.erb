@@ -22,8 +22,9 @@
 
 </div>
 <div class="content">
+  <h1 class="header"> Edit Agua Fria </h1>
   <div class="card">
-    <h1> Edit Project Details </h1>
+    <h1> Project Details </h1>
     <div class="card-content">
       <p>
         <span class="heavy"> Project </span>
@@ -59,10 +60,363 @@
       </p>
     </div>
   </div>
+  <div class="card">
+    <h1> Project Data </h1>
+    <div class="card-content">
+      <table class="form-table">
+        <tr>
+          <th class="attributes">Attributes</th>
+          <th>2012</th>
+          <th>2013</th>
+          <th>2014</th>
+          <th>2015</th>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'par');">PAR</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'professionalservices');">Professional Services</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$2000</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'overhead');">Overhead</td>
+          <td contenteditable="true">$9043.03</td>
+          <td contenteditable="true">$8758.72</td>
+          <td contenteditable="true">$2532.97</td>
+          <td contenteditable="true">$0</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'temprestrictedbalance');">Temp Restricted Balance</td>
+          <td contenteditable="true">$9043.03</td>
+          <td contenteditable="true">$8758.72</td>
+          <td contenteditable="true">$2532.97</td>
+          <td contenteditable="true">$0</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'endowmentbalance');">Endowment Balance</td>
+          <td contenteditable="true">$120</td>
+          <td contenteditable="true">$500</td>
+          <td contenteditable="true">$200</td>
+          <td contenteditable="true">$1500</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'upfront');">Up Front</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'earnings');">Earnings</td>
+          <td contenteditable="true">$9043.03</td>
+          <td contenteditable="true">$8758.72</td>
+          <td contenteditable="true">$2532.97</td>
+          <td contenteditable="true">$0</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'fundsavailable');">Funds Available</td>
+          <td contenteditable="true">$120</td>
+          <td contenteditable="true">$500</td>
+          <td contenteditable="true">$200</td>
+          <td contenteditable="true">$1500</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'maxoverhead');">Max Overhead</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'inflator');">Inflator</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'expenses');">Expenses</td>
+          <td contenteditable="true">$120</td>
+          <td contenteditable="true">$500</td>
+          <td contenteditable="true">$200</td>
+          <td contenteditable="true">$1500</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'totalexpenses');">Total Expenses</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'net');">Net</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'temprestricteddraw');">Temp Restricted Draw</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'maxpossibledraw');">Max Possible Draw</td>
+          <td contenteditable="true">$120</td>
+          <td contenteditable="true">$500</td>
+          <td contenteditable="true">$200</td>
+          <td contenteditable="true">$1500</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'admindrawmax');">Admin Draw Max</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'restricteddrawmax');">Restricted Draw Max</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'admindraw');">Admin Draw</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'restricteddraw');">Restricted Draw</td>
+          <td contenteditable="true">$1200</td>
+          <td contenteditable="true">$5000</td>
+          <td contenteditable="true">$2030</td>
+          <td contenteditable="true">$15030</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'totaldraw');">Total Draw</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+        </tr>
+        <tr>
+          <td class="type" onclick="show(this, 'endowmentaddback');">Endowment Add Back</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+          <td class="formula">FORMULA</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card helper" id="par">
+    <h1> PAR </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="professionalservices">
+    <h1> Professional Services </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="overhead">
+    <h1> Overhead </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="temprestrictedbalance">
+    <h1> Temp Restricted Balance </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="endowmentbalance">
+    <h1> Endowment Balance </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="upfront">
+    <h1> Up Front </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="earnings">
+    <h1> Earnings </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="fundsavailable">
+    <h1> Funds Available </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="maxoverhead">
+    <h1> Max Overhead </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="inflator">
+    <h1> Inflator </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="expenses">
+    <h1> Expenses </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="totalexpenses">
+    <h1> Total Expenses </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="net">
+    <h1> Net </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="temprestricteddraw">
+    <h1> Temp Restricted Draw </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="maxpossibledraw">
+    <h1> Max Possible Draw </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="admindrawmax">
+    <h1> Admin Draw Max </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="restricteddrawmax">
+    <h1> Restricted Draw Max</h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="admindraw">
+    <h1> Admin Draw </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="restricteddraw">
+    <h1> Restricted Draw </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> N/A </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> N/A </p>
+    </div>
+  </div>
+  <div class="card helper" id="totaldraw">
+    <h1> Total Draw </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> Admin Draw, Restricted Draw, Max Possible Draw, Temp Restricted Draw </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> ('Admin Draw' * 'Restricted Draw' / 'Max Possible Draw' + 'Temp Restricted Draw') / 100 </p>
+    </div>
+  </div>
+  <div class="card helper" id="endowmentaddback">
+    <h1> Endowment Add Back </h1>
+    <div class="card-content variables">
+      <p class="lil-margin"> <span class="heavy">Attributes Required</span> </p>
+      <p class="big-margin"> Max Possible Draw, Temp Restricted Draw, Net </p>
+      <p class="lil-margin"> <span class="heavy">Formula</span> </p>
+      <p class="no-margin"> ('Net' + 'Temp Restricted Draw') / 'Max Possible Draw' </p>
+    </div>
+  </div>
 </div>
 <div class="footer">
   <a class="card" href="/project">
     <h1 class="h1-alt"> Save </h1>
+  </a>
+  <a class="card" href="/index">
+    <h1 class="h1-alt"> Delete </h1>
   </a>
   <a class="card" href="/project">
     <h1 class="h1-alt"> Cancel </h1>
@@ -72,4 +426,24 @@
 $(document).ready(function(){
   $(".front-loader").delay(500).fadeOut(500);
 });
+</script>
+<script>
+function show(elem)
+{
+  $('#'+elem).show();
+}
+</script>
+<script>
+function show(link, elem)
+{
+  if ($(link).hasClass('highlight')) {
+    $('.helper').css('display', 'none');
+    $('.highlight').removeClass('highlight');
+  } else {
+    $('.helper').css('display', 'none');
+    $('.highlight').removeClass('highlight');
+    $(link).addClass('highlight');
+    $('#' + elem).css('display', 'inline-block');
+  }
+}
 </script>

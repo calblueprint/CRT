@@ -35,12 +35,12 @@ a {
 }
 
 ::selection {
-  background: $green; /* WebKit/Blink Browsers */
+  background: $teal; /* WebKit/Blink Browsers */
   color: $white;
 }
 
 ::-moz-selection {
-  background: $green; /* Gecko Browsers */
+  background: $teal; /* Gecko Browsers */
   color: $white;
 }
 
@@ -71,7 +71,7 @@ a {
   right: 0;
   box-sizing: border-box;
   z-index: -2;
-  padding: 30px;
+  padding: 25px 30px;
   padding-bottom: 100px;
   background: $content-gray;
 }
@@ -83,7 +83,7 @@ a {
   height: 85px;
   right: 0;
   background: $white;
-  z-index: -1;
+  z-index: 1;
   box-sizing: border-box;
   padding: 20px;
 }
@@ -120,6 +120,10 @@ a.card h1:hover {
   background: $dark-green;
 }
 
+.grid a.card h1 {
+  min-width: 225px;
+}
+
 .h1-alt {
   padding: 15px 20px !important;
   font-size: 14px !important;
@@ -152,6 +156,14 @@ h2, h3, p {
 
 .no-margin {
   margin: 0;
+}
+
+.lil-margin {
+  margin-bottom: 10px;
+}
+
+.big-margin {
+  margin-bottom: 20px;
 }
 
 .heavy {
@@ -228,4 +240,30 @@ h2, h3, p {
   width: 39px;
   height: 39px;
   opacity: 0.3;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600 !important;
+}
+
+.helper {
+  display: none;
+  transition: $transition;
+  -webkit-transition: $transition;
+}
+
+.helper h1, .teal-bg h1 {
+  background-color: $teal;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid $white !important;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type="text"]:focus, input[type="password"]:focus {
+  border: 1px solid $teal !important;
 }
