@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013024036) do
+ActiveRecord::Schema.define(version: 20151013031345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "data_points", force: :cascade do |t|
-    t.integer  "attribute_type"
     t.decimal  "value"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "year_id"
     t.integer  "data_type_id"
   end
