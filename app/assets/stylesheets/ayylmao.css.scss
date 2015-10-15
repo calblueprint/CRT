@@ -215,14 +215,20 @@ h2, h3, p {
   position: absolute;
   white-space: nowrap;
   z-index: 98;
+  box-shadow: 0px 0px 0px 1px $light-gray;
 }
 
 .tooltip:hover:before {
-  border: solid;
-  border-color: transparent $teal;
-  border-width: 6px 6px 6px 0;
-  top: 30px;
+  background-color: $teal;
+  width: 6px;
+  height: 6px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  top: 33px;
   left: 65px;
+  border-left: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
   content: "";
   display: block;
   position: absolute;

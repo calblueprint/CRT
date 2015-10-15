@@ -140,6 +140,7 @@ table {
 
 .form-table td[contenteditable="true"] {
   outline: none !important;
+  background: $lightest-gray;
 }
 
 .form-table td[contenteditable="true"]:focus {
