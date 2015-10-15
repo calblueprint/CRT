@@ -76,6 +76,18 @@ a {
   background: $content-gray;
 }
 
+@media (max-height: 950px) {
+  .content * { zoom: 0.98; -moz-transform: scale(0.98); }
+}
+
+@media (max-height: 850px) {
+  .content * { zoom: 0.96; -moz-transform: scale(0.96); }
+}
+
+@media (max-height: 650px) {
+  .content * { zoom: 0.91; -moz-transform: scale(0.91); }
+}
+
 .footer {
   position: fixed;
   left: 75px;
