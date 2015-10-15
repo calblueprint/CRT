@@ -1,20 +1,50 @@
-<%-# TODO: tables should be variable width depending on how many years of data we have -%>
-
 <h1><%= @project.name %></h1>
 
-<table>
-  <tr>
-    <th>Year</th>
-    <% @project.years.each do |year| %>
-      <th><%= year.date %></th>
-    <% end %>
-  </tr>
-  <% @project.years.each do |year| %>
-    <tr>
-      <td>dummy_attr</td>
-      <% @project.years.each do |year| %>
-        <td>dummy_value</td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<h2>Project Details</h2>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Acres:</strong>
+  <%= @project.acres %>
+</p>
+
+<p>
+  <strong>Date Closed:</strong>
+  <%= @project.date_closed %>
+</p>
+
+<p>
+  <strong>Restricted Endowment:</strong>
+  <%= @project.restricted_endowment %>
+</p>
+
+<p>
+  <strong>Cap Rate:</strong>
+  <%= @project.cap_rate %>
+</p>
+
+<p>
+  <strong>Admin Rate:</strong>
+  <%= @project.admin_rate %>
+</p>
+
+<p>
+  <strong>Total Upfront:</strong>
+  <%= @project.total_upfront %>
+</p>
+
+<p>
+  <strong>Years Upfront:</strong>
+  <%= @project.years_upfront %>
+</p>
+
+<p>
+  <strong>Earnings Begin:</strong>
+  <%= @project.earnings_begin %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %>
