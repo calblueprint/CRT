@@ -1,0 +1,69 @@
+<div class="front-loader">
+  <div id="alt-leaf">
+    <img src="<%= asset_path('leaf.svg') %>"/>
+  </div>
+  <div class="three-quarters-loader">
+    Loading…
+  </div>
+</div>
+<div class="menu">
+  <a class="tab index tooltip" href="/index" name="Projects">
+    <img src="<%= asset_path('leaf-white.svg') %>">
+  </a>
+  <a class="tab tooltip active" href="/attributes" name="Attributes">
+    <img src="<%= asset_path('edit-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/information" name="Information">
+    <img src="<%= asset_path('info-white.svg') %>">
+  </a>
+  <a class="tab logout tooltip" href="/.." name="Log Out">
+    <img src="<%= asset_path('logout-black.svg') %>">
+  </a>
+</div>
+<div class="content">
+  <h1 class="header"> Rearrange Attributes </h1>
+  <div class="card">
+    <h1> Attribute Order </h1>
+    <div class="card-content">
+      <p> Drag and drop to reorder </p>
+      <ul id="sortable">
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>PAR</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Professional Services</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Overhead</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Temp Restricted Balance</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Endowment Balance</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Up Front</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Earnings</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Funds Available</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Max Overhead</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Inflator</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Expenses</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Total Expenses</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Net</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Temp Restricted Draw</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Max Possible Draw</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Admin Draw Max</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Restricted Draw Max</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Admin Draw</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Restricted Draw</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Total Draw</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Endowment Add Back</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Save Attribute Order </h1>
+  </a>
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Cancel </h1>
+  </a>
+</div>
+<script>
+$(document).ready(function(){
+  $(".front-loader").delay(500).fadeOut(500);
+  $( "#sortable" ).sortable();
+  $( "#sortable" ).disableSelection();
+});
+</script>
