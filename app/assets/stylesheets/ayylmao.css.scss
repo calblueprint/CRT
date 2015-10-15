@@ -4,7 +4,7 @@ body, html, input, textarea, select, button {
   margin: 0;
   padding: 0;
   font-size: 14px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Signika', sans-serif;
   font-weight: 300;
   color: $black;
   outline: none;
@@ -14,6 +14,274 @@ body, html, input, textarea, select, button {
 
 html {
   background: transparent;
-  overflow: auto;
+  overflow: hidden;
+  height: 100%;
   min-height: 100%;
+  width: 75px;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+  width: 75px;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: $teal; /* WebKit/Blink Browsers */
+  color: $white;
+}
+
+::-moz-selection {
+  background: $teal; /* Gecko Browsers */
+  color: $white;
+}
+
+.tab {
+  float: left;
+  width: 35px;
+  padding: 20px;
+  padding-bottom: 0;
+  opacity: 0.5;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+.active {
+  opacity: 1;
+}
+
+.tab:hover {
+  opacity: 1;
+}
+
+.content {
+  position: fixed;
+  overflow: auto;
+  left: 75px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  z-index: -2;
+  padding: 25px 30px;
+  padding-bottom: 100px;
+  background: $content-gray;
+}
+
+@media (max-height: 950px) {
+  .content * { zoom: 0.98; -moz-transform: scale(0.98); }
+}
+
+@media (max-height: 850px) {
+  .content * { zoom: 0.96; -moz-transform: scale(0.96); }
+}
+
+@media (max-height: 650px) {
+  .content * { zoom: 0.91; -moz-transform: scale(0.91); }
+}
+
+.footer {
+  position: fixed;
+  left: 75px;
+  bottom: 0;
+  height: 85px;
+  right: 0;
+  background: $white;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.card {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px 20px 0;
+  background: $white;
+  border-radius: 4px;
+}
+
+.card h1 {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  padding: 20px 30px;
+  margin: 0;
+  font-size: 18px;
+  color: $white;
+  background: $green;
+  font-weight: 400;
+  border-radius: 4px 4px 0 0;
+}
+
+a.card h1 {
+  border-radius: 4px;
+  transition: $transition;
+  -webkit-transition: $transition;
+}
+
+a.card h1:hover {
+  background: $dark-green;
+}
+
+.grid a.card h1 {
+  min-width: 225px;
+}
+
+.h1-alt {
+  padding: 15px 20px !important;
+  font-size: 14px !important;
+  background: $gray !important;
+  opacity: 0.8;
+}
+
+.h1-alt:hover {
+  opacity: 1;
+}
+
+.gray {
+  background: $gray !important;
+  opacity: 0.8;
+}
+
+.gray:hover {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 30px;
+}
+
+h2, h3, p {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.lil-margin {
+  margin-bottom: 10px;
+}
+
+.big-margin {
+  margin-bottom: 20px;
+}
+
+.heavy {
+  display: inline-block;
+  font-weight: 400;
+  min-width: 100px;
+}
+
+.light {
+  display: inline-block;
+  font-weight: 300;
+}
+
+.menu {
+  display: inline-block;
+  height: 100%;
+  width: 75px;
+  background: $gray;
+  color: $white;
+  z-index: 99;
+  position: relative;
+}
+
+.menu-fade {
+  display: none;
+}
+
+.tooltip {
+  display: inline;
+  position: relative;
+  transition: $transition;
+  -webkit-transition: $transition;
+}
+
+.tooltip:hover {
+  color: #c00;
+  text-decoration: none;
+}
+
+.tooltip:hover:after {
+  background: $teal;
+  border-radius: 4px;
+  top: 13px;
+  left: 70px;
+  color: $white;
+  content: attr(name);
+  display: block;
+  padding: 15px 20px;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 98;
+  box-shadow: 0px 0px 0px 1px $light-gray;
+}
+
+.tooltip:hover:before {
+  background-color: $teal;
+  width: 6px;
+  height: 6px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  top: 33px;
+  left: 65px;
+  border-left: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 99;
+}
+
+.index {
+  padding-top: 22px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 18px;
+  left: -2px;
+  width: 39px;
+  height: 39px;
+  opacity: 0.3;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600 !important;
+}
+
+.helper {
+  display: none;
+  transition: $transition;
+  -webkit-transition: $transition;
+}
+
+.helper h1, .teal-bg h1 {
+  background-color: $teal;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid $white !important;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type="text"]:focus, input[type="password"]:focus {
+  border: 1px solid $teal !important;
 }
