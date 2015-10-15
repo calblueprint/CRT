@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :data_type do
-    formula "MyString"
-name "MyString"
+    formula "data_type_formula"
+    name "data_type_name"
   end
-
 end

@@ -1,0 +1,16 @@
+<% if @data_types.size == 0 %>
+  <p>No data_types exist.</p>
+<% else %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Formula</th>
+    </tr>
+    <% @data_types.each do |data_type| %>
+        <tr>
+            <td><%= data_type.name %></td>
+            <td><%= data_type.formula %></td>
+        </tr>
+    <% end %>
+  </table>
+<% end %>
