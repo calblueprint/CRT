@@ -1,34 +1,41 @@
+<div class="menu menu-fade">
+  <a class="tab index tooltip active" href="/index" name="Projects">
+    <img src="<%= asset_path('leaf-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/attributes" name="Attributes">
+    <img src="<%= asset_path('edit-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/information" name="Information">
+    <img src="<%= asset_path('info-white.svg') %>">
+  </a>
+  <a class="tab logout tooltip" href="/.." name="Log Out">
+    <img src="<%= asset_path('logout-black.svg') %>">
+  </a>
+</div>
 <div id="login-bg">
   <div class="wrap">
     <form>
       <div class="avatar">
         <img src="<%= asset_path("leaf.svg") %>"/>
       </div>
-      <input id="login-top" placeholder="Username" type="text"></input>
-      <div class="bar">
-        <i></i>
+      <div id="loginzo">
+<!--         <input id="login-top" placeholder="Username" type="text"></input>
+        <div class="bar">
+          <i></i>
+        </div> -->
+        <input id="login-bottom-2" placeholder="Password" type="password"></input>
+        <span class="icon"><i class="fa fa-lock"></i></span>
+        <input type="button" value="Sign In" id="loadload"></form>
       </div>
-      <input id="login-botom-2" placeholder="Password" type="password"></input>
-      <input type="button" value="Sign In" id="loadload"></form>
     </form>
   </div>
-</div>
-<div class="back">
-  <div class="three-quarters-loader">
-    Loading…
-  </div>
-  <div id="alt-leaf">
-    <img src="<%= asset_path('leaf.svg') %>"/>
-  </div>
-</div>
-<div class="further-back">
 </div>
 <script>
 $(document).ready(function(){
   $("#loadload").click(function(){
-    console.log(1);
-    $("#login-bg").fadeOut(500);
-    $(".back").delay(2000).fadeOut(500);
+    $("#loginzo").fadeOut(300);
+    $(".menu-fade").delay(100).fadeIn(300);
+    window.location.replace("index");
   });
 });
 </script>

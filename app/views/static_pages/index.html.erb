@@ -1,0 +1,148 @@
+<div class="front-loader">
+  <div id="alt-leaf">
+    <img src="<%= asset_path('leaf.svg') %>"/>
+  </div>
+  <div class="three-quarters-loader">
+    Loading…
+  </div>
+</div>
+<div class="menu">
+  <a class="tab index tooltip active" href="/index" name="Projects">
+    <img src="<%= asset_path('leaf-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/attributes" name="Attributes">
+    <img src="<%= asset_path('edit-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/information" name="Information">
+    <img src="<%= asset_path('info-white.svg') %>">
+  </a>
+  <a class="tab logout tooltip" href="/.." name="Log Out">
+    <img src="<%= asset_path('logout-black.svg') %>">
+  </a>
+
+</div>
+<div class="content">
+  <h1 class="header"> Projects </h1>
+  <div class="search-wrapper">
+    <div class="container-1">
+      <input type="search" id="search" placeholder="Search..." autocomplete="off"/>
+      <span class="icon"><i class="fa fa-search"></i></span>
+    </div>
+<!--     <select name="Sort By">
+      <option value="recent">Sort By Most Recent</option>
+      <option value="name">Sort By Name</option>
+      <option value="name">Sort By Acres</option>
+    </select>
+    <span class="icon select-icon"><i class="fa fa-chevron-down"></i></span>
+    <select name="Display">
+      <option value="recent" selected="true">Display Top 10</option>
+      <option value="recent" selected="true">Display Top 30</option>
+      <option value="name">Display All</option>
+    </select> -->
+  </div>
+  <div class="grid">
+    <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+        <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Worst Tomato </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Rangeland Trust </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Cat Daddy </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Agua Fria </h1>
+    </a>
+    <a class="card" href="/project">
+      <h1> Best Potato </h1>
+    </a>
+    <!--  <a class="card" href="#">
+      <h1 class="gray"> Show All Projects </h1>
+    </a> -->
+  </div>
+</div>
+<div class="footer">
+  <a class="card" href="/new-project">
+    <h1 class="h1-alt"> Add New Project </h1>
+  </a>
+</div>
+<script>
+$(document).ready(function(){
+  $(".front-loader").delay(500).fadeOut(500);
+});
+</script>
