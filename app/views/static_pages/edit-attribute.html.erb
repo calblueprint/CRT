@@ -1,0 +1,126 @@
+<div class="front-loader">
+  <div id="alt-leaf">
+    <img src="<%= asset_path('leaf.svg') %>"/>
+  </div>
+  <div class="three-quarters-loader">
+    Loading…
+  </div>
+</div>
+<div class="menu">
+  <a class="tab index tooltip" href="/index" name="Projects">
+    <img src="<%= asset_path('leaf-white.svg') %>">
+  </a>
+  <a class="tab tooltip active" href="/attributes" name="Attributes">
+    <img src="<%= asset_path('edit-white.svg') %>">
+  </a>
+  <a class="tab tooltip" href="/information" name="Information">
+    <img src="<%= asset_path('info-white.svg') %>">
+  </a>
+  <a class="tab logout tooltip" href="/.." name="Log Out">
+    <img src="<%= asset_path('logout-black.svg') %>">
+  </a>
+
+</div>
+<div class="content">
+  <h1 class="header"> Edit Total Draw </h1>
+  <div class="card">
+    <h1> Attributes </h1>
+    <div class="card-content">
+      <p> Click to edit </p>
+      <table>
+        <tr>
+          <td class="type top">PAR</td>
+        </tr>
+        <tr>
+          <td class="type">Professional Services</td>
+        </tr>
+        <tr>
+          <td class="type">Overhead</td>
+        </tr>
+        <tr>
+          <td class="type">Temp Restricted Balance</td>
+        </tr>
+        <tr>
+          <td class="type">Endowment Balance</td>
+        </tr>
+        <tr>
+          <td class="type">Up Front</td>
+        </tr>
+        <tr>
+          <td class="type">Earnings</td>
+        </tr>
+        <tr>
+          <td class="type">Funds Available</td>
+        </tr>
+        <tr>
+          <td class="type">Max Overhead</td>
+        </tr>
+        <tr>
+          <td class="type">Inflator</td>
+        </tr>
+        <tr>
+          <td class="type">Expenses</td>
+        </tr>
+        <tr>
+          <td class="type">Total Expenses</td>
+        </tr>
+        <tr>
+          <td class="type">Net</td>
+        </tr>
+        <tr>
+          <td class="type">Temp Restricted Draw</td>
+        </tr>
+        <tr>
+          <td class="type">Max Possible Draw</td>
+        </tr>
+        <tr>
+          <td class="type">Admin Draw Max</td>
+        </tr>
+        <tr>
+          <td class="type">Restricted Draw Max</td>
+        </tr>
+        <tr>
+          <td class="type">Admin Draw</td>
+        </tr>
+        <tr>
+          <td class="type">Restricted Draw</td>
+        </tr>
+        <tr>
+          <td class="type highlight" onclick="window.location.href = '/attributes';">Total Draw</td>
+        </tr>
+        <tr>
+          <td class="type">Endowment Add Back</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card teal-bg">
+    <h1> Total Draw </h1>
+    <div class="card-content">
+      <p>
+        <span class="heavy"> Name </span>
+        <input type="text" value="Total Draw" class="wide-input"> </input>
+      </p>
+      <p class="no-margin"> 
+        <span class="heavy"> Formula </span>
+        <textarea> ('Admin Draw' * 'Restricted Draw' / 'Max Possible Draw' + 'Temp Restricted Draw') / 100 </textarea>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Save Attribute </h1>
+  </a>
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Delete Attribute </h1>
+  </a>
+  <a class="card" href="/attributes">
+    <h1 class="h1-alt"> Cancel </h1>
+  </a>
+</div>
+<script>
+$(document).ready(function(){
+  $(".front-loader").delay(500).fadeOut(500);
+});
+</script>
