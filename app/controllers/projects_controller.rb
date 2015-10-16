@@ -44,6 +44,8 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:name, :acres, :date_closed, :restricted_endowment, :cap_rate, :admin_rate, :total_upfront, :years_upfront, :earnings_begin)
+      params.require(:project).permit(:name, :acres, :date_closed,
+        :restricted_endowment, :cap_rate, :admin_rate, :total_upfront,
+        :years_upfront, :earnings_begin)
     end
 end

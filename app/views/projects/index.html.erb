@@ -3,6 +3,6 @@
 <% else %>
   <h1>Projects</h1>
   <% @projects.each do |project| %>
-    <div><%= link_to project.name, project_path(project) %></div>
+    <div><%= link_to project.name, project %></div>
   <% end %>
 <% end %>
