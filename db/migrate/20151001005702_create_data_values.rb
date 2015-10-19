@@ -1,6 +1,6 @@
-class CreateAttributes < ActiveRecord::Migration
+class CreateDataValues < ActiveRecord::Migration
   def change
-    create_table :attributes do |t|
+    create_table :data_values do |t|
       t.integer :type
       t.decimal :value
 
