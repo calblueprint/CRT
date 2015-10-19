@@ -10,6 +10,7 @@
         <tr>
             <td><%= data_type.name %></td>
             <td><%= data_type.formula %></td>
+            <td><%= link_to 'Edit', edit_data_type_path(data_type) %></td>
         </tr>
     <% end %>
   </table>

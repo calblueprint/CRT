@@ -7,6 +7,10 @@ class DataTypesController < ApplicationController
     @data_type = DataType.new
   end
 
+  def edit
+    @article = DataType.find(params[:id])
+  end
+
   def create
     @data_type = DataType.new(data_type_params)
 
