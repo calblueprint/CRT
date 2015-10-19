@@ -11,21 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012021843) do
+ActiveRecord::Schema.define(version: 20151013024036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "data_points", force: :cascade do |t|
-    t.decimal  "value"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "year_id"
-    t.integer  "data_type_id"
-  end
-
-  add_index "data_points", ["data_type_id"], name: "index_data_points_on_data_type_id", using: :btree
-  add_index "data_points", ["year_id"], name: "index_data_points_on_year_id", using: :btree
 
   create_table "data_types", force: :cascade do |t|
     t.string   "formula"
@@ -33,6 +22,18 @@ ActiveRecord::Schema.define(version: 20151012021843) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "data_values", force: :cascade do |t|
+    t.integer  "type"
+    t.decimal  "value"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "year_id"
+    t.integer  "data_type_id"
+  end
+
+  add_index "data_values", ["data_type_id"], name: "index_data_values_on_data_type_id", using: :btree
+  add_index "data_values", ["year_id"], name: "index_data_values_on_year_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20151012021843) do
 
   add_index "years", ["project_id"], name: "index_years_on_project_id", using: :btree
 
-  add_foreign_key "attributes", "years"
+  add_foreign_key "data_values", "data_types"
+  add_foreign_key "data_values", "years"
   add_foreign_key "years", "projects"
 end
