@@ -1,20 +1,17 @@
-<%-# TODO: tables should be variable width depending on how many years of data we have -%>
-
 <h1><%= @project.name %></h1>
 
-<table>
-  <tr>
-    <th>Year</th>
-    <% @project.years.each do |year| %>
-      <th><%= year.date %></th>
-    <% end %>
-  </tr>
-  <% @project.years.each do |year| %>
-    <tr>
-      <td>dummy_attr</td>
-      <% @project.years.each do |year| %>
-        <td>dummy_value</td>
-      <% end %>
-    </tr>
+<h2>Project Details</h2>
+
+<% for attribute in @project.attributes.keys %>
+  <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' %>
+    <strong><%= attribute.humanize %>:</strong>
+    <%= @project.attributes[attribute] %>
+    <br>
   <% end %>
-</table>
+<% end %>
+
+<div><%= link_to 'Back', projects_path %></div>
+<div><%= link_to 'Edit project', edit_project_path %></div>
+<div><%= link_to 'Delete Project', project_path(@project),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></div>

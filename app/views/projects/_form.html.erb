@@ -1,0 +1,12 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :name %>
+  <%= f.input :acres %>
+  <%= f.input :date_closed %>
+  <%= f.input :restricted_endowment %>
+  <%= f.input :cap_rate %>
+  <%= f.input :admin_rate %>
+  <%= f.input :total_upfront %>
+  <%= f.input :years_upfront %>
+  <%= f.input :earnings_begin %>
+  <%= f.button :submit %>
+<% end %>

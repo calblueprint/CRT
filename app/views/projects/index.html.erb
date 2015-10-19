@@ -1,30 +1,10 @@
 <% if @projects.size == 0 %>
   <p>No projects exist.</p>
 <% else %>
-  <table>
-    <tr>
-    <th>Name</th>
-      <th>Acres</th>
-      <th>Date Closed</th>
-      <th>Restricted Endowment</th>
-      <th>Cap Rate</th>
-      <th>Admin Rate</th>
-      <th>Total Upfront</th>
-      <th>Years Upfront</th>
-      <th>Earnings Begin</th>
-    </tr>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.acres %></td>
-        <td><%= project.date_closed %></td>
-        <td><%= project.restricted_endowment %></td>
-        <td><%= project.cap_rate %></td>
-        <td><%= project.admin_rate %></td>
-        <td><%= project.total_upfront %></td>
-        <td><%= project.years_upfront %></td>
-        <td><%= project.earnings_begin %></td>
-      </tr>
-    <% end %>
-  </table>
+  <h1>Projects</h1>
+  <% @projects.each do |project| %>
+    <div><%= link_to project.name, project %></div>
+  <% end %>
 <% end %>
+
+<%= link_to 'Create new project', new_project_path %>
