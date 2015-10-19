@@ -10,4 +10,5 @@
 
 class Year < ActiveRecord::Base
   belongs_to :project
+  has_many :data_values
 end
