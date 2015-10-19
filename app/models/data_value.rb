@@ -11,4 +11,5 @@
 #  data_type_id :integer          not null
 
 class DataValue < ActiveRecord::Base
+  belongs_to :year, :data_type
 end
