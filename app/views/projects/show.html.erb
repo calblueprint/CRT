@@ -2,49 +2,16 @@
 
 <h2>Project Details</h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<% for attribute in @project.attributes.keys %>
+  <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' %>
+    <strong><%= attribute.humanize %>:</strong>
+    <%= @project.attributes[attribute] %>
+    <br>
+  <% end %>
+<% end %>
 
-<p>
-  <strong>Acres:</strong>
-  <%= @project.acres %>
-</p>
-
-<p>
-  <strong>Date Closed:</strong>
-  <%= @project.date_closed %>
-</p>
-
-<p>
-  <strong>Restricted Endowment:</strong>
-  <%= @project.restricted_endowment %>
-</p>
-
-<p>
-  <strong>Cap Rate:</strong>
-  <%= @project.cap_rate %>
-</p>
-
-<p>
-  <strong>Admin Rate:</strong>
-  <%= @project.admin_rate %>
-</p>
-
-<p>
-  <strong>Total Upfront:</strong>
-  <%= @project.total_upfront %>
-</p>
-
-<p>
-  <strong>Years Upfront:</strong>
-  <%= @project.years_upfront %>
-</p>
-
-<p>
-  <strong>Earnings Begin:</strong>
-  <%= @project.earnings_begin %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %>
+<div><%= link_to 'Back', projects_path %></div>
+<div><%= link_to 'Edit project', edit_project_path %></div>
+<div><%= link_to 'Delete Project', project_path(@project),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></div>
