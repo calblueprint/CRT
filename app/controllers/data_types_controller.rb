@@ -8,7 +8,7 @@ class DataTypesController < ApplicationController
   end
 
   def edit
-    @article = DataType.find(params[:id])
+    @data_type = DataType.find(params[:id])
   end
 
   def create
@@ -17,6 +17,17 @@ class DataTypesController < ApplicationController
     @data_type.save
     redirect_to action:"index"
   end
+
+  def update
+    @data_type = DataType.find(params[:id])
+
+    if @data_type.update(data_type_params)
+      redirect_to action:"index"
+    else
+      render 'edit'
+    end
+  end
+
 
   private
   def data_type_params
