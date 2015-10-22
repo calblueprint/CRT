@@ -15,14 +15,14 @@ class DataTypesController < ApplicationController
     @data_type = DataType.new(data_type_params)
 
     @data_type.save
-    redirect_to action:"index"
+    redirect_to action: "index"
   end
 
   def update
     @data_type = DataType.find(params[:id])
 
     if @data_type.update(data_type_params)
-      redirect_to action:"index"
+      redirect_to action: "index"
     else
       render 'edit'
     end
