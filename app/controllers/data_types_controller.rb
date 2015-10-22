@@ -28,6 +28,12 @@ class DataTypesController < ApplicationController
     end
   end
 
+  def destroy
+    @data_type = DataType.find(params[:id])
+    @data_type.destroy
+    redirect_to action: "index"
+  end
+
 
   private
   def data_type_params

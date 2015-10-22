@@ -11,6 +11,7 @@
             <td><%= data_type.name %></td>
             <td><%= data_type.formula %></td>
             <td><%= link_to 'Edit', edit_data_type_path(data_type) %></td>
+            <td><%= link_to 'Delete', data_type_path(data_type), :method => :delete %></td>
         </tr>
     <% end %>
   </table>
