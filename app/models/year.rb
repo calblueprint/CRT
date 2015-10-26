@@ -10,5 +10,5 @@
 
 class Year < ActiveRecord::Base
   belongs_to :project
-  has_many :data_values
+  has_many :data_values, :dependent => :destroy
 end

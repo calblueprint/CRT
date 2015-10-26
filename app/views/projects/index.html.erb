@@ -1,10 +1,25 @@
-<% if @projects.size == 0 %>
-  <p>No projects exist.</p>
-<% else %>
-  <h1>Projects</h1>
-  <% @projects.each do |project| %>
-    <div><%= link_to project.name, project %></div>
+<div class="content">
+  <h1 class="header"> Projects </h1>
+  <div class="search-wrapper">
+    <div class="container-1">
+      <input type="search" id="search" placeholder="Search..." autocomplete="off"/>
+      <span class="icon"><i class="fa fa-search"></i></span>
+    </div>
+  </div>
+  <div class="grid">
+    <% if @projects.size == 0 %>
+      <p>No projects exist.</p>
+    <% else %>
+      <% @projects.each do |project| %>
+        <%= link_to project, class: "card" do %>
+          <h1> <%= project.name %> </h1>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="footer">
+  <%= link_to new_project_path, class: "card" do %>
+    <h1 class="h1-alt"> New Project </h1>
   <% end %>
-<% end %>
-
-<%= link_to 'Create new project', new_project_path %>
+</div>

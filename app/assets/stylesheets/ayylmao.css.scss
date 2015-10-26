@@ -54,7 +54,7 @@ a {
   transition: $transition;
 }
 
-.active {
+#active {
   opacity: 1;
 }
 
@@ -140,15 +140,20 @@ a.card h1:hover {
   max-width: 300px;
 }
 
-.h1-alt {
+.h1-alt, .btn, input[type="submit"] {
   padding: 15px 20px !important;
   font-size: 14px !important;
   background: $gray !important;
+  color: $white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
   opacity: 0.8;
 }
 
-.h1-alt:hover {
+.h1-alt:hover, .btn:hover, input[type="submit"]:hover  {
   opacity: 1;
+  cursor: pointer;
 }
 
 .gray {
@@ -162,6 +167,15 @@ a.card h1:hover {
 
 .card-content {
   padding: 30px;
+}
+
+.card-content-form {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.card-content-alt {
+  padding-bottom: 15px;
 }
 
 h2, h3, p {
@@ -185,7 +199,7 @@ h2, h3, p {
 .heavy {
   display: inline-block;
   font-weight: 400;
-  min-width: 100px;
+  min-width: 150px;
 }
 
 .light {
@@ -282,10 +296,17 @@ h2, h3, p {
   background-color: $teal;
 }
 
-input[type="text"], input[type="password"] {
+label {
+  display: inline-block;
+  font-weight: 500;
+  min-width: 150px;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
   border: 1px solid $white !important;
 }
 
-input[type="text"]:hover, input[type="password"]:hover, input[type="text"]:focus, input[type="password"]:focus {
+input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover, 
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus {
   border: 1px solid $teal !important;
 }

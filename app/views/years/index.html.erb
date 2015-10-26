@@ -1,10 +1,12 @@
-<% if @years.size == 0 %>
-  <p>No years exist.</p>
-<% else %>
-  <h1>Years</h1>
-  <% @years.each do |year| %>
-    <div><%= link_to year.date, year %></div>
+<div class="content">
+  <% if @years.size == 0 %>
+    <p>No years exist.</p>
+  <% else %>
+    <h1>Years</h1>
+    <% @years.each do |year| %>
+      <div><%= link_to year.date, year %></div>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= link_to 'Create new year', new_year_path %>
+  <%= link_to 'Create new year', new_year_path %>
+</div>

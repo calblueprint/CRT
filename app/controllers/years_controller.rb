@@ -17,6 +17,7 @@ class YearsController < ApplicationController
 
   def create
     @projects = Project.all
+    @data_types = DataType.all
 
     @projects.each do |project|
       @year = Year.new(year_params)
@@ -24,6 +25,10 @@ class YearsController < ApplicationController
         project.years << @year
       else
         render 'new'
+      end
+      @data_types.each do |data_type|
+        @data_value = DataValue.new(value: 0.0, year: @year, data_type: data_type)
+        @data_value.save
       end
     end
     redirect_to years_path
@@ -40,8 +45,7 @@ class YearsController < ApplicationController
   end
 
   def destroy
-    @year = Year.find(params[:id])
-    @year.destroy
+    Year.destroy params[:id]
 
     redirect_to years_path
   end

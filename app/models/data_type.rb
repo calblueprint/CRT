@@ -10,5 +10,5 @@
 #  updated_at   :datetime         not null
 
 class DataType < ActiveRecord::Base
-  has_many :data_values
+  has_many :data_values, :dependent => :destroy
 end

@@ -1,2 +1,44 @@
-<h1>Edit Data Type</h1>
-  <%= render 'form' %>
+<%= simple_form_for @data_type do |f| %>
+<div class="content">
+  <h1 class="header"> Edit <%= @data_type.name %> </h1>
+  <div class="card">
+    <h1> Data Types </h1>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th class="attributes"> Click to edit </th>
+        </tr>
+        <% @data_types.each do |data_type| %>
+          <tr>
+            <td class="type" onclick="window.location.href = '<%= edit_data_type_path(data_type) %>';">
+              <%= data_type.name %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="card teal-bg">
+    <h1> Edit <%= @data_type.name %> </h1>
+    <div class="card-content card-content-form">
+      <p>
+        <%= f.input :name %>
+      </p>
+      <p class="no-margin"> 
+        <%= f.input :formula %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <a class="card">
+    <%= f.submit "Update Data Type" %>
+  </a>
+  <%= link_to data_type_path(@data_type), :method => :delete, data: { confirm: 'Are you sure?' }, class: "card" do %>
+    <h1 class="h1-alt"> Delete Data Type </h1>
+  <% end %>
+  <%= link_to data_types_path, class: "card" do %>
+    <h1 class="h1-alt"> Cancel </h1>
+  <% end %>
+</div>
+<% end %>
