@@ -1,0 +1,8 @@
+<h1>Year: <%= @year.date %></h1>
+<p>Belongs to project: <%= @year.project.name %>
+
+<div><%= link_to 'Back', years_path %></div>
+<div><%= link_to 'Edit year', edit_year_path %></div>
+<div><%= link_to 'Delete year', year_path(@year),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></div>

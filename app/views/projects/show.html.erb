@@ -2,7 +2,7 @@
 
 <h2>Project Details</h2>
 
-<% for attribute in @project.attributes.keys %>
+<% @project.attributes.keys.each do |attribute| %>
   <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' %>
     <strong><%= attribute.humanize %>:</strong>
     <%= @project.attributes[attribute] %>

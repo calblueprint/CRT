@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :projects
-  resources :data_types, except: [:show]
+  resources :data_types
+  resources :years
 
   # root 'projects#index'
   root 'static_pages#home'
