@@ -9,11 +9,9 @@ gem "figaro"
 
 # Components
 gem "cancancan"
-gem "devise"
 gem "ffaker"
 gem "gon"
 gem "kaminari"
-gem "recipient_interceptor"
 gem "simple_form"
 gem "turbolinks"
 

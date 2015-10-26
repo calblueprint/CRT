@@ -48,7 +48,6 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
-    bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -80,13 +79,6 @@ GEM
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     dentaku (2.0.5)
-    devise (3.5.2)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      responders
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     easy_translate (0.5.0)
@@ -181,7 +173,6 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    orm_adapter (0.5.0)
     parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
     pg (0.18.3)
@@ -234,11 +225,7 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    recipient_interceptor (0.1.2)
-      mail
     request_store (1.2.0)
-    responders (2.1.0)
-      railties (>= 4.2.0, < 5)
     rollbar (2.4.0)
       multi_json
     rspec (3.1.0)
@@ -320,8 +307,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    warden (1.2.3)
-      rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -340,7 +325,6 @@ DEPENDENCIES
   coffee-rails
   database_cleaner
   dentaku
-  devise
   factory_girl_rails
   ffaker
   figaro
@@ -360,7 +344,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   rails_12factor
-  recipient_interceptor
   rollbar
   rspec-rails (~> 3.1.0)
   rubocop
@@ -373,3 +356,6 @@ DEPENDENCIES
   title
   turbolinks
   uglifier
+
+BUNDLED WITH
+   1.10.6

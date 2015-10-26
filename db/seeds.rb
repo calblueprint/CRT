@@ -206,4 +206,4 @@ def demo
   end
 end
 
-demo
+test_c
