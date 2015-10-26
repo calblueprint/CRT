@@ -1,46 +1,16 @@
-<div class="front-loader">
-  <div id="alt-leaf">
-    <img src="<%= asset_path('leaf.svg') %>"/>
-  </div>
-  <div class="three-quarters-loader">
-    Loading…
-  </div>
-</div>
-<div class="menu">
-  <a class="tab index tooltip" href="/index" name="Projects">
-    <img src="<%= asset_path('leaf-white.svg') %>">
-  </a>
-  <a class="tab tooltip" href="/attributes" name="Attributes">
-    <img src="<%= asset_path('edit-white.svg') %>">
-  </a>
-  <a class="tab tooltip active" href="/information" name="Information">
-    <img src="<%= asset_path('info-white.svg') %>">
-  </a>
-  <a class="tab logout tooltip" href="/.." name="Log Out">
-    <img src="<%= asset_path('logout-black.svg') %>">
-  </a>
-
-</div>
-<div class="content">
-  <h1 class="header"> Information </h1>
-  <div class="card">
-    <h1> General </h1>
-    <div class="card-content general">
-      <p> <span class="heavy">Instructions</span> </p>
-      <p> You can use this by blah blah blah blah. </p>
-      <p> <span class="heavy">Purpose</span> </p>
-      <p class="no-margin"> You can use this by blah blah blah blah. </p>
-    </div>
-  </div>
-  <div class="card">
-    <h1> Copyright </h1>
-    <div class="card-content general">
-      <p class="no-margin"> Copyright 2015 by Cal Blueprint </p>
-    </div>
+<h1 class="header"> Information </h1>
+<div class="card">
+  <h1> General </h1>
+  <div class="card-content general">
+    <p> <span class="heavy">Instructions</span> </p>
+    <p> You can use this by blah blah blah blah. </p>
+    <p> <span class="heavy">Purpose</span> </p>
+    <p class="no-margin"> You can use this by blah blah blah blah. </p>
   </div>
 </div>
-<script>
-$(document).ready(function(){
-  $(".front-loader").delay(500).fadeOut(500);
-});
-</script>
+<div class="card">
+  <h1> Copyright </h1>
+  <div class="card-content general">
+    <p class="no-margin"> Copyright 2015 by Cal Blueprint </p>
+  </div>
+</div>
