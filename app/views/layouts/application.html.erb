@@ -14,7 +14,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   </head>
   <body>
+    <div class="front-loader">
+      <div id="alt-leaf">
+        <img src="<%= asset_path('leaf.svg') %>"/>
+      </div>
+      <div class="three-quarters-loader">
+        Loading…
+      </div>
+    </div>
+    <div class="menu">
+      <%= link_to projects_path, class: "tab index tooltip", name: "Projects" do %>
+        <img src="<%= asset_path('leaf-white.svg') %>">
+      <% end %>
+      <%= link_to data_types_path, class: "tab index tooltip", name: "Attributes" do %>
+        <img src="<%= asset_path('edit-white.svg') %>">
+      <% end %>
+      <a class="tab tooltip" href="/information" name="Information">
+        <img src="<%= asset_path('info-white.svg') %>">
+      </a>
+      <a class="tab logout tooltip" href="/.." name="Log Out">
+        <img src="<%= asset_path('logout-black.svg') %>">
+      </a>
+    </div>
     <%= render "flash" %>
+    <div class="content">
     <%= yield %>
+    </div>
   </body>
 </html>
+<script>
+$(document).ready(function(){
+  $(".front-loader").delay(500).fadeOut(500);
+});
+</script>
