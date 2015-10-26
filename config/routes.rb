@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   resources :projects
+  resources :data_types
   resources :years
 
   # root 'projects#index'

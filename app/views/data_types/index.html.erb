@@ -1,0 +1,19 @@
+<% if @data_types.size == 0 %>
+  <td><%= link_to 'Add New Data Type', new_data_type_path %></td>
+<% else %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Formula</th>
+    </tr>
+    <% @data_types.each do |data_type| %>
+      <tr>
+        <td><%= data_type.name %></td>
+        <td><%= data_type.formula %></td>
+        <td><%= link_to 'Edit', edit_data_type_path(data_type) %></td>
+        <td><%= link_to 'Delete', data_type_path(data_type), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+  <td><%= link_to 'Add New Data Type', new_data_type_path %></td>
+<% end %>
