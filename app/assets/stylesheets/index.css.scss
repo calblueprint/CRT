@@ -65,13 +65,11 @@
   border: 1px solid $teal !important;
 }
 
-.search-wrapper select {
+select {
   height: 50px;
-  background: $white;
+  background: $lighter-gray;
   border: none;
-  float: left;
   color: $black;
-  margin-left: 20px;
   border: 1px solid $white;
   padding-left: 20px !important;
   padding-right: 50px !important;

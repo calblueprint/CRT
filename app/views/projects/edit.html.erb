@@ -1,5 +1,46 @@
-<h1>Edit Project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', projects_path %>
+<!-- TODO (kevin): Add in full project editing functionality -->
+<%= simple_form_for @project do |f| %>
+<div class="content">
+  <h1 class="header"> Edit <%= @project.name %> </h1>
+  <div class="card">
+    <h1> Project Details </h1>
+    <div class="card-content card-content-form">  
+      <p>
+        <%= f.input :name %>
+      </p>
+      <p> 
+        <%= f.input :acres %>
+      </p>
+      <p> 
+        <%= f.input :date_closed %>
+      </p>
+      <p> 
+        <%= f.input :restricted_endowment %>
+      </p>
+      <p> 
+        <%= f.input :cap_rate %>
+      </p>
+      <p> 
+        <%= f.input :admin_rate %>
+      </p>
+      <p> 
+        <%= f.input :total_upfront %>
+      </p>
+      <p> 
+        <%= f.input :years_upfront %>
+      </p>
+      <p> 
+        <%= f.input :earnings_begin %>
+      </p>  
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <a class="card">
+    <%= f.button :submit %>
+  </a>
+  <%= link_to project_path(@project), class: "card" do %>
+    <h1 class="h1-alt"> Cancel </h1>
+  <% end %>
+</div>
+<% end %>

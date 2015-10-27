@@ -17,6 +17,9 @@ gem "recipient_interceptor"
 gem "simple_form"
 gem "turbolinks"
 
+# Formula parser
+gem 'dentaku'
+
 # Frontend
 gem "autoprefixer-rails"
 gem "coffee-rails"

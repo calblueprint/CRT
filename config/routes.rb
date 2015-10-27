@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :data_types
   resources :years
 
-  # root 'projects#index'
   root 'static_pages#home'
 
+  # Static routes for mockups
   get '/home', to: 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/index', to: 'static_pages#index'

@@ -1,19 +1,26 @@
-<% if @data_types.size == 0 %>
-  <td><%= link_to 'Add New Data Type', new_data_type_path %></td>
-<% else %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Formula</th>
-    </tr>
-    <% @data_types.each do |data_type| %>
-      <tr>
-        <td><%= data_type.name %></td>
-        <td><%= data_type.formula %></td>
-        <td><%= link_to 'Edit', edit_data_type_path(data_type) %></td>
-        <td><%= link_to 'Delete', data_type_path(data_type), :method => :delete %></td>
-      </tr>
-    <% end %>
-  </table>
-  <td><%= link_to 'Add New Data Type', new_data_type_path %></td>
-<% end %>
+<div class="content">
+  <h1 class="header"> Data Types </h1>
+  <div class="card">
+    <h1> Data Types </h1>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th class="attributes"> Click to edit </th>
+        </tr>
+        <% @data_types.each do |data_type| %>
+          <tr>
+            <td class="type" onclick="window.location.href = '<%= edit_data_type_path(data_type) %>';">
+              <%= data_type.name %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="footer">
+  <%= link_to new_data_type_path, class: "card" do %>
+    <h1 class="h1-alt"> New Data Type </h1>
+  <% end %>
+</div>
