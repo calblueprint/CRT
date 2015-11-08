@@ -1,0 +1,8 @@
+{
+  "phabricator.uri": "http://phab.calblueprint.org",
+  "history.immutable": false,
+  "load": [
+    "$TRAPHIC_PATH/traphic"
+  ],
+  "arcanist_configuration": "TraphicConfiguration"
+}

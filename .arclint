@@ -1,0 +1,14 @@
+{
+  "linters": {
+    "ruby": {
+      "type": "rubocop",
+      "include": "/\\.(rb|rake)$/",
+      "exclude": "(^db/)",
+      "rubocop.config": ".rubocop.yml"
+    },
+    "csslint": {
+      "type": "csslint",
+      "include" : "(\\.css$)"
+    }
+  }
+}
