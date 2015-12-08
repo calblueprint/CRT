@@ -18,6 +18,9 @@ gem "turbolinks"
 # Formula parser
 gem 'dentaku'
 
+# Excel parser
+gem 'roo', '~> 2.1.0'
+
 # Frontend
 gem "autoprefixer-rails"
 gem "coffee-rails"
