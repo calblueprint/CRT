@@ -1,14 +1,16 @@
-
 # == Schema Information
 #
 # Table name: data_types
 #
-#  id           :integer          not null, primary key
-#  formula      :string           not null
-#  name         :string           not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id         :integer          not null, primary key
+#  formula    :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  order      :integer
+#  general    :boolean
+#
 
 class DataType < ActiveRecord::Base
-  has_many :data_values, :dependent => :destroy
+  has_many :data_values, dependent: :destroy
 end

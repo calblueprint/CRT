@@ -6,6 +6,7 @@ AllCops:
     - config/initializers/*
     - db/schema.rb
     - db/migrate/**/*devise*.rb
+    - lib/tasks/auto_annotate_models.rake
     - spec/spec_helper.rb
     - Guardfile
 

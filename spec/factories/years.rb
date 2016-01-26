@@ -3,13 +3,13 @@
 # Table name: years
 #
 #  id         :integer          not null, primary key
-#  date       :integer
+#  year       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryGirl.define do
   factory :year do
-    date 1
+    sequence :year, 1994
   end
 end

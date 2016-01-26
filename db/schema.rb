@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109035919) do
+ActiveRecord::Schema.define(version: 20151225021327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,23 @@ ActiveRecord::Schema.define(version: 20151109035919) do
   create_table "data_values", force: :cascade do |t|
     t.integer  "type"
     t.decimal  "value"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "year_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "data_type_id"
+    t.integer  "project_year_id"
   end
 
   add_index "data_values", ["data_type_id"], name: "index_data_values_on_data_type_id", using: :btree
-  add_index "data_values", ["year_id"], name: "index_data_values_on_year_id", using: :btree
+
+  create_table "project_years", force: :cascade do |t|
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "project_id"
+    t.integer  "year_id"
+  end
+
+  add_index "project_years", ["project_id"], name: "index_project_years_on_project_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -47,20 +56,19 @@ ActiveRecord::Schema.define(version: 20151109035919) do
     t.decimal  "total_upfront"
     t.integer  "years_upfront"
     t.date     "earnings_begin"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "general",              default: false
   end
+
+  add_index "projects", ["general"], name: "index_projects_on_general", using: :btree
 
   create_table "years", force: :cascade do |t|
-    t.date     "date"
+    t.integer  "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "project_id"
   end
 
-  add_index "years", ["project_id"], name: "index_years_on_project_id", using: :btree
-
   add_foreign_key "data_values", "data_types"
-  add_foreign_key "data_values", "years"
-  add_foreign_key "years", "projects"
+  add_foreign_key "project_years", "projects"
 end

@@ -14,23 +14,43 @@
 #  earnings_begin       :date
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  general              :boolean          default(FALSE)
+#
+# Indexes
+#
+#  index_projects_on_general  (general)
 #
 
 class Project < ActiveRecord::Base
-  has_many :years, :dependent => :destroy
+  scope :specific_projects, -> { where(general: false) }
+
+  has_many :project_years, dependent: :destroy
+
+  validate :no_other_general_project, if: :general?
 
   # "General" project will contain general overview information about ranges.
   # This project will contain specific attributes unrelated to other projects.
-  def self.general_project_name
-    "General"
-  end
-
-  # scope that retrieves the general project instance
   def self.general_project
-    where(name: Project.general_project_name)[0]
+    find_by general: true
   end
 
-  def general
-    name == Project.general_project_name
+  def self.create_data_type_for_specific_projects(data_type)
+    specific_projects.each do |specific_project|
+      specific_project.create_data_type data_type
+    end
+  end
+
+  def create_data_type(data_type)
+    project_years.each do |project_year|
+      project_year.create_data_value_for_data_type data_type
+    end
+  end
+
+  private
+
+  def no_other_general_project
+    general_projects = Project.where(general: true)
+    general_projects.delete(self)
+    errors.add(:general, 'project already exists') unless general_projects.size == 0
   end
 end

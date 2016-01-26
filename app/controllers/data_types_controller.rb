@@ -15,26 +15,13 @@ class DataTypesController < ApplicationController
 
   def create
     @data_type = DataType.new(data_type_params)
-    projects = Project.all
 
-    projects.each do |project|
-      if project.name.general
-        if @data_type.general?
-          years = project.years
-          years.each do |year|
-            DataValue.create(value: 0.0, year: year, data_type: @data_type)
-          end
-          break
-        end
+    if @data_type.save
+      if @data_type.general?
+        Project.general_project.create_data_type(@data_type)
       else
-        unless @data_type.general?
-          years = project.years
-          years.each do |year|
-            DataValue.create(value: 0.0, year: year, data_type: @data_type)
-          end
-        end
+        Project.create_data_type_for_specific_projects(@data_type)
       end
-      @data_type.save
     end
 
     redirect_to action: "index"
@@ -44,27 +31,18 @@ class DataTypesController < ApplicationController
     @data_type = DataType.find(params[:id])
     if @data_type.update(data_type_params)
       # find all data_values linked to changed data_type
-      @data_values = DataValue.where(data_type: @data_type)
+      data_values = @data_type.data_values
       # This if statement covers changing data_type from non-general to general
       if @data_type.general?
-        @data_values.each do |data_value|
-          unless data_value.year.project.general
-            # delete all data values not corresponding to years that belong to general project
-            DataValue.destroy(data_value.id)
-          end
-        end
+        data_values.reject(&:general?).map(&:destroy)
         # add data_values to years that belong to general project
-        years = Project.general_project.years
-        years.each do |year|
-          DataValue.create(value: 0.0, year: year, data_type: @data_type)
-        end
+        Project.general_project.create_data_type @data_type
       else
         # delete all data values because we are changing from general to non-general
-        @data_values.destroy_all
+        data_values.destroy_all
         # add data_type/data_value to each year that doesnt belong to general project
-        years = Year.all
-        years.reject { |year| year.project.general }.each do |year|
-          DataValue.create(value: 0.0, year: year, data_type: @data_type)
+        ProjectYear.specific.each do |project_year|
+          project_year.create_data_value_for_data_type @data_type
         end
       end
       redirect_to action: "index"

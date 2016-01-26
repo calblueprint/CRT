@@ -1,9 +1,9 @@
 <div class="content">
-  <% if @years.size == 0 %>
+  <% if @project_years.size == 0 %>
     <p>No years exist.</p>
   <% else %>
     <h1>Years</h1>
-    <% @years.each do |year| %>
+    <% @project_years.each do |year| %>
       <div><%= link_to year.date, year %></div>
     <% end %>
   <% end %>

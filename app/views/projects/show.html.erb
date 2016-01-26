@@ -20,7 +20,7 @@
       <table>
         <tr>
           <th class="attributes">Data Types</th>
-          <% @project.years.each do |year| %>
+          <% @project.project_years.each do |year| %>
             <th><%= year.date %></th>
           <% end %>
         </tr>
@@ -29,7 +29,7 @@
            <% name = data_type.name.split(' ').join('-') %>
             <td class="type" onclick="show(this, '<%= name %>');"><%= data_type.name %></td>
             <% data_type.data_values.each do |data_value| %>
-              <% if @project.years.find_by_id(data_value.year_id) %>
+              <% if @project.project_years.find_by_id(data_value.year_id) %>
                 <td><%= data_value.value %></td>
               <% end %>
             <% end %>

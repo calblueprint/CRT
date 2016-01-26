@@ -24,20 +24,19 @@ class ProjectsController < ApplicationController
     data_values = TsortableHash[]
     @data_values.each do |data_value|
       # Only calculate data values in this project
-      if @project.years.find_by_id(data_value.year_id)
-        formula = @data_types.find(data_value.data_type_id).formula
-        if formula
-          year = data_value.year_id
-          dependencies = []
-          @data_types.each do |data_type|
-            if formula.include? derscore(data_type.name)
-              dependencies.push(@data_values.find_by(year: year, data_type: data_type))
-            end
+      next unless @project.project_years.find_by_id(data_value.project_year_id) # TODO: Refactor.
+      formula = @data_types.find(data_value.data_type_id).formula
+      if formula
+        year = data_value.year_id
+        dependencies = []
+        @data_types.each do |data_type|
+          if formula.include? derscore(data_type.name)
+            dependencies.push(@data_values.find_by(year: year, data_type: data_type))
           end
-          data_values[data_value] = dependencies
-        else
-          data_values[data_value] = []
         end
+        data_values[data_value] = dependencies
+      else
+        data_values[data_value] = []
       end
     end
 
@@ -101,9 +100,12 @@ class ProjectsController < ApplicationController
   end
 
   private
-    def project_params
-      params.require(:project).permit(:name, :acres, :date_closed,
-        :restricted_endowment, :cap_rate, :admin_rate, :total_upfront,
-        :years_upfront, :earnings_begin)
-    end
+
+  def project_params
+    params.require(:project).permit(
+      :name, :acres, :date_closed,
+      :restricted_endowment, :cap_rate, :admin_rate, :total_upfront,
+      :years_upfront, :earnings_begin
+    )
+  end
 end
