@@ -6,6 +6,7 @@ gem "rails", "4.2.0"
 gem "thin"
 gem "pg"
 gem "figaro"
+gem "react-rails", "~> 1.5.0"
 
 # Components
 gem "cancancan"
