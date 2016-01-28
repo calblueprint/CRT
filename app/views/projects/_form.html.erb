@@ -1,0 +1,49 @@
+<%= simple_form_for @project do |f| %>
+<div class="content">
+  <% if @project.new_record? %>
+    <h1 class="header"> New Project </h1>
+  <% else %>
+    <h1 class="header"> Edit Project </h1>
+  <% end %>
+  <div class="card">
+    <h1> Project Details </h1>
+    <div class="card-content card-content-form">
+      <p>
+        <%= f.input :name, error: 'Name must not be empty.' %>
+      </p>
+      <p>
+        <%= f.input :acres, error: 'Acres must be a number greater than 0.' %>
+      </p>
+      <p>
+        <%= f.input :date_closed, error: 'Date closed must not be empty.' %>
+      </p>
+      <p>
+        <%= f.input :restricted_endowment, error: 'Restricted endowment must be a number greater than 0.' %>
+      </p>
+      <p>
+        <%= f.input :cap_rate, error: 'Cap rate must be a number between 0 and 100.' %>
+      </p>
+      <p>
+        <%= f.input :admin_rate, error: 'Admin rate must be a number between 0 and 100' %>
+      </p>
+      <p>
+        <%= f.input :total_upfront, error: 'Total upfront must be a number greater than 0.' %>
+      </p>
+      <p>
+        <%= f.input :years_upfront, error: 'Years upfront must be a number greater than 0.' %>
+      </p>
+      <p>
+        <%= f.input :earnings_begin, error: 'Earnings begin must not be empty.' %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <a class="card">
+    <%= f.button :submit %>
+  </a>
+  <%= link_to projects_path, class: "card" do %>
+    <h1 class="h1-alt"> Cancel </h1>
+  <% end %>
+</div>
+<% end %>

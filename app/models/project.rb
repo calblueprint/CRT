@@ -27,6 +27,15 @@ class Project < ActiveRecord::Base
   has_many :project_years, dependent: :destroy
 
   validate :no_other_general_project, if: :general?
+  validates :name, presence: true
+  validates :acres, presence: true, numericality: { greater_than: 0 }
+  validates :date_closed, presence: true
+  validates :restricted_endowment, presence: true, numericality: { greater_than: 0 }
+  validates :cap_rate, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
+  validates :admin_rate, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
+  validates :total_upfront, presence: true, numericality: { greater_than: 0 }
+  validates :years_upfront, presence: true, numericality: { greater_than: 0 }
+  validates :earnings_begin, presence: true
 
   # "General" project will contain general overview information about ranges.
   # This project will contain specific attributes unrelated to other projects.
