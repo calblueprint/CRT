@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225021327) do
+ActiveRecord::Schema.define(version: 20160129011957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20151225021327) do
     t.decimal  "value"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "data_type_id"
-    t.integer  "project_year_id"
+    t.integer  "data_type_id",    null: false
+    t.integer  "project_year_id", null: false
   end
 
   add_index "data_values", ["data_type_id"], name: "index_data_values_on_data_type_id", using: :btree
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20151225021327) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "project_id"
-    t.integer  "year_id"
+    t.integer  "project_id", null: false
+    t.integer  "year_id",    null: false
   end
 
   add_index "project_years", ["project_id"], name: "index_project_years_on_project_id", using: :btree
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20151225021327) do
   add_index "projects", ["general"], name: "index_projects_on_general", using: :btree
 
   create_table "years", force: :cascade do |t|
-    t.integer  "year"
+    t.integer  "year",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
