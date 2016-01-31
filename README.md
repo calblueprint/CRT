@@ -3,13 +3,17 @@ CRT
 
 [California Rangeland Trust](http://www.rangelandtrust.org/)
 
+California Rangeland Trust is a NPO that is dedicated to protecting California's rangeland, air
+and water quality, wildlife habitat and local food supplies.  Blueprint is working with them to
+create a web application that will help them manage their funds.
+
 
 Getting Started
 ---------------
 
 After you've initialized the app, run
 
-    $ /bin/setup
+    $ bin/setup
 
 to set up dependencies and set up the app.
 
