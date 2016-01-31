@@ -44,7 +44,8 @@ def production_db
       start_date = get_date_from_year_header(year_col[0])
       # And the rest of the column has the data values pertaining to the
       # relevant year and data type.
-      curr_year = Year.create! date: start_date, project_id: r.id
+      y = Year.find_or_create_by(year: start_date)
+      curr_year = ProjectYear.create! date: start_date, project_id: r.id, year: y
       (0..year_col.count).each do |i|
         # There could be nil values in data_types
         if data_types[i]
@@ -55,7 +56,7 @@ def production_db
             curr_data_type = DataType.create! name: data_types[i]
           end
           DataValue.create! value: ranch_summary.column(n)[i],
-                          year_id: curr_year.id,
+                          project_year_id: curr_year.id,
                      data_type_id: curr_data_type.id
         end
       end
@@ -131,36 +132,37 @@ def test_c
                               years_upfront: Random.new.rand(1..69),
                               earnings_begin: FFaker::Time.date
     for yyyy in 2068..2070
-      year = Year.create! date: yyyy, project_id: project.id
+      y = Year.find_or_create_by!(year: yyyy)
+      year = ProjectYear.create! date: Date.new(yyyy, 1, 1), project_id: project.id, year: y
       f1_value = DataValue.create! value: 5.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f1.id
       f2_value = DataValue.create! value: 10.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f2.id
       f3_value = DataValue.create! value: 15.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f3.id
       f4_value = DataValue.create! value: 20.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f4.id
       f5_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f5.id
       f6_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f6.id
       f7_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f7.id
       f8_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f8.id
       f9_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f9.id
       f10_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f10.id
     end
   end
@@ -188,31 +190,31 @@ def demo
     for yyyy in 2068..2070
       year = Year.create! date: yyyy, project_id: project.id
       f1_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f1.id
       f2_value = DataValue.create! value: 103.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f2.id
       f3_value = DataValue.create! value: 102.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f3.id
       f4_value = DataValue.create! value: 69.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f4.id
       f5_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f5.id
       f6_value = DataValue.create! value: 1.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f6.id
       f7_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f7.id
       f8_value = DataValue.create! value: 0.0,
-                                   year_id: year.id,
+                                   project_year_id: year.id,
                                    data_type_id: f8.id
     end
   end
 end
 
-production_db
+test_c
