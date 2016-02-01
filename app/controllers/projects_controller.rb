@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
       next unless @project.project_years.find_by_id(data_value.project_year_id) # TODO: Refactor.
       formula = @data_types.find(data_value.data_type_id).formula
       if formula
-        year = data_value.year_id
+        year = data_value.project_year_id
         dependencies = []
         @data_types.each do |data_type|
           if formula.include? derscore(data_type.name)
@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
       if formula
         # Initialize calculator and year
         calculator = Dentaku::Calculator.new
-        year = data_value.year_id
+        year = data_value.project_year_id
         @data_types.each do |data_type|
           if formula.include? derscore(data_type.name)
             name = derscore(data_type.name)
