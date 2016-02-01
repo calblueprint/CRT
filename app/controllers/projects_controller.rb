@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
         dependencies = []
         @data_types.each do |data_type|
           if formula.include? derscore(data_type.name)
-            dependencies.push(@data_values.find_by(year: year, data_type: data_type))
+            dependencies.push(@data_values.find_by(project_year_id: project_year, data_type: data_type))
           end
         end
         data_values[data_value] = dependencies
