@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: data_types
+#
+#  id         :integer          not null, primary key
+#  formula    :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  order      :integer
+#  general    :boolean
+#
+
 class DataTypesController < ApplicationController
   def index
     @data_types = DataType.all

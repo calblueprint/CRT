@@ -20,7 +20,7 @@
       <table>
         <tr>
           <th class="attributes">Data Types</th>
-          <% @project.project_years.each do |year| %>
+          <% @project.project_years.order(:date).each do |year| %>
             <th><%= year.date %></th>
           <% end %>
         </tr>
@@ -60,6 +60,9 @@
               method: :delete,
               data: { confirm: 'Are you sure?' }, class: "card" do %>
     <h1 class="h1-alt"> Delete Project </h1>
+  <% end %>
+  <%= link_to new_project_project_year_path(@project), class: "card" do %>
+    <h1 class="h1-alt"> Add Year </h1>
   <% end %>
   <%= link_to projects_path, class: "card" do %>
     <h1 class="h1-alt"> Back </h1>

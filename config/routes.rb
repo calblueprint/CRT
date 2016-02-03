@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :projects
+  resources :projects do
+    resources :project_years
+  end
   resources :data_types
   resources :years
 

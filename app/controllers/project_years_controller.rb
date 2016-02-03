@@ -1,0 +1,47 @@
+# == Schema Information
+#
+# Table name: project_years
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  project_id :integer          not null
+#  year_id    :integer          not null
+#  date       :integer
+#
+# Indexes
+#
+#  index_project_years_on_project_id  (project_id)
+#
+# Foreign Keys
+#
+#  fk_rails_0020e4e94e  (project_id => projects.id)
+#
+
+class ProjectYearsController < ApplicationController
+  def index
+    @project_years = ProjectYear.all
+  end
+
+  def new
+    @project_year = ProjectYear.new
+    @project_year.project_id = params[:project_id]
+  end
+
+  def create
+    @project_year = ProjectYear.new(project_year_params)
+    year = Year.find_or_create_by(year: @project_year.date)
+    @project_year.year = year
+    if @project_year.save
+      redirect_to project_path(@project_year.project)
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+  def project_year_params
+    params.require(:project_year).permit(:date, :project_id)
+  end
+end

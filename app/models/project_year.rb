@@ -3,15 +3,19 @@
 # Table name: project_years
 #
 #  id         :integer          not null, primary key
-#  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  project_id :integer          not null
 #  year_id    :integer          not null
+#  date       :integer
 #
 # Indexes
 #
 #  index_project_years_on_project_id  (project_id)
+#
+# Foreign Keys
+#
+#  fk_rails_0020e4e94e  (project_id => projects.id)
 #
 
 class ProjectYear < ActiveRecord::Base
@@ -23,6 +27,12 @@ class ProjectYear < ActiveRecord::Base
   has_many :data_values, dependent: :destroy
 
   validates :project, :year, presence: true
+  validates :date, presence: true,
+                   uniqueness: { scope: :project },
+                   numericality: {
+                     greater_than_or_equal_to: 1998, # 1998 is start year for CRT
+                     less_than_or_equal_to: Time.now.year
+                   }
 
   def create_data_value_for_data_type(data_type)
     DataValue.create value: 0.0, project_year: self, data_type: data_type

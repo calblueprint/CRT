@@ -14,6 +14,10 @@
 #
 #  index_data_values_on_data_type_id  (data_type_id)
 #
+# Foreign Keys
+#
+#  fk_rails_e78da99373  (data_type_id => data_types.id)
+#
 
 class DataValue < ActiveRecord::Base
   belongs_to :project_year
