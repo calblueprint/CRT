@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
         dependencies = []
         @data_types.each do |data_type|
           if formula.include? derscore(data_type.name)
-            dependencies.push(@data_values.find_by(project_year_id: project_year, data_type: data_type))
+            dependencies.push(@data_values.find_by(project_year_id: year, data_type: data_type))
           end
         end
         data_values[data_value] = dependencies
@@ -73,7 +73,7 @@ class ProjectsController < ApplicationController
         @data_types.each do |data_type|
           if formula.include? derscore(data_type.name)
             name = derscore(data_type.name)
-            value = @data_values.find_by(year: year, data_type: data_type).value
+            value = @data_values.find_by(project_year: year, data_type: data_type).value
             calculator.store(name => value)
           end
         end
