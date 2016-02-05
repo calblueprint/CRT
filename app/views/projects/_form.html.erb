@@ -18,16 +18,16 @@
         <%= f.input :date_closed, error: 'Date closed must not be empty.' %>
       </p>
       <p>
-        <%= f.input :restricted_endowment, error: 'Restricted endowment must be a number greater than 0.' %>
+        <%= f.input :restricted_endowment, label: 'Restricted endowment ($)', error: 'Restricted endowment must be a number greater than 0.' %>
       </p>
       <p>
-        <%= f.input :cap_rate, error: 'Cap rate must be a number between 0 and 100.' %>
+        <%= f.input :cap_rate, label: 'cap_rate'.humanize + ' (%)', error: 'Cap rate must be a number between 0 and 100.' %>
       </p>
       <p>
-        <%= f.input :admin_rate, error: 'Admin rate must be a number between 0 and 100' %>
+        <%= f.input :admin_rate, label: 'admin_rate'.humanize + ' (%)', error: 'Admin rate must be a number between 0 and 100' %>
       </p>
       <p>
-        <%= f.input :total_upfront, error: 'Total upfront must be a number greater than 0.' %>
+        <%= f.input :total_upfront, label: 'total_upfront'.humanize + ' ($)', error: 'Total upfront must be a number greater than 0.' %>
       </p>
       <p>
         <%= f.input :years_upfront, error: 'Years upfront must be a number greater than 0.' %>

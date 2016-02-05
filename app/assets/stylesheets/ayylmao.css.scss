@@ -299,14 +299,14 @@ h2, h3, p {
 label {
   display: inline-block;
   font-weight: 500;
-  min-width: 150px;
+  width: 140px;
 }
 
 input[type="text"], input[type="password"], input[type="number"] {
   border: 1px solid $white !important;
 }
 
-input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover, 
+input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover,
 input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus {
   border: 1px solid $teal !important;
 }
