@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  namespace :api, defaults: { format: "json" } do
+    namespace :v1 do
+      resources :project_years, only: [:index]
+    end
+  end
+
   # Static routes for mockups
   get '/home', to: 'static_pages#home'
   get '/help', to: 'static_pages#help'

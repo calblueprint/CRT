@@ -20,6 +20,7 @@
 #
 
 class DataValue < ActiveRecord::Base
+  scope :sorted, -> { joins(:data_type).order('data_values.id') } # Howard: Change to order
   belongs_to :project_year
   belongs_to :data_type
   has_one :project, through: :project_year

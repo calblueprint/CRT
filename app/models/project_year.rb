@@ -37,4 +37,8 @@ class ProjectYear < ActiveRecord::Base
   def create_data_value_for_data_type(data_type)
     DataValue.create value: 0.0, project_year: self, data_type: data_type
   end
+
+  def sorted_data_values
+    data_values.sorted
+  end
 end
