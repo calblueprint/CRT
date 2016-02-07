@@ -53,7 +53,7 @@ def production_db
           # Creates the data type if it does not exist yet
           if !curr_data_type
             puts data_types[i]
-            curr_data_type = DataType.create! name: data_types[i]
+            curr_data_type = Data.find_or_create_by! name: data_types[i]
           end
           DataValue.create! value: ranch_summary.column(n)[i],
                           project_year_id: curr_year.id,
@@ -110,19 +110,18 @@ def get_date_from_year_header(date_string)
   return DateTime.new(year, month, 1)
 end
 
-def test_c
-  f1 = DataType.create! name: 'f1'
-  f2 = DataType.create! name: 'f2'
-  f3 = DataType.create! name: 'F3 c'
-  f4 = DataType.create! name: 'f4 C'
-  f5 = DataType.create! name: 'f5', formula: 'f4_c * f3_c'
-  f6 = DataType.create! name: 'f6', formula: 'f4_C + 10'
-  f7 = DataType.create! name: 'f7', formula: 'if (f1 < 5, 1, 0)'
-  f8 = DataType.create! name: 'f8', formula: 'f4_C + 5'
-  f9 = DataType.create! name: 'f9', formula: 'f1 + f2 + F3_c + f4_C + f5 + f6 + f7 + f8 + f10'
-  f10 = DataType.create! name: 'f10', formula: 'f4_C * F3_c'
+def development
+  f1 = DataType.find_or_create_by! name: 'Q1 Earnings'
+  f2 = DataType.find_or_create_by! name: 'Q2 Earnings'
+  f3 = DataType.find_or_create_by! name: 'Q3 Earnings'
+  f4 = DataType.find_or_create_by! name: 'Q4 Earnings'
+  f5 = DataType.find_or_create_by! name: 'Q3 * Q4', formula: 'f4_c * f3_c'
+  f6 = DataType.find_or_create_by! name: 'Q4 + 10', formula: 'f4_C + 10'
+  f7 = DataType.find_or_create_by! name: 'Q1 Less than 5', formula: 'if (f1 < 5, 1, 0)'
+  f8 = DataType.find_or_create_by! name: 'Huge Sum', formula: 'f1 + f2 + F3_c + f4_C + f5 + f6 + f7 + f8 + f10'
   3.times do
-    project = Project.create! name: FFaker::Name.name,
+    start_date = FFaker::Time.date
+    project = Project.create! name: "#{ FFaker::Address.neighborhood } Ranch",
                               acres: Random.new.rand(1..69),
                               date_closed: FFaker::Time.date,
                               restricted_endowment: Random.new.rand(1..69),
@@ -130,10 +129,10 @@ def test_c
                               admin_rate: Random.new.rand(1..69),
                               total_upfront: Random.new.rand(1..69),
                               years_upfront: Random.new.rand(1..69),
-                              earnings_begin: FFaker::Time.date
-    for yyyy in 2068..2070
+                              earnings_begin: start_date
+    for yyyy in (Date.parse(start_date).year)..Date.today.year
       y = Year.find_or_create_by!(year: yyyy)
-      year = ProjectYear.create! date: Date.new(yyyy, 1, 1), project_id: project.id, year: y
+      year = ProjectYear.create! date: yyyy, project_id: project.id, year: y
       f1_value = DataValue.create! value: 5.0,
                                    project_year_id: year.id,
                                    data_type_id: f1.id
@@ -158,25 +157,19 @@ def test_c
       f8_value = DataValue.create! value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f8.id
-      f9_value = DataValue.create! value: 0.0,
-                                   project_year_id: year.id,
-                                   data_type_id: f9.id
-      f10_value = DataValue.create! value: 0.0,
-                                   project_year_id: year.id,
-                                   data_type_id: f10.id
     end
   end
 end
 
 def demo
-  f1 = DataType.create! name: 'who', formula: 'kwu + isayuh'
-  f2 = DataType.create! name: 'yungCS G O D'
-  f3 = DataType.create! name: 'isayuh'
-  f4 = DataType.create! name: 'kwu'
-  f5 = DataType.create! name: 'poop', formula: '10'
-  f6 = DataType.create! name: 'jodreen'
-  f7 = DataType.create! name: 'ray', formula: 'yungCS_G_O_D * yungCS_G_O_D'
-  f8 = DataType.create! name: 'ugh', formula: 'poop * jodreen'
+  f1 = Data.find_or_create_by! name: 'who', formula: 'kwu + isayuh'
+  f2 = Data.find_or_create_by! name: 'yungCS G O D'
+  f3 = Data.find_or_create_by! name: 'isayuh'
+  f4 = Data.find_or_create_by! name: 'kwu'
+  f5 = Data.find_or_create_by! name: 'poop', formula: '10'
+  f6 = Data.find_or_create_by! name: 'jodreen'
+  f7 = Data.find_or_create_by! name: 'ray', formula: 'yungCS_G_O_D * yungCS_G_O_D'
+  f8 = Data.find_or_create_by! name: 'ugh', formula: 'poop * jodreen'
   3.times do
     project = Project.create! name: FFaker::Name.name,
                               acres: Random.new.rand(1..69),
@@ -217,4 +210,4 @@ def demo
   end
 end
 
-test_c
+development
