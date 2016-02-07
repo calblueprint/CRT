@@ -98,8 +98,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-
     if @project.save
+      years = @project.earnings_begin.year..Time.now.year
+      years.each do |year|
+        project_year = ProjectYear.new(date: year, project: @project)
+        project_year.associate_year
+        project_year.save
+      end
       redirect_to @project
     else
       render 'new'

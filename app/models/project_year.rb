@@ -41,4 +41,8 @@ class ProjectYear < ActiveRecord::Base
   def sorted_data_values
     data_values.sorted
   end
+
+  def associate_year
+    update(year: Year.find_or_create_by(year: date))
+  end
 end

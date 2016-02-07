@@ -30,8 +30,7 @@ class ProjectYearsController < ApplicationController
 
   def create
     @project_year = ProjectYear.new(project_year_params)
-    year = Year.find_or_create_by(year: @project_year.date)
-    @project_year.year = year
+    @project_year.associate_year
     if @project_year.save
       redirect_to project_path(@project_year.project)
     else
