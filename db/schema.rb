@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203201720) do
+ActiveRecord::Schema.define(version: 20160208021022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160203201720) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "order"
-    t.boolean  "general"
+    t.boolean  "master"
   end
 
   create_table "data_values", force: :cascade do |t|
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 20160203201720) do
     t.date     "earnings_begin"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.boolean  "general",              default: false
+    t.boolean  "master",               default: false
   end
 
-  add_index "projects", ["general"], name: "index_projects_on_general", using: :btree
+  add_index "projects", ["master"], name: "index_projects_on_master", using: :btree
 
   create_table "years", force: :cascade do |t|
     t.integer  "year",       null: false

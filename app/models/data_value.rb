@@ -28,5 +28,5 @@ class DataValue < ActiveRecord::Base
 
   validates :data_type, :project_year, presence: true
 
-  delegate :general?, to: :project
+  delegate :master?, to: :project
 end

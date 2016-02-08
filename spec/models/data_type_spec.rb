@@ -8,7 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  order      :integer
-#  general    :boolean
+#  master     :boolean
 #
 
 require 'rails_helper'

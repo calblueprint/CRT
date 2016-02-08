@@ -19,7 +19,7 @@
 #
 
 class ProjectYear < ActiveRecord::Base
-  scope :specific, -> { where.not(project: Project.general_project) }
+  scope :specific, -> { where.not(project: Project.master_project) }
 
   belongs_to :project
   belongs_to :year

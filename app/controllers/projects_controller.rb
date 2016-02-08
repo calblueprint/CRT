@@ -14,11 +14,11 @@
 #  earnings_begin       :date
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  general              :boolean          default(FALSE)
+#  master               :boolean          default(FALSE)
 #
 # Indexes
 #
-#  index_projects_on_general  (general)
+#  index_projects_on_master  (master)
 #
 
 require 'tsort'

@@ -14,29 +14,29 @@
 #  earnings_begin       :date
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  general              :boolean          default(FALSE)
+#  master               :boolean          default(FALSE)
 #
 # Indexes
 #
-#  index_projects_on_general  (general)
+#  index_projects_on_master  (master)
 #
 
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  let(:general_project) { create :project, general: true, name: 'Test General' }
+  let(:master_project) { create :project, master: true, name: 'Test Master' }
 
   describe '#create' do
-    context 'general project does not exist and' do
-      it 'should allow a new general project to be valid' do
-        expect(general_project).to be_valid
+    context 'master project does not exist and' do
+      it 'should allow a new master project to be valid' do
+        expect(master_project).to be_valid
       end
     end
 
-    context 'general project does exist and' do
-      it 'should not allow a new general project to be valid' do
-        general_project
-        project = build(:project, general: true, name: 'Second General')
+    context 'master project does exist and' do
+      it 'should not allow a new master project to be valid' do
+        master_project
+        project = build(:project, master: true, name: 'Second Master')
         expect(project).to_not be_valid
       end
     end

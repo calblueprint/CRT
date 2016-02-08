@@ -14,19 +14,19 @@
 #  earnings_begin       :date
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  general              :boolean          default(FALSE)
+#  master               :boolean          default(FALSE)
 #
 # Indexes
 #
-#  index_projects_on_general  (general)
+#  index_projects_on_master  (master)
 #
 
 class Project < ActiveRecord::Base
-  scope :specific_projects, -> { where(general: false) }
+  scope :specific_projects, -> { where(master: false) }
 
   has_many :project_years, dependent: :destroy
 
-  validate :no_other_general_project, if: :general?
+  validate :no_other_master_project, if: :master?
   validates :name, presence: true
   validates :acres, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :date_closed, presence: true
@@ -39,10 +39,10 @@ class Project < ActiveRecord::Base
   validates :years_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :earnings_begin, presence: true
 
-  # "General" project will contain general overview information about ranges.
+  # "master" project will contain master overview information about ranges.
   # This project will contain specific attributes unrelated to other projects.
-  def self.general_project
-    find_by general: true
+  def self.master_project
+    find_by master: true
   end
 
   def self.create_data_type_for_specific_projects(data_type)
@@ -59,9 +59,9 @@ class Project < ActiveRecord::Base
 
   private
 
-  def no_other_general_project
-    general_projects = Project.where(general: true)
-    general_projects.delete(self)
-    errors.add(:general, 'project already exists') unless general_projects.size == 0
+  def no_other_master_project
+    master_projects = Project.where(master: true)
+    master_projects.delete(self)
+    errors.add(:master, 'project already exists') unless master_projects.size == 0
   end
 end
