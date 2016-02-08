@@ -9,7 +9,7 @@
     <h1> Project Details </h1>
     <div class="card-content card-content-form">
       <p>
-        <%= f.input :name, error: 'Name must not be empty.' %>
+        <%= f.input :name, error: 'Name must not be empty or already exist.' %>
       </p>
       <p>
         <%= f.input :acres, error: 'Acres must be a number greater than or equal to 0.' %>

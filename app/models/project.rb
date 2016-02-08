@@ -27,7 +27,7 @@ class Project < ActiveRecord::Base
   has_many :project_years, dependent: :destroy
 
   validate :no_other_master_project, if: :master?
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :acres, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :date_closed, presence: true
   validates :restricted_endowment, presence: true, numericality: { greater_than_or_equal_to: 0 }
