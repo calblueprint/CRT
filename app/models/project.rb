@@ -28,13 +28,15 @@ class Project < ActiveRecord::Base
 
   validate :no_other_general_project, if: :general?
   validates :name, presence: true
-  validates :acres, presence: true, numericality: { greater_than: 0 }
+  validates :acres, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :date_closed, presence: true
-  validates :restricted_endowment, presence: true, numericality: { greater_than: 0 }
-  validates :cap_rate, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
-  validates :admin_rate, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
-  validates :total_upfront, presence: true, numericality: { greater_than: 0 }
-  validates :years_upfront, presence: true, numericality: { greater_than: 0 }
+  validates :restricted_endowment, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :cap_rate, presence: true, numericality: { greater_than_or_equal_to: 0,
+                                                       less_than_or_equal_to: 100 }
+  validates :admin_rate, presence: true, numericality: { greater_than_or_equal_to: 0,
+                                                         less_than_or_equal_to: 100 }
+  validates :total_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :years_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :earnings_begin, presence: true
 
   # "General" project will contain general overview information about ranges.

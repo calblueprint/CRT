@@ -12,25 +12,29 @@
         <%= f.input :name, error: 'Name must not be empty.' %>
       </p>
       <p>
-        <%= f.input :acres, error: 'Acres must be a number greater than 0.' %>
+        <%= f.input :acres, error: 'Acres must be a number greater than or equal to 0.' %>
       </p>
       <p>
         <%= f.input :date_closed, error: 'Date closed must not be empty.' %>
       </p>
       <p>
-        <%= f.input :restricted_endowment, label: "Restricted endowment (%)", error: 'Restricted endowment must be a number greater than 0.' %>
+        <%= f.input :restricted_endowment, label: "Restricted endowment (%)",
+                                           error: 'Restricted endowment must be a number greater than or equal to 0.' %>
       </p>
       <p>
-        <%= f.input :cap_rate, label: "Cap rate (%)", error: 'Cap rate must be a number between 0 and 100.' %>
+        <%= f.input :cap_rate, label: "Cap rate (%)",
+                               error: 'Cap rate must be a number greater than or equal to 0 and less than or equal to 100.' %>
       </p>
       <p>
-        <%= f.input :admin_rate, label: "Admin rate (%)", error: 'Admin rate must be a number between 0 and 100' %>
+        <%= f.input :admin_rate, label: "Admin rate (%)",
+                                 error: 'Admin rate must be a number greater than or equal to 0 and less than or equal to 100.' %>
       </p>
       <p>
-        <%= f.input :total_upfront, label: "Total upfront (%)", error: 'Total upfront must be a number greater than 0.' %>
+        <%= f.input :total_upfront, label: "Total upfront (%)",
+                                    error: 'Total upfront must be a number greater than or equal to 0.' %>
       </p>
       <p>
-        <%= f.input :years_upfront, error: 'Years upfront must be a number greater than 0.' %>
+        <%= f.input :years_upfront, error: 'Years upfront must be a number greater than or equal to 0.' %>
       </p>
       <p>
         <%= f.input :earnings_begin, start_year: 1998, end_year: Time.now.year, error: 'Earnings begin must not be empty.' %>
