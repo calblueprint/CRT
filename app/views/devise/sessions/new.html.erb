@@ -1,0 +1,19 @@
+ <div id="login-bg">
+  <div class="wrap">
+    <%= simple_form_for @user, url: new_user_session_url, defaults: { input_html: { id: "login-bottom-2"} } do |f| %>
+      <div class="avatar">
+        <img src="<%= asset_path("leaf.svg") %>"/>
+      </div>
+      <div id="loginzo">
+        <%= f.input :email, placeholder: "E-mail", label: false, autofocus: true %>
+        <%= f.input :password, placeholder: "Password", label: false %>
+        <span class="icon"><i class="fa fa-lock"></i></span>
+        <%= f.button :submit, "Sign In", id: "loadload" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<%= render "devise/shared/links" %>

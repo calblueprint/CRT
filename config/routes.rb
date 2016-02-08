@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  root 'projects#index'
+
+  devise_for :users
+
   resources :projects do
     resources :project_years
   end
   resources :data_types
   resources :years
-
-  root 'static_pages#home'
 
   namespace :api, defaults: { format: "json" } do
     namespace :v1 do

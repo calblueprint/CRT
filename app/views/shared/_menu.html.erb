@@ -8,7 +8,7 @@
   <%= link_to information_path, class: "tab tooltip", name: "Information", :id => is_active?("static_pages") do %>
     <img src="<%= asset_path('info-white.svg') %>">
   <% end %>
-  <%= link_to home_path, class: "tab logout tooltip", name: "Log Out" do %>
+  <%= link_to destroy_user_session_path, class: "tab logout tooltip", name: "Log Out", method: "DELETE" do %>
     <img src="<%= asset_path('logout-black.svg') %>">
   <% end %>
 </div>

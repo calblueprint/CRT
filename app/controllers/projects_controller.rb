@@ -19,6 +19,7 @@
 # Indexes
 #
 #  index_projects_on_master  (master)
+>>>>>>> master
 #
 
 require 'tsort'
