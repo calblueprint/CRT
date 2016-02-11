@@ -19,7 +19,6 @@
 # Indexes
 #
 #  index_projects_on_master  (master)
->>>>>>> master
 #
 
 require 'tsort'
@@ -95,6 +94,8 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @project_years = @project.project_years
+    @data_types = DataType.all
   end
 
   def create
@@ -114,11 +115,10 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-
     if @project.update(project_params)
       redirect_to @project
     else
-      render 'edit'
+      redirect_to 'show'
     end
   end
 
@@ -129,7 +129,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
   def project_params
     params.require(:project).permit(
       :name, :acres, :date_closed,

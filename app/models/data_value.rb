@@ -16,11 +16,13 @@
 #
 # Foreign Keys
 #
-#  fk_rails_e78da99373  (data_type_id => data_types.id)
+#  fk_rails_53c7510656  (data_type_id => data_types.id)
 #
 
 class DataValue < ActiveRecord::Base
-  scope :sorted, -> { joins(:data_type).order('data_values.id') } # Howard: Change to order
+  scope :sort_by_year, -> { joins(:project_year).order('project_years.date') }
+  scope :sort_by_data_type, -> { joins(:data_type).order('data_types.order') }
+
   belongs_to :project_year
   belongs_to :data_type
   has_one :project, through: :project_year

@@ -16,12 +16,18 @@
 #
 # Foreign Keys
 #
-#  fk_rails_e78da99373  (data_type_id => data_types.id)
+#  fk_rails_53c7510656  (data_type_id => data_types.id)
 #
 
 class DataValuesController < ApplicationController
   def destroy
     DataValue.destroy params[:id]
+  end
+
+  def update
+    @data_value = DataValue.find(params[:id])
+    @data_value.update(data_value_params)
+    render json: @data_value
   end
 
   private

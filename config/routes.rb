@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :data_types
   resources :years
+  resources :data_values, only: [:update]
 
   namespace :api, defaults: { format: "json" } do
     namespace :v1 do

@@ -15,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_0020e4e94e  (project_id => projects.id)
+#  fk_rails_112a836d48  (project_id => projects.id)
 #
 
 class ProjectYear < ActiveRecord::Base
@@ -39,7 +39,7 @@ class ProjectYear < ActiveRecord::Base
   end
 
   def sorted_data_values
-    data_values.sorted
+    data_values.sort_by_data_type
   end
 
   def associate_year

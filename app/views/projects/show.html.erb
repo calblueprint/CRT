@@ -2,7 +2,7 @@
 <div class="content">
   <h1 class="header"> <%= @project.name %> </h1>
   <div class="card">
-    <h1 > Project Details </h1>
+    <h1> Project Details </h1>
     <div class="card-content card-content-alt">
       <% @project.attributes.keys.each do |attribute| %>
         <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' %>
@@ -37,9 +37,9 @@
           <tr>
            <% name = data_type.name.split(' ').join('-') %>
             <td class="type" onclick="show(this, '<%= name %>');"><%= data_type.name %></td>
-            <% data_type.data_values.each do |data_value| %>
+            <% data_type.data_values.sort_by_year.each do |data_value| %>
               <% if @project.project_years.find_by_id(data_value.project_year.id) %>
-                <td><%= data_value.value %></td>
+                <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" ><%= data_value.value %></td>
               <% end %>
             <% end %>
           </tr>
@@ -47,6 +47,7 @@
       </table>
     </div>
   </div>
+
   <% @data_types.each do |data_type| %>
     <div class="card helper" id="<%= data_type.name.split(' ').join('-') %>">
       <h1> <%= data_type.name %> </h1>

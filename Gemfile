@@ -33,6 +33,7 @@ gem "uglifier"
 
 gem "flutie"
 gem "title"
+gem 'jquery-turbolinks'
 
 # Error logging - requires setup with service
 gem "rollbar"
