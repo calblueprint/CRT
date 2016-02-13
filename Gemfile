@@ -17,6 +17,7 @@ gem "kaminari"
 gem "simple_form"
 gem "turbolinks"
 gem "devise", "~> 3.5", ">= 3.5.6"
+gem 'toastr_rails', '~> 2.1', '>= 2.1.1'
 
 # Formula parser
 gem 'dentaku'

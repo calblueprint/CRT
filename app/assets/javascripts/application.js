@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require toastr
 //= require react
 //= require react_ujs
 //= require components

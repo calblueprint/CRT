@@ -330,6 +330,7 @@ GEM
     title (0.0.5)
       i18n
       rails (>= 3.1)
+    toastr_rails (2.1.1)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -391,6 +392,7 @@ DEPENDENCIES
   spring-commands-rspec
   thin
   title
+  toastr_rails (~> 2.1, >= 2.1.1)
   turbolinks
   uglifier
 

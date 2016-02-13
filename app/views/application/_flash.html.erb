@@ -1,3 +1,5 @@
-<% flash.each do |type, message| %>
-  toastr.<%= type %>('<%= message %>')
+<% toast.each do |type, message| %>
+  <script type="text/javascript">
+    toastr['<%= type %>']('<%= message %>')
+  </script>
 <% end %>
