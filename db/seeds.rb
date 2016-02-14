@@ -111,14 +111,17 @@ def get_date_from_year_header(date_string)
 end
 
 def development
-  f1 = DataType.find_or_create_by! name: 'Q1 Earnings'
-  f2 = DataType.find_or_create_by! name: 'Q2 Earnings'
-  f3 = DataType.find_or_create_by! name: 'Q3 Earnings'
-  f4 = DataType.find_or_create_by! name: 'Q4 Earnings'
-  f5 = DataType.find_or_create_by! name: 'Q3 * Q4', formula: 'f4_c * f3_c'
-  f6 = DataType.find_or_create_by! name: 'Q4 + 10', formula: 'f4_C + 10'
-  f7 = DataType.find_or_create_by! name: 'Q1 Less than 5', formula: 'if (f1 < 5, 1, 0)'
-  f8 = DataType.find_or_create_by! name: 'Huge Sum', formula: 'f1 + f2 + F3_c + f4_C + f5 + f6 + f7 + f8 + f10'
+  user = User.new email: 'admin@admin.com', password: 'password', password_confirmation: 'password'
+  user.save validate: false
+  f1 = DataType.find_or_create_by! name: 'Q1 Earnings', order: 1
+  f2 = DataType.find_or_create_by! name: 'Q2 Earnings', order: 2
+  f3 = DataType.find_or_create_by! name: 'Q3 Earnings', order: 3
+  f4 = DataType.find_or_create_by! name: 'Q4 Earnings', order: 4
+  f5 = DataType.find_or_create_by! name: 'Earnings', formula: 'Q1_Earnings + Q2_Earnings + Q3_Earnings + Q4_Earnings', order: 5
+  f6 = DataType.find_or_create_by! name: 'Q3 times Q4', formula: 'Q3_Earnings * Q4_Earnings', order: 6
+  f7 = DataType.find_or_create_by! name: 'Q4 plus 10', formula: 'Q4_Earnings + 10', order: 7
+  f8 = DataType.find_or_create_by! name: 'Q1 Less than 5', formula: 'if (Q1_Earnings < 5, 1, 0)', order: 8
+  f9 = DataType.find_or_create_by! name: 'Q3 * Q4 + (Q4 + 10)', formula: 'Q3_times_Q4 + Q4_plus_10', order: 9
   3.times do
     start_date = FFaker::Time.date
     project = Project.create! name: "#{ FFaker::Address.neighborhood } Ranch",
@@ -157,6 +160,9 @@ def development
       f8_value = DataValue.create! value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f8.id
+      f9_value = DataValue.create! value: 0.0,
+                                   project_year_id: year.id,
+                                   data_type_id: f9.id
     end
   end
 end
