@@ -129,6 +129,7 @@ class ProjectsController < ApplicationController
   end
 
   private
+
   def project_params
     params.require(:project).permit(
       :name, :acres, :date_closed,

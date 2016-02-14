@@ -70,8 +70,8 @@ class DataTypesController < ApplicationController
     redirect_to action: "index"
   end
 
-
   private
+
   def data_type_params
     params.require(:data_type).permit(:name, :formula, :master)
   end
