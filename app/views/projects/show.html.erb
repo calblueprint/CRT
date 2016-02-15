@@ -39,7 +39,13 @@
             <td class="type" onclick="show(this, '<%= name %>');"><%= data_type.name %></td>
             <% data_type.data_values.sort_by_year.each do |data_value| %>
               <% if @project.project_years.find_by_id(data_value.project_year.id) %>
-                <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" ><%= data_value.value %></td>
+                <% if data_value.value %>
+                  <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" >
+                    <%= data_value.value %></td>
+                <% else %>
+                  <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" >
+                  <%= data_value.formula_value %></td>
+                <% end %>
               <% end %>
             <% end %>
           </tr>

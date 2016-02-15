@@ -15,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_2eff144330  (project_id => projects.id)
+#  fk_rails_64fbe2a334  (project_id => projects.id)
 #
 
 class ProjectYear < ActiveRecord::Base
@@ -35,7 +35,11 @@ class ProjectYear < ActiveRecord::Base
                    presence: true
 
   def create_data_value_for_data_type(data_type)
-    DataValue.create value: 0.0, project_year: self, data_type: data_type
+    DataValue.create value: nil, project_year: self, data_type: data_type
+  end
+
+  def previous_project_year
+    ProjectYear.find_by(year: year.previous_year, project: project)
   end
 
   def sorted_data_values

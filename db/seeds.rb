@@ -136,31 +136,31 @@ def development
     for yyyy in (Date.parse(start_date).year)..Date.today.year
       y = Year.find_or_create_by!(year: yyyy)
       year = ProjectYear.create! date: yyyy, project_id: project.id, year: y
-      f1_value = DataValue.create! value: 5.0,
+      f1_value = DataValue.create! formula_value: 5.0,
                                    project_year_id: year.id,
                                    data_type_id: f1.id
-      f2_value = DataValue.create! value: 10.0,
+      f2_value = DataValue.create! formula_value: 10.0,
                                    project_year_id: year.id,
                                    data_type_id: f2.id
-      f3_value = DataValue.create! value: 15.0,
+      f3_value = DataValue.create! formula_value: 15.0,
                                    project_year_id: year.id,
                                    data_type_id: f3.id
-      f4_value = DataValue.create! value: 20.0,
+      f4_value = DataValue.create! formula_value: 20.0,
                                    project_year_id: year.id,
                                    data_type_id: f4.id
-      f5_value = DataValue.create! value: 0.0,
+      f5_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f5.id
-      f6_value = DataValue.create! value: 0.0,
+      f6_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f6.id
-      f7_value = DataValue.create! value: 0.0,
+      f7_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f7.id
-      f8_value = DataValue.create! value: 0.0,
+      f8_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f8.id
-      f9_value = DataValue.create! value: 0.0,
+      f9_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f9.id
     end
@@ -188,28 +188,28 @@ def demo
                               earnings_begin: FFaker::Time.date
     for yyyy in 2068..2070
       year = Year.create! date: yyyy, project_id: project.id
-      f1_value = DataValue.create! value: 0.0,
+      f1_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f1.id
-      f2_value = DataValue.create! value: 103.0,
+      f2_value = DataValue.create! formula_value: 103.0,
                                    project_year_id: year.id,
                                    data_type_id: f2.id
-      f3_value = DataValue.create! value: 102.0,
+      f3_value = DataValue.create! formula_value: 102.0,
                                    project_year_id: year.id,
                                    data_type_id: f3.id
-      f4_value = DataValue.create! value: 69.0,
+      f4_value = DataValue.create! formula_value: 69.0,
                                    project_year_id: year.id,
                                    data_type_id: f4.id
-      f5_value = DataValue.create! value: 0.0,
+      f5_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f5.id
-      f6_value = DataValue.create! value: 1.0,
+      f6_value = DataValue.create! formula_value: 1.0,
                                    project_year_id: year.id,
                                    data_type_id: f6.id
-      f7_value = DataValue.create! value: 0.0,
+      f7_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f7.id
-      f8_value = DataValue.create! value: 0.0,
+      f8_value = DataValue.create! formula_value: 0.0,
                                    project_year_id: year.id,
                                    data_type_id: f8.id
     end

@@ -9,6 +9,7 @@
 #  updated_at      :datetime         not null
 #  data_type_id    :integer          not null
 #  project_year_id :integer          not null
+#  formula_value   :decimal(, )
 #
 # Indexes
 #
@@ -16,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_c45894078c  (data_type_id => data_types.id)
+#  fk_rails_a7db71bb75  (data_type_id => data_types.id)
 #
 
 class DataValue < ActiveRecord::Base
@@ -31,4 +32,8 @@ class DataValue < ActiveRecord::Base
   validates :data_type, :project_year, presence: true
 
   delegate :master?, to: :project
+
+  def previous_data_value
+    DataValue.find_by(project_year: project_year.previous_project_year, data_type: data_type)
+  end
 end

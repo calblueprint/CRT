@@ -22,4 +22,8 @@ class Year < ActiveRecord::Base
       end
     end
   end
+
+  def previous_year
+    Year.find_by_year(year - 1)
+  end
 end

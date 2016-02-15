@@ -43,61 +43,17 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # TODO (kevin): Transfer to service object
   def show
     @project = Project.find(params[:id])
     @data_types = DataType.all
     @data_values = DataValue.all
-
-    # Find dependencies of each data value
-    data_values = TsortableHash[]
-    @data_values.each do |data_value|
-      # Only calculate data values in this project
-      next unless @project.project_years.find_by_id(data_value.project_year_id) # TODO: Refactor.
-      formula = @data_types.find(data_value.data_type_id).formula
-      if formula
-        year = data_value.project_year_id
-        dependencies = []
-        @data_types.each do |data_type|
-          if formula.include? derscore(data_type.name)
-            dependencies.push(@data_values.find_by(project_year_id: year, data_type: data_type))
-          end
-        end
-        data_values[data_value] = dependencies
-      else
-        data_values[data_value] = []
-      end
-    end
-
-    # Calculate data values in topological order
-    data_values.tsort.each do |data_value|
-      formula = @data_types.find(data_value.data_type_id).formula
-      if formula
-        # Initialize calculator and year
-        calculator = Dentaku::Calculator.new
-        year = data_value.project_year_id
-        @data_types.each do |data_type|
-          if formula.include? derscore(data_type.name)
-            name = derscore(data_type.name)
-            value = @data_values.find_by(project_year: year, data_type: data_type).value
-            calculator.store(name => value)
-          end
-        end
-        # Evaluate formula and save
-        data_value.value = calculator.evaluate(formula)
-        data_value.save
-      end
-    end
+    ParseFormulaService.update_data_values(@project, @data_types, @data_values)
 
     # Export individual project to CSV
     respond_to do |format|
       format.html
       format.csv { send_data Project.to_csv([@project]), filename: @project.name + ".csv" }
     end
-  end
-
-  def derscore(string)
-    return string.split(' ').join('_')
   end
 
   def new
