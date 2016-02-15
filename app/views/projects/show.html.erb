@@ -77,6 +77,9 @@
   <%= link_to projects_path, class: "card" do %>
     <h1 class="h1-alt"> Back </h1>
   <% end %>
+  <%= link_to project_path(@project, format: "csv"), class: "card" do %>
+    <h1 class="h1-alt"> Export to CSV </h1>
+  <% end %>
 </div>
 <script>
 function show(link, elem)

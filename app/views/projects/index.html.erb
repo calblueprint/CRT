@@ -22,4 +22,7 @@
   <%= link_to new_project_path, class: "card" do %>
     <h1 class="h1-alt"> New Project </h1>
   <% end %>
+  <%= link_to projects_path(format: "csv"), class: "card" do %>
+    <h1 class="h1-alt"> Export to CSV </h1>
+  <% end %>
 </div>

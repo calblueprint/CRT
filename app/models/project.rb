@@ -58,6 +58,15 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.to_csv(projects)
+    CSV.generate do |csv|
+      csv << column_names
+      projects.each do |proj|
+        csv << proj.attributes.values_at(*column_names)
+      end
+    end
+  end
+
   private
 
   def no_other_master_project

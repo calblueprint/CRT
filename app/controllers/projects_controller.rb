@@ -35,6 +35,12 @@ end
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all
+
+    # Export all projects to CSV
+    respond_to do |format|
+      format.html
+      format.csv { send_data Project.to_csv(@projects) }
+    end
   end
 
   # TODO (kevin): Transfer to service object
@@ -81,6 +87,12 @@ class ProjectsController < ApplicationController
         data_value.value = calculator.evaluate(formula)
         data_value.save
       end
+    end
+
+    # Export individual project to CSV
+    respond_to do |format|
+      format.html
+      format.csv { send_data Project.to_csv([@project]), filename: @project.name + ".csv" }
     end
   end
 
