@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'projects#index'
 
-  devise_for :users
+  devise_for :users, path_names: {
+    sign_up: ''
+  }
 
   resources :projects do
     resources :project_years
