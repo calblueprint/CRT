@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @data_types = DataType.all
+    @data_types = DataType.order(:order)
     @data_values = DataValue.all
     ParseFormulaService.update_data_values(@project, @data_types, @data_values)
 

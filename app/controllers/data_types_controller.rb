@@ -13,21 +13,22 @@
 
 class DataTypesController < ApplicationController
   def index
-    @data_types = DataType.all
+    @data_types = DataType.order(:order)
   end
 
   def new
-    @data_types = DataType.all
+    @data_types = DataType.order(:order)
     @data_type = DataType.new
   end
 
   def edit
-    @data_types = DataType.all
+    @data_types = DataType.order(:order)
     @data_type = DataType.find(params[:id])
   end
 
   def create
     @data_type = DataType.new(data_type_params)
+    @data_type.order = DataType.count + 1
 
     if @data_type.save
       if @data_type.master?
@@ -35,13 +36,21 @@ class DataTypesController < ApplicationController
       else
         Project.create_data_type_for_specific_projects(@data_type)
       end
+      redirect_to action: "index"
+    else
+      flash[:errors] = @data_type.errors.full_messages.first
+      redirect_to action: "new"
     end
-
-    redirect_to action: "index"
   end
 
   def update
     @data_type = DataType.find(params[:id])
+
+    previous_order = @data_type.order
+    new_order = data_type_params[:order].to_i
+    if new_order <= DataType.count && new_order > 0
+      detect_order_change(previous_order, new_order)
+    end
     if @data_type.update(data_type_params)
       # find all data_values linked to changed data_type
       data_values = @data_type.data_values
@@ -60,12 +69,24 @@ class DataTypesController < ApplicationController
       end
       redirect_to action: "index"
     else
-      render 'edit'
+      flash[:errors] = @data_type.errors.full_messages.first
+      redirect_to action: "edit"
     end
   end
 
   def destroy
-    DataType.destroy params[:id]
+    deleted_data_type_order = DataType.find(params[:id]).order
+    @data_types = DataType.order(:order)
+    DataType.transaction do
+      DataType.destroy params[:id]
+      @data_types.each do |data_type|
+        if data_type.order > deleted_data_type_order
+          data_type.order = data_type.order - 1
+          fail data_type.errors.to_full_messages unless data_type.save
+        end
+      end
+    end
+
 
     redirect_to action: "index"
   end
@@ -73,6 +94,15 @@ class DataTypesController < ApplicationController
   private
 
   def data_type_params
-    params.require(:data_type).permit(:name, :formula, :master)
+    params.require(:data_type).permit(:name, :formula, :order, :master)
+  end
+
+  # rearrange order number of the corresponding data types.
+  def detect_order_change(previous_order, new_order)
+    if previous_order != new_order
+      data_type_to_update = DataType.find_by(order: new_order)
+      data_type_to_update.order = previous_order
+      data_type_to_update.save
+    end
   end
 end

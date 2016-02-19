@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_a7db71bb75  (data_type_id => data_types.id)
+#  fk_rails_85ef6e85c5  (data_type_id => data_types.id)
 #
 
 class DataValue < ActiveRecord::Base

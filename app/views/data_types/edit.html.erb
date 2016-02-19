@@ -22,10 +22,13 @@
     <h1> Edit <%= @data_type.name %> </h1>
     <div class="card-content card-content-form">
       <p>
-        <%= f.input :name %>
+        <%= f.input :name, error: 'Name must not be empty or already exist.' %>
       </p>
       <p>
         <%= f.input :formula %>
+      </p>
+      <p>
+        <%= f.input :order %>
       </p>
       <p class="no-margin">
         <%= f.input :master %>

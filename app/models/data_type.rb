@@ -13,4 +13,12 @@
 
 class DataType < ActiveRecord::Base
   has_many :data_values, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: true
+  validates :order, presence: true
+  validates :order,
+            numericality: {
+              greater_than: 0,
+              less_than_or_equal_to: DataType.count
+            }, on: [:update]
 end
