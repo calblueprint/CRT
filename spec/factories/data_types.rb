@@ -8,7 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  order      :integer
-#  master     :boolean
+#  master     :boolean          default(FALSE)
 #
 
 FactoryGirl.define do

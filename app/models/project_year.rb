@@ -33,6 +33,7 @@ class ProjectYear < ActiveRecord::Base
                      less_than_or_equal_to: Time.now.year
                    },
                    presence: true
+  delegate :master, to: :project
 
   def create_data_value_for_data_type(data_type)
     DataValue.create value: nil, project_year: self, data_type: data_type
@@ -48,5 +49,15 @@ class ProjectYear < ActiveRecord::Base
 
   def associate_year
     update(year: Year.find_or_create_by(year: date))
+  end
+
+  def create_data_values_on_project_year_create
+    DataType.where(master: master).each do |data_type|
+      value = nil
+      if data_type.formula.nil? || data_type.formula.include?(".prev")
+        value = 0
+      end
+      DataValue.create value: value, project_year: self, data_type: data_type
+    end
   end
 end

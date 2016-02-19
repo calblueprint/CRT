@@ -68,11 +68,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @data_types = DataType.all
     if @project.save
       years = @project.earnings_begin.year..Time.now.year
       years.each do |year|
         project_year = ProjectYear.new(date: year, project: @project)
         project_year.associate_year
+        project_year.create_data_values_on_project_year_create
         project_year.save
       end
       redirect_to @project
