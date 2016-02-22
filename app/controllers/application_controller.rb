@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
   def toast
     toast = {}
     flash.each do |type, message|
-      toast[:success] = message
+      if type == "alert"
+        toast[:error] = message
+      else
+        toast[:success] = message
+      end
     end
     toast
   end
