@@ -13,7 +13,8 @@
 
 class DataTypesController < ApplicationController
   def index
-    @data_types = DataType.order(:order)
+    @specific_data_types = DataType.where(master: false).order(:order)
+    @master_data_types = DataType.where(master: true).order(:order)
   end
 
   def new
@@ -22,13 +23,13 @@ class DataTypesController < ApplicationController
   end
 
   def edit
-    @data_types = DataType.order(:order)
     @data_type = DataType.find(params[:id])
+    @data_types = DataType.where(master: @data_type.master?).order(:order)
   end
 
   def create
     @data_type = DataType.new(data_type_params)
-    @data_type.order = DataType.count + 1
+    @data_type.order = DataType.where(master: @data_type.master).size + 1
 
     if @data_type.save
       if @data_type.master?
@@ -48,25 +49,12 @@ class DataTypesController < ApplicationController
 
     previous_order = @data_type.order
     new_order = data_type_params[:order].to_i
-    if new_order <= DataType.count && new_order > 0
-      detect_order_change(previous_order, new_order)
+    if new_order <= DataType.where(master: @data_type.master?).size && new_order > 0
+      detect_order_change(previous_order, new_order, @data_type.master?)
     end
-    if @data_type.update(data_type_params)
-      # find all data_values linked to changed data_type
-      data_values = @data_type.data_values
-      # This if statement covers changing data_type from non-master to master
-      if @data_type.master?
-        data_values.reject(&:master?).map(&:destroy)
-        # add data_values to years that belong to master project
-        Project.master_project.create_data_type @data_type
-      else
-        # delete all data values because we are changing from master to non-master
-        data_values.destroy_all
-        # add data_type/data_value to each year that doesnt belong to master project
-        ProjectYear.specific.each do |project_year|
-          project_year.create_data_value_for_data_type @data_type
-        end
-      end
+    cleaned_data_type_params = data_type_params
+    cleaned_data_type_params[:formula] = nil if data_type_params[:formula] == ''
+    if @data_type.update(cleaned_data_type_params)
       redirect_to action: "index"
     else
       flash[:errors] = @data_type.errors.full_messages.first
@@ -98,9 +86,9 @@ class DataTypesController < ApplicationController
   end
 
   # rearrange order number of the corresponding data types.
-  def detect_order_change(previous_order, new_order)
+  def detect_order_change(previous_order, new_order, type)
     if previous_order != new_order
-      data_type_to_update = DataType.find_by(order: new_order)
+      data_type_to_update = DataType.find_by(order: new_order, master: type)
       data_type_to_update.order = previous_order
       data_type_to_update.save
     end

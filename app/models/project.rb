@@ -27,18 +27,22 @@ class Project < ActiveRecord::Base
   has_many :project_years, dependent: :destroy
 
   validate :no_other_master_project, if: :master?
-  validates :name, presence: true, uniqueness: true
-  validates :acres, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :name, presence: true, uniqueness: true, if: :specific?
+  validates :acres, presence: true, numericality: { greater_than_or_equal_to: 0 }, if: :specific?
 
-  validates :date_closed, presence: true
-  validates :restricted_endowment, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :date_closed, presence: true, if: :specific?
+  validates :restricted_endowment, presence: true, numericality: { greater_than_or_equal_to: 0 },
+                                   if: :specific?
   validates :cap_rate, presence: true, numericality: { greater_than_or_equal_to: 0,
-                                                       less_than_or_equal_to: 100 }
+                                                       less_than_or_equal_to: 100 },
+                       if: :specific?
   validates :admin_rate, presence: true, numericality: { greater_than_or_equal_to: 0,
-                                                         less_than_or_equal_to: 100 }
-  validates :total_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :years_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :earnings_begin, presence: true
+                                                         less_than_or_equal_to: 100 }, if: :specific?
+  validates :total_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 },
+                            if: :specific?
+  validates :years_upfront, presence: true, numericality: { greater_than_or_equal_to: 0 },
+                            if: :specific?
+  validates :earnings_begin, presence: true, if: :specific?
 
   # "master" project will contain master overview information about ranges.
   # This project will contain specific attributes unrelated to other projects.
@@ -65,6 +69,10 @@ class Project < ActiveRecord::Base
         csv << proj.attributes.values_at(*column_names)
       end
     end
+  end
+
+  def specific?
+    !master
   end
 
   private

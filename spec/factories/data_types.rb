@@ -14,6 +14,9 @@
 FactoryGirl.define do
   factory :data_type do
     formula "data_type_formula"
-    name "data_type_name"
+    sequence :name do |n|
+      "data_type_name #{n}"
+    end
+    sequence :order
   end
 end

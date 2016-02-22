@@ -14,11 +14,13 @@
 class DataType < ActiveRecord::Base
   has_many :data_values, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
-  validates :order, presence: true
-  validates :order,
-            numericality: {
-              greater_than: 0,
-              less_than_or_equal_to: DataType.count
-            }, on: [:update]
+  validates :name, presence: true, uniqueness: {
+    scope: :master,
+    message: "#{name} already exists."
+  }
+  validates :order, presence: { message: "must have order." },
+                    numericality: {
+                      greater_than: 0,
+                      message: "invalid order."
+                    }, on: [:update]
 end

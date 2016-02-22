@@ -32,7 +32,8 @@ class DataValuesController < ApplicationController
   end
 
   private
-    def data_value_params
-      params.require(:data_value).permit(:value, :data_type_id)
-    end
+
+  def data_value_params
+    params.require(:data_value).permit(:value, :data_type_id)
+  end
 end
