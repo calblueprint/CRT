@@ -15,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_e30c6afec7  (project_id => projects.id)
+#  fk_rails_8f17893797  (project_id => projects.id)
 #
 
 class ProjectYear < ActiveRecord::Base

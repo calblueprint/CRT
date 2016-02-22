@@ -1,6 +1,7 @@
 class ParseFormulaService
-  def self.update_data_values(projects, data_types, data_values)
-    @project = projects
+  def self.update_data_values(project, data_types, data_values)
+    @project = project
+    @projects = Project.all
     @data_types = data_types
     @data_values = data_values
 
@@ -35,10 +36,24 @@ class ParseFormulaService
         # Initialize calculator and year
         calculator = Dentaku::Calculator.new
         year = data_value.project_year_id
+
+        # Check for project attributes
+        formula.split(' ').each do |token|
+          @projects.each do |p|
+            name = underscore(p.name)
+            next unless token.include?(name)
+            attribute = remove_parens(token.split('.')[1].downcase)
+            value = p.attributes[attribute]
+            value /= 100 if rate?(attribute)
+            name = dotdotscore(remove_parens(token))
+            calculator.store(name => value)
+          end
+        end
+
         @data_types.each do |data_type|
           if includes(formula, data_type)
             name = underscore(data_type.name)
-            value = @data_values.find_by(project_year: year, data_type: data_type).formula_value
+            value = @data_values.find_by(project_year: year, data_type: data_type).value
             unless value
               value = @data_values.find_by(project_year: year, data_type: data_type).formula_value
             end
@@ -81,9 +96,24 @@ class ParseFormulaService
     false
   end
 
+  private_class_method def self.includes_project(formula, project)
+    variable = underscore(project.name)
+    formula.include?(variable)
+  end
+
   private_class_method def self.includes_prev(formula, data_type)
     variable = underscore(data_type.name)
     return true if formula.include?(variable + '.prev')
     false
+  end
+
+  private_class_method def self.remove_parens(string)
+    string[0] = '' if string[0] == '('
+    string[-1] = '' if string[-1] == ')'
+    string
+  end
+
+  private_class_method def self.rate?(attribute)
+    attribute.split('_')[1] == 'rate'
   end
 end
