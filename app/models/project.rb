@@ -75,6 +75,16 @@ class Project < ActiveRecord::Base
     !master
   end
 
+  def initialize_project_years_and_data_values
+    years = earnings_begin.year..Time.now.year
+    years.each do |year|
+      project_year = ProjectYear.new(date: year, project: self)
+      project_year.associate_year
+      project_year.create_data_values_on_project_year_create
+      project_year.save
+    end
+  end
+
   private
 
   def no_other_master_project

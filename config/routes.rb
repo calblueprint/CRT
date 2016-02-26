@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :project_years
+    collection do
+      post 'import', to: 'projects#import'
+    end
   end
   resources :data_types
   resources :years

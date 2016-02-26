@@ -68,15 +68,8 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @data_types = DataType.all
     if @project.save
-      years = @project.earnings_begin.year..Time.now.year
-      years.each do |year|
-        project_year = ProjectYear.new(date: year, project: @project)
-        project_year.associate_year
-        project_year.create_data_values_on_project_year_create
-        project_year.save
-      end
+      @project.initialize_project_years_and_data_values
       redirect_to @project
     else
       render 'new'
@@ -95,6 +88,12 @@ class ProjectsController < ApplicationController
   def destroy
     Project.destroy params[:id]
 
+    redirect_to projects_path
+  end
+
+  def import
+    file = params[:file]
+    ImportSheetService.create_project(file) if file
     redirect_to projects_path
   end
 

@@ -25,4 +25,11 @@
   <%= link_to projects_path(format: "csv"), class: "card" do %>
     <h1 class="h1-alt"> Export to CSV </h1>
   <% end %>
+  <table class="card">
+    <%= form_tag import_projects_path, multipart: true do %>
+      <%= file_field_tag :file, accept: "application/vnd.ms-excel,
+                                         application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" %>
+      <%= submit_tag "Import Project" %>
+    <% end %>
+  </table>
 </div>
