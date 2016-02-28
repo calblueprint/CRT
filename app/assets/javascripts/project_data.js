@@ -10,7 +10,7 @@ $(document).ready(function() {
     var newVal = $(this).html();
     if ($(this).data('startVal') != newVal) {
       var data_id = $(this).data('id')
-      $.ajax('/data_values/' + data_id, {method: 'PATCH', data: {data_value: {value: newVal}}, success: handleData})
+      $.ajax('/data_values/' + data_id, {method: 'PATCH', data: {data_value: {value: newVal}}, success: handleData, error: handleError})
     }
   });
 
@@ -27,11 +27,20 @@ $(document).ready(function() {
         $(dataAttrString).html(data_values[i].formula_value);
       }
     }
+    complete();
   }
 
   // Checks if there is a custom entered value or not. Returns true if custom value.
   function isCustomData(data) {
     return data != null;
+  }
+
+  function handleError(xhr, textStatus, errorThrown) {
+    toastr.error("Update Failed.");
+  }
+
+  function complete() {
+    toastr.success("Update Successful!");
   }
 });
 
