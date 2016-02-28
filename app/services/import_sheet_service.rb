@@ -21,9 +21,9 @@ class ImportSheetService
                           years_upfront: r_data[7],
                           earnings_begin: self.get_date_of_earnings_begin(earnings_begin)
       r.initialize_project_years_and_data_values
-    rescue ActiveRecord::RecordInvalid
+    rescue
       # TODO: error message
-      put "Invalid record!"
+      puts "invalid sheet!"
     end
   end
 
