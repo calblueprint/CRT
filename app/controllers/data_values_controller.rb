@@ -28,7 +28,11 @@ class DataValuesController < ApplicationController
   def update
     @data_value = DataValue.find(params[:id])
     @data_value.update(data_value_params)
-    render json: @data_value
+    @project = Project.find(@data_value.project)
+    @data_types = DataType.where(master: @project.master?).order(:order)
+    @data_values = DataValue.all
+    ParseFormulaService.update_data_values(@project, @data_types, @data_values)
+    render json: @data_value.project.data_values
   end
 
   private
