@@ -10,21 +10,17 @@ class ImportSheetService
     # Some excel spreadsheets are formatted such that the earnings begin is
     # in the third column not the second
     earnings_begin = xlsx.column(3)[8] unless xlsx.column(3)[8].nil?
-    begin
-      r = Project.create! name: r_data[0],
-                          acres: r_data[1],
-                          date_closed: r_data[2].to_time,
-                          restricted_endowment: r_data[3],
-                          cap_rate: r_data[4],
-                          admin_rate: r_data[5],
-                          total_upfront: r_data[6],
-                          years_upfront: r_data[7],
-                          earnings_begin: self.get_date_of_earnings_begin(earnings_begin)
-      r.initialize_project_years_and_data_values
-    rescue
-      # TODO: error message
-      puts "invalid sheet!"
-    end
+    r = Project.create! name: r_data[0],
+                        acres: r_data[1],
+                        date_closed: r_data[2].to_time,
+                        restricted_endowment: r_data[3],
+                        cap_rate: r_data[4],
+                        admin_rate: r_data[5],
+                        total_upfront: r_data[6],
+                        years_upfront: r_data[7],
+                        earnings_begin: self.get_date_of_earnings_begin(earnings_begin)
+    r.initialize_project_years_and_data_values
+    r
   end
 
   # Date string takes on the form of "Q1 11/12" or "Q1 2011"

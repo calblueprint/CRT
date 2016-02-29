@@ -93,8 +93,14 @@ class ProjectsController < ApplicationController
 
   def import
     file = params[:file]
-    ImportSheetService.create_project(file) if file
-    redirect_to projects_path
+    begin
+      project = ImportSheetService.create_project(file) if file
+      flash[:success] = "#{project.name} successfully imported!"
+      redirect_to projects_path
+    rescue
+      flash[:alert] = "Problem importing project. Please make sure file is correct format."
+      redirect_to projects_path
+    end
   end
 
   private
