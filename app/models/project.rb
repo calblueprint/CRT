@@ -86,6 +86,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.search(query)
+    where("name ILIKE ?", "%#{query}%")
+  end
+
   private
 
   def no_other_master_project

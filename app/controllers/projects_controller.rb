@@ -34,7 +34,12 @@ end
 
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = if params[:search]
+                  Project.search(params[:search])
+                else
+                  Project.all
+                end
+    @projects = @projects.order('name ASC')
 
     # Export all projects to CSV
     respond_to do |format|

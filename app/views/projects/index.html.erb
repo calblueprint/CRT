@@ -2,13 +2,17 @@
   <h1 class="header"> Projects </h1>
   <div class="search-wrapper">
     <div class="container-1">
-      <input type="search" id="search" placeholder="Search..." autocomplete="off"/>
-      <span class="icon"><i class="fa fa-search"></i></span>
+      <table>
+      <%= form_tag(projects_path, method: "get") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search projects..", autocomplete: "off" %>
+        <%= submit_tag "Search" %>
+      <% end %>
+      </table>
     </div>
   </div>
   <div class="grid">
     <% if @projects.size == 0 %>
-      <p>No projects exist.</p>
+      <p>No projects match your search.</p>
     <% else %>
       <% @projects.each do |project| %>
         <%= link_to project, class: "card" do %>
