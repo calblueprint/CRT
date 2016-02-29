@@ -5,7 +5,7 @@
     <h1> Project Details </h1>
     <div class="card-content card-content-alt">
       <% @project.attributes.keys.each do |attribute| %>
-        <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' %>
+        <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' and attribute != 'master' %>
           <p>
             <span class="heavy"> <%= attribute.humanize %> </span>
             <span class="light">
@@ -29,7 +29,7 @@
       <table>
         <tr>
           <th class="attributes">Data Types</th>
-          <% @project.project_years.order(:date).each do |year| %>
+          <% @project.project_years.each do |year| %>
             <th><%= year.date %></th>
           <% end %>
         </tr>

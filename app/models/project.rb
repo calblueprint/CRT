@@ -24,7 +24,7 @@
 class Project < ActiveRecord::Base
   scope :specific_projects, -> { where(master: false) }
 
-  has_many :project_years, dependent: :destroy
+  has_many :project_years, -> { order(:date) }, dependent: :destroy
   has_many :data_values, through: :project_years
 
   validate :no_other_master_project, if: :master?

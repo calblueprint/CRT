@@ -49,10 +49,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
-    @data_types = DataType.where(master: @project.master?).order(:order)
-    @data_values = DataValue.all
-    ParseFormulaService.update_data_values(@project, @data_types, @data_values)
+    @project = Project.includes(:project_years).find(params[:id])
+    @data_types = DataType.includes(:data_values).where(master: @project.master?).order(:order)
+    ParseFormulaService.update_data_values(@project, @data_types, DataValue.all)
 
     # Export individual project to CSV
     respond_to do |format|
