@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219060237) do
+ActiveRecord::Schema.define(version: 20160229035701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160219060237) do
     t.integer  "data_type_id",    null: false
     t.integer  "project_year_id", null: false
     t.decimal  "formula_value"
+    t.string   "input_formula"
   end
 
   add_index "data_values", ["data_type_id"], name: "index_data_values_on_data_type_id", using: :btree

@@ -15,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_8f17893797  (project_id => projects.id)
+#  fk_rails_445590ad8c  (project_id => projects.id)
 #
 
 class ProjectYearSerializer < ActiveModel::Serializer

@@ -10,6 +10,7 @@
 #  data_type_id    :integer          not null
 #  project_year_id :integer          not null
 #  formula_value   :decimal(, )
+#  input_formula   :string
 #
 # Indexes
 #
@@ -17,7 +18,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_886dbffcc0  (data_type_id => data_types.id)
+#  fk_rails_caa7391ab4  (data_type_id => data_types.id)
 #
 
 class DataValue < ActiveRecord::Base
@@ -35,5 +36,9 @@ class DataValue < ActiveRecord::Base
 
   def previous_data_value
     DataValue.find_by(project_year: project_year.previous_project_year, data_type: data_type)
+  end
+
+  def formula
+    self.input_formula.blank? ? data_type.formula : self.input_formula
   end
 end

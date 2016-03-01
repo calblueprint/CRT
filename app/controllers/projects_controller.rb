@@ -21,17 +21,6 @@
 #  index_projects_on_master  (master)
 #
 
-require 'tsort'
-
-# Topological sorting hash
-class TsortableHash < Hash
-  include TSort
-  alias tsort_each_node each_key
-  def tsort_each_child(node, &block)
-    fetch(node).each(&block)
-  end
-end
-
 class ProjectsController < ApplicationController
   def index
     @projects = if params[:search]
@@ -51,7 +40,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:project_years).find(params[:id])
     @data_types = DataType.includes(:data_values).where(master: @project.master?).order(:order)
-    ParseFormulaService.update_data_values(@project, @data_types, DataValue.all)
+    ParseFormulaService.update_data_values(@project, @data_types)
 
     # Export individual project to CSV
     respond_to do |format|

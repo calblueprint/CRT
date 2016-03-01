@@ -10,6 +10,7 @@
 #  data_type_id    :integer          not null
 #  project_year_id :integer          not null
 #  formula_value   :decimal(, )
+#  input_formula   :string
 #
 # Indexes
 #
@@ -17,7 +18,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_886dbffcc0  (data_type_id => data_types.id)
+#  fk_rails_caa7391ab4  (data_type_id => data_types.id)
 #
 
 class DataValuesController < ApplicationController
@@ -30,8 +31,7 @@ class DataValuesController < ApplicationController
     @data_value.update(data_value_params)
     @project = Project.find(@data_value.project)
     @data_types = DataType.where(master: @project.master?).order(:order)
-    @data_values = DataValue.all
-    ParseFormulaService.update_data_values(@project, @data_types, @data_values)
+    ParseFormulaService.update_data_values(@project, @data_types)
     render json: @data_value.project.data_values
   end
 

@@ -40,10 +40,10 @@
             <% data_type.data_values.sort_by_year.each do |data_value| %>
               <% if @project.project_years.find_by_id(data_value.project_year.id) %>
                 <% if data_value.value %>
-                  <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" >
+                  <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" onclick="showFormula(this, '<%= name %>');">
                     <%= data_value.value %></td>
                 <% else %>
-                  <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" >
+                  <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" onclick="showFormula(this, '<%= name %>');">
                   <%= data_value.formula_value %></td>
                 <% end %>
               <% end %>
@@ -68,6 +68,7 @@
     </div>
   <% end %>
 </div>
+
 <div class="footer">
   <%= link_to edit_project_path, class: "card" do %>
     <h1 class="h1-alt"> Edit Project </h1>
@@ -99,5 +100,17 @@ function show(link, elem)
     $(link).addClass('highlight');
     $('#' + elem).css('display', 'inline-block');
   }
+}
+
+function showFormula(link, elem) {
+  if ($(link).hasClass('highlight')) {
+    $('.helper').css('display', 'none');
+    $('.highlight').removeClass('highlight');
+  } else {
+    $('.helper').css('display', 'none');
+    $('.highlight').removeClass('highlight');
+    $('#' + elem).css('display', 'inline-block');
+  }
+
 }
 </script>
