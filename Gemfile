@@ -39,6 +39,9 @@ gem 'jquery-turbolinks'
 # Error logging - requires setup with service
 gem "rollbar"
 
+# puma server
+gem "puma", "~> 3.0.2"
+
 group :development do
   gem "annotate"
   gem "better_errors"
