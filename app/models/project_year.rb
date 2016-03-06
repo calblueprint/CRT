@@ -13,10 +13,6 @@
 #
 #  index_project_years_on_project_id  (project_id)
 #
-# Foreign Keys
-#
-#  fk_rails_0e1b2ff6d4  (project_id => projects.id)
-#
 
 class ProjectYear < ActiveRecord::Base
   scope :specific, -> { where.not(project: Project.master_project) }

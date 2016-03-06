@@ -13,10 +13,6 @@
 #
 #  index_project_years_on_project_id  (project_id)
 #
-# Foreign Keys
-#
-#  fk_rails_0e1b2ff6d4  (project_id => projects.id)
-#
 
 class ProjectYearSerializer < ActiveModel::Serializer
   attributes :project_id, :year_id, :date, :sorted_data_values

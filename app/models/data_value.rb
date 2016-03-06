@@ -16,10 +16,6 @@
 #
 #  index_data_values_on_data_type_id  (data_type_id)
 #
-# Foreign Keys
-#
-#  fk_rails_d15d3bc9d0  (data_type_id => data_types.id)
-#
 
 class DataValue < ActiveRecord::Base
   scope :sort_by_year, -> { joins(:project_year).order('project_years.date') }
