@@ -18,7 +18,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_caa7391ab4  (data_type_id => data_types.id)
+#  fk_rails_d15d3bc9d0  (data_type_id => data_types.id)
 #
 
 class DataValuesController < ApplicationController

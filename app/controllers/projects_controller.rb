@@ -28,7 +28,8 @@ class ProjectsController < ApplicationController
                 else
                   Project.all
                 end
-    @projects = @projects.order('name ASC')
+    @projects = @projects.where(master: true) +
+                @projects.where(master: false).order(:name)
 
     # Export all projects to CSV
     respond_to do |format|
