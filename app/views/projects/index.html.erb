@@ -31,13 +31,19 @@
   <% end %>
   <table>
     <%= form_tag import_projects_path, multipart: true do %>
-      <a class="card">
+      <label class="h1-alt card">Import Project
         <%= file_field_tag :file,
                             accept: "application/vnd.ms-excel,
                                     application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            class: "h1-alt" %>
-      </a>
-      <%= submit_tag "Import Project" %>
+                            id: "import-file" %>
+      </label>
+      <%= submit_tag "Import Project", class: "hidden", id: "submit-import" %>
     <% end %>
   </table>
 </div>
+
+<script>
+  document.getElementById("import-file").onchange = function() {
+    document.getElementById("submit-import").click();
+  };
+</script>
