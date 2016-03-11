@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  //listener for edits in data values
+  // listener for edits in data values
   $('.data-value').focus(function(){
     var startVal = $(this).html();
     var id = $(this).attr('data-id');

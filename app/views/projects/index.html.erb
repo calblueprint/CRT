@@ -1,3 +1,4 @@
+<div id="loader"></div>
 <div class="content">
   <h1 class="header"> Projects </h1>
   <div class="search-wrapper">
@@ -10,7 +11,7 @@
       </table>
     </div>
   </div>
-  <div class="grid">
+  <div class="grid" onclick="showLoader()">
     <% if @projects.size == 0 %>
       <p>No projects match your search.</p>
     <% else %>
@@ -45,5 +46,9 @@
 <script>
   document.getElementById("import-file").onchange = function() {
     document.getElementById("submit-import").click();
+  };
+
+  function showLoader() {
+    document.getElementById("loader").style.display = "block";
   };
 </script>
