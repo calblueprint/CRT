@@ -30,6 +30,9 @@ class ParseFormulaService
           store_project_attributes_from_formula(formula, calculator, projects)
           store_formula_values_in_calculator(data_value, data_types, project_year, formula, calculator)
 
+          # Check for data values referencing other data values
+          store_data_values_from_formula(calculator, data_value, projects)
+
           # Evaluate formula and save
           save_formula_calculation(formula, calculator, data_value)
         end
@@ -65,12 +68,37 @@ class ParseFormulaService
       formula.split(' ').each do |token|
         projects.each do |p|
           name = underscore(p.name)
-          next unless token.include?(name)
-          attribute = remove_parens(token.split('.')[1].downcase)
+          tokens = token.split('.')
+          next unless token.include?(name) && tokens.size == 2
+          attribute = remove_parens(tokens[1].downcase)
           value = p.attributes[attribute]
           value /= 100 if rate?(attribute)
           name = dotdotscore(remove_parens(token))
           calculator.store(name => value)
+        end
+      end
+    end
+
+    def store_data_values_from_formula(calculator, data_value, projects)
+      if data_value.input_formula
+        formula = data_value.input_formula
+        formula.split(' ').each do |token|
+          projects.each do |p|
+            name = underscore(p.name)
+            tokens = token.split('.')
+            next unless token.include?(name) && tokens.size == 3
+            date = tokens[1].to_i
+            data_type_name = tokens[2].split('_').join(' ')
+            data_type = DataType.find_by_name(data_type_name)
+            project = Project.includes(:project_years).find_by_name(p.name)
+            project_year = project.project_years.find_by(date: date, project: project)
+            target_data_value = project_year.data_values.find_by(project_year: project_year, data_type: data_type)
+
+            # Calculate the formula value based in the input formula
+            data_value.formula_value = target_data_value.formula_value
+            data_value.input_formula = formula
+            calculator.store(dotdotscore(token) => data_value.formula_value)
+          end
         end
       end
     end
