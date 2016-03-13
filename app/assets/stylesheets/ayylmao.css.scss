@@ -342,3 +342,20 @@ input[type="file"] {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.logo {
+  padding: 0 0.5em;
+  transition: 1.5s;
+  -webkit-transition: 1.5s;
+  max-height: 2.5em;
+  max-width: 2.5em;
+  vertical-align: middle;
+}
+
+.logo:hover {
+  transition: 1s;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transform-origin: center;
+  -webkit-transform-origin: center;
+}
