@@ -23,4 +23,8 @@ class DataType < ActiveRecord::Base
                       greater_than: 0,
                       message: "invalid order."
                     }, on: [:update]
+
+  def has_formula?
+    formula.blank?
+  end
 end

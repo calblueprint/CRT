@@ -50,7 +50,7 @@ class ProjectYear < ActiveRecord::Base
   def create_data_values_on_project_year_create
     DataType.where(master: master).each do |data_type|
       value = nil
-      if data_type.formula.nil? || data_type.formula.include?(".prev")
+      if data_type.has_formula? || data_type.formula.include?(".prev")
         value = 0
       end
       DataValue.create value: value, project_year: self, data_type: data_type
