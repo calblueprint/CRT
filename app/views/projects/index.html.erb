@@ -1,4 +1,4 @@
-<div id="loader"></div>
+<div id="loader" data-no-turbolink="true"></div>
 <div class="content">
   <h1 class="header"> Projects </h1>
   <div class="search-wrapper">
@@ -11,12 +11,12 @@
       </table>
     </div>
   </div>
-  <div class="grid" onclick="showLoader()">
+  <div class="grid">
     <% if @projects.size == 0 %>
       <p>No projects match your search.</p>
     <% else %>
       <% @projects.each do |project| %>
-        <%= link_to project, class: "card" do %>
+        <%= link_to project, class: "card", onclick: "showLoader()" do %>
           <h1> <%= project.name %> </h1>
         <% end %>
       <% end %>
@@ -44,6 +44,10 @@
 </div>
 
 <script>
+  document.addEventListener("page:restore", function() {
+    document.getElementById("loader").style.display = "none";
+  });
+
   document.getElementById("import-file").onchange = function() {
     document.getElementById("submit-import").click();
   };
