@@ -64,7 +64,8 @@ class DataTypesController < ApplicationController
 
   def destroy
     deleted_data_type_order = DataType.find(params[:id]).order
-    @data_types = DataType.order(:order)
+    type = params[:master] ? true : false
+    @data_types = DataType.where(master: type).order(:order)
     DataType.transaction do
       DataType.destroy params[:id]
       @data_types.each do |data_type|
@@ -90,9 +91,20 @@ class DataTypesController < ApplicationController
   # rearrange order number of the corresponding data types.
   def detect_order_change(previous_order, new_order, type)
     if previous_order != new_order
-      data_type_to_update = DataType.find_by(order: new_order, master: type)
-      data_type_to_update.order = previous_order
-      data_type_to_update.save
+      DataType.transaction do
+        @data_types_to_update = DataType.where(master: type).order(:order)
+        @data_types_to_update.each do |data_type|
+          if previous_order < new_order
+            if data_type.order <= new_order && data_type.order > previous_order
+              data_type.order = data_type.order - 1
+              fail "Update ordering failed" unless data_type.save
+            end
+          elsif data_type.order >= new_order && data_type.order < previous_order
+            data_type.order = data_type.order + 1
+            fail "Update ordering failed" unless data_type.save
+          end
+        end
+      end
     end
   end
 end
