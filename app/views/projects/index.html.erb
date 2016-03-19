@@ -32,7 +32,7 @@
   <% end %>
   <table>
     <%= form_tag import_projects_path, multipart: true do %>
-      <label class="h1-alt card">Import Project
+      <label class="h1-alt card" id="import-text">Import Project
         <%= file_field_tag :file,
                             accept: "application/vnd.ms-excel,
                                     application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
