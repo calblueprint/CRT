@@ -18,7 +18,8 @@ class DataTypesController < ApplicationController
   end
 
   def new
-    @data_types = DataType.order(:order)
+    @specific_data_types = DataType.where(master: false).order(:order)
+    @master_data_types = DataType.where(master: true).order(:order)
     @data_type = DataType.new
   end
 
@@ -49,9 +50,11 @@ class DataTypesController < ApplicationController
 
     previous_order = @data_type.order
     new_order = data_type_params[:order].to_i
-    if new_order <= DataType.where(master: @data_type.master?).size && new_order > 0
-      detect_order_change(previous_order, new_order, @data_type.master?)
+    master_type = @data_type.master?
+    if new_order <= DataType.where(master: master_type).size && new_order > 0
+      detect_order_change(previous_order, new_order, master_type)
     end
+
     cleaned_data_type_params = data_type_params
     cleaned_data_type_params[:formula] = nil if data_type_params[:formula] == ''
     if @data_type.update(cleaned_data_type_params)
