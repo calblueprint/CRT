@@ -2,7 +2,11 @@
 <div class="content">
   <h1 class="header"> Edit <%= @data_type.name %> </h1>
   <div class="card">
-    <h1> Data Types </h1>
+    <% if @data_type.master? %>
+      <h1> Master Data Types </h1>
+    <% else%>
+      <h1> Specific Data Types </h1>
+    <% end %>
     <div class="card-content">
       <table>
         <tr>
