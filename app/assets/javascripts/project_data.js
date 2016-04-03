@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // listener for edits in data values
   $('.data-value').focus(function(){
-    var startVal = $(this).html();
+    var startVal = $(this).text();
     var id = $(this).attr('data-id');
     $(this).data('startVal', startVal);
     $(this).data('id', id);
@@ -11,11 +11,11 @@ $(document).ready(function() {
     var inputFormula = $(this).attr('data-input-formula');
     $(this).html(inputFormula);
   }).blur(function() {
-    var newVal = $(this).html();
+    var newVal = $(this).text();
 
     if ($(this).data('startVal') != newVal) {
       var data_id = $(this).data('id');
-      $.ajax('/data_values/' + data_id, {method: 'PATCH', data: {data_value: {input_value: newVal}}, success: handleData, error: handleError}); 
+      $.ajax('/data_values/' + data_id, {method: 'PATCH', data: {data_value: {input_value: newVal}}, success: handleData, error: handleError});
     }
   });
 
@@ -57,4 +57,3 @@ $(document).ready(function() {
     toastr.success("Update Successful!");
   }
 });
-
