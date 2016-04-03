@@ -50,7 +50,7 @@ $(document).ready(function() {
   }
 
   function handleError(xhr, textStatus, errorThrown) {
-    toastr.error("Update Failed.");
+    toastr.error(xhr.responseJSON.errors);
   }
 
   function complete() {

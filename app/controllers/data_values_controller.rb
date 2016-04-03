@@ -24,11 +24,17 @@ class DataValuesController < ApplicationController
 
   def update
     @data_value = DataValue.find(params[:id])
-    @data_value.update(parse_input_value_params)
-    @project = Project.find(@data_value.project)
-    @data_types = DataType.where(master: @project.master?).order(:order)
-    ParseFormulaService.update_data_values(@project, @data_types)
-    render json: @data_value.project.data_values
+    old_attributes = @data_value.attributes
+    begin
+      @data_value.update(parse_input_value_params)
+      @project = Project.find(@data_value.project)
+      @data_types = DataType.where(master: @project.master?).order(:order)
+      ParseFormulaService.update_data_values(@project, @data_types)
+      render json: @data_value.project.data_values
+    rescue ZeroDivisionError
+      @data_value.update(old_attributes)
+      render json: { errors: 'Cannot divide by zero' }, status: 422
+    end
   end
 
   private
