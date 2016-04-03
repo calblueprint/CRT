@@ -122,7 +122,7 @@ class ParseFormulaService
     end
 
     def save_formula_calculation(formula, calculator, data_value)
-      formula = dotdotscore(formula)
+      formula = dotdotscore(formula) if non_numeric_formula?(formula)
       data_value.formula_value = calculator.evaluate(formula)
       data_value.formula_value = data_value.formula_value.round(4) if data_value.formula_value
       data_value.save!
@@ -134,6 +134,10 @@ class ParseFormulaService
 
     def dotdotscore(string)
       string.split('.').join('_func_')
+    end
+
+    def non_numeric_formula?(formula)
+      !formula.gsub(%r{[0-9+*-/]}, '').blank?
     end
 
     def includes(formula, data_type)
