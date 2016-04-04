@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users, path_names: {
     sign_up: ''
   }
+  namespace :admin do
+    resources :users, only: [:index, :new, :create, :destroy]
+  end
 
   resources :projects do
     resources :project_years

@@ -1,0 +1,28 @@
+<%= simple_form_for @user, url: admin_users_path do |f| %>
+<div class="content">
+  <h1 class="header"> New User </h1>
+  <div class="card">
+    <h1> User Details </h1>
+    <div class="card-content card-content-form">
+      <p>
+        <%= f.input :name %>
+      </p>
+      <p>
+        <%= f.input :email %>
+      </p>
+      <p>
+        <%= f.input :password %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a class="card">
+    <%= f.button :submit %>
+  </a>
+  <%= link_to admin_users_path, class: "card" do %>
+    <h1 class="h1-alt"> Cancel </h1>
+  <% end %>
+</div>
+<% end %>

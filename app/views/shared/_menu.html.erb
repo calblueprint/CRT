@@ -5,6 +5,11 @@
   <%= link_to data_types_path, class: "tab tooltip", name: "Data Types", :id => is_active?("data_types") do %>
     <img src="<%= asset_path('edit-white.svg') %>">
   <% end %>
+  <% if current_user and current_user.admin %>
+    <%= link_to admin_users_path, class: "tab tooltip", name: "Admin Dashboard" do %>
+      <img src="<%= asset_path('admin-white.svg') %>">
+    <% end %>
+  <% end %>
   <%= link_to information_path, class: "tab tooltip", name: "Information", :id => is_active?("static_pages") do %>
     <img src="<%= asset_path('info-white.svg') %>">
   <% end %>

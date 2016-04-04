@@ -1,0 +1,21 @@
+<div class="content">
+  <% @users.each do |user| %>
+    <a class="card">
+      <h1>
+        Name: <%= user.name %>
+        <br>
+        Email: <%= user.email %>
+      </h1>
+    </a>
+    <%= link_to admin_user_path(user),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, class: "card" do %>
+      <h1 class="h1-alt"> Delete User </h1>
+    <% end %>
+  <% end %>
+</div>
+<div class="footer">
+  <%= link_to new_admin_user_path, class: "card" do %>
+    <h1 class="h1-alt"> Create User </h1>
+  <% end %>
+</div>
