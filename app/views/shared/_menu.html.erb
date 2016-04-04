@@ -13,6 +13,13 @@
   <%= link_to information_path, class: "tab tooltip", name: "Information", :id => is_active?("static_pages") do %>
     <img src="<%= asset_path('info-white.svg') %>">
   <% end %>
+  <% if current_user and current_user.name %>
+    <a class= "tab tooltip" name="E-mail: <%= current_user.email %>, Name: <%= current_user.name %> ">
+  <% else %>
+    <a class= "tab tooltip" name="E-mail: <%= current_user.email %>">
+  <% end %>
+    <img src="<%= asset_path('person.svg') %>">
+  </a>
   <%= link_to destroy_user_session_path, class: "tab logout tooltip", name: "Log Out", method: "DELETE" do %>
     <img src="<%= asset_path('logout-black.svg') %>">
   <% end %>
