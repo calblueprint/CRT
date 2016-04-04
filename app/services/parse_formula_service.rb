@@ -95,7 +95,7 @@ class ParseFormulaService
             target_data_value = project_year.data_values.find_by(project_year: project_year, data_type: data_type)
 
             # Calculate the formula value based in the input formula
-            data_value.formula_value = target_data_value.formula_value
+            data_value.formula_value = target_data_value.value || target_data_value.formula_value
             data_value.input_formula = formula
             calculator.store(dotdotscore(token) => data_value.formula_value)
           end

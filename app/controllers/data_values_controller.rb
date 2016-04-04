@@ -34,6 +34,12 @@ class DataValuesController < ApplicationController
     rescue ZeroDivisionError
       @data_value.update(old_attributes)
       render json: { errors: 'Cannot divide by zero' }, status: 422
+    rescue RuntimeError
+      @data_value.update(old_attributes)
+      render json: { errors: 'Cannot accept input format' }, status: 422
+    rescue TSort::Cyclic
+      @data_value.update(old_attributes)
+      render json: { errors: 'Cyclic reference detected' }, status: 422
     end
   end
 
