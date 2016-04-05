@@ -34,6 +34,10 @@ a {
   text-decoration: none;
 }
 
+td {
+  border: 5px solid rgba(0, 0, 0, 0);
+}
+
 ::selection {
   background: $teal; /* WebKit/Blink Browsers */
   color: $white;
@@ -177,6 +181,10 @@ a.card h1:hover {
 
 .card-content-alt {
   padding-bottom: 15px;
+}
+
+.editing {
+  border: 3px solid #1CABCC;
 }
 
 h2, h3, p {
