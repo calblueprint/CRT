@@ -132,6 +132,21 @@ a.card h1 {
   -webkit-transition: $transition;
 }
 
+#user-card {
+  box-sizing: border-box;
+  width: 20%;
+  display: block;
+  padding: 20px 20px 0 20px;
+  margin: 30px;
+  font-size: 18px;
+  color: $white;
+  background: $green;
+  font-weight: 400;
+  border-radius: 4px;
+  min-width: 220px;
+  word-wrap: break-word;
+}
+
 a.card h1:hover {
   background: $dark-green;
 }

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.where(admin: nil)
+    @users = User.all.where(admin: false).order(:name)
   end
 
   def new
