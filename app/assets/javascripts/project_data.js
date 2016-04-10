@@ -7,7 +7,6 @@ $(document).ready(function() {
   function edit() {
     if (currCell.attr('contentEditable') == 'true') {
       editing = true;
-      currCell.focus();
     }
   }
 
@@ -33,16 +32,16 @@ $(document).ready(function() {
       if (e.which == 39) {
         // right arrow
         currCell = currCell.next();
-      } else if (e.which == 37) { 
+      } else if (e.which == 37) {
         // left arrow
         currCell = currCell.prev();
-      } else if (e.which == 38) { 
+      } else if (e.which == 38) {
         // up arrow
-        currCell = currCell.closest('tr').prev().find('td:eq(' + 
+        currCell = currCell.closest('tr').prev().find('td:eq(' +
           currCell.index() + ')');
-      } else if (e.which == 40) { 
+      } else if (e.which == 40) {
         // down arrow
-        currCell = currCell.closest('tr').next().find('td:eq(' + 
+        currCell = currCell.closest('tr').next().find('td:eq(' +
           currCell.index() + ')');
       } else if (e.which == 13 || e.which == 32) {
         // enter or spacebar - edit cell
@@ -94,7 +93,7 @@ $(document).ready(function() {
   // handle update for all data values after edit
   function handleData(data) {
     var data_values = data["data_values"]
-    var showSuccess = true
+    var showSuccess = false
     for (var i = 0; i < data_values.length; i++) {
       var dataAttrString = '[data-id="'+ data_values[i].id +'"]';
       var dataVal = data_values[i].value;
@@ -106,8 +105,8 @@ $(document).ready(function() {
       // update cell with input formula if one exists
       var oldFormula = $(dataAttrString).attr('data-input-formula');
       var newFormula = data_values[i].input_formula
-      if (oldFormula == newFormula) {
-        showSuccess = false
+      if (oldFormula != newFormula) {
+        showSuccess = true
       }
       $(dataAttrString).attr('data-input-formula', newFormula);
     }
