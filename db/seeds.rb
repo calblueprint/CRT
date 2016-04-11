@@ -1,13 +1,28 @@
 def create_specific_projects
-  f1 = DataType.find_or_create_by! name: 'Q1 Earnings', order: 1
-  f2 = DataType.find_or_create_by! name: 'Q2 Earnings', order: 2
-  f3 = DataType.find_or_create_by! name: 'Q3 Earnings', order: 3
-  f4 = DataType.find_or_create_by! name: 'Q4 Earnings', order: 4
-  f5 = DataType.find_or_create_by! name: 'Earnings', formula: 'Q1_Earnings + Q2_Earnings + Q3_Earnings + Q4_Earnings', order: 5
-  f6 = DataType.find_or_create_by! name: 'Q3 times Q4', formula: 'Q3_Earnings * Q4_Earnings', order: 6
-  f7 = DataType.find_or_create_by! name: 'Q4 plus 10', formula: 'Q4_Earnings + 10', order: 7
-  f8 = DataType.find_or_create_by! name: 'Q1 Less than 5', formula: 'if (Q1_Earnings < 5, 1, 0)', order: 8
-  f9 = DataType.find_or_create_by! name: 'Q3 * Q4 + (Q4 + 10)', formula: 'Q3_times_Q4 + Q4_plus_10', order: 9
+  data_types = []
+  data_types << DataType.find_or_create_by!(name: 'Additional Acres')
+  data_types << DataType.find_or_create_by!(name: 'PAR')
+  data_types << DataType.find_or_create_by!(name: 'Overhead')
+  data_types << DataType.find_or_create_by!(name: 'Temp Restricted Balance')
+  data_types << DataType.find_or_create_by!(name: 'Up Front')
+  data_types << DataType.find_or_create_by!(name: 'Earnings')
+  data_types << DataType.find_or_create_by!(name: 'Funds Available')
+  data_types << DataType.find_or_create_by!(name: 'Max Overhead')
+  data_types << DataType.find_or_create_by!(name: 'Inflator')
+  data_types << DataType.find_or_create_by!(name: 'Expenses')
+  data_types << DataType.find_or_create_by!(name: 'Total Expenses')
+  data_types << DataType.find_or_create_by!(name: 'Net')
+  data_types << DataType.find_or_create_by!(name: 'Temp Restricted Draw')
+  data_types << DataType.find_or_create_by!(name: 'Max Possible Draw')
+  data_types << DataType.find_or_create_by!(name: 'Admin Draw Max')
+  data_types << DataType.find_or_create_by!(name: 'Restricted Draw Max')
+  data_types << DataType.find_or_create_by!(name: 'Admin Draw')
+  data_types << DataType.find_or_create_by!(name: 'Restricted Draw')
+  data_types << DataType.find_or_create_by!(name: 'Total Draw')
+  data_types << DataType.find_or_create_by!(name: 'Edowment Add Back')
+  if Rails.env.production?
+    return
+  end
   projects = []
   3.times do
     start_date = FFaker::Time.date
@@ -24,98 +39,82 @@ def create_specific_projects
     for yyyy in (Date.parse(start_date).year)..Date.today.year
       y = Year.find_or_create_by!(year: yyyy)
       year = ProjectYear.create! date: yyyy, project_id: project.id, year: y
-      f1_value = DataValue.create! formula_value: 5.0,
-                                   project_year_id: year.id,
-                                   data_type_id: f1.id
-      f2_value = DataValue.create! formula_value: 10.0,
-                                   project_year_id: year.id,
-                                   data_type_id: f2.id
-      f3_value = DataValue.create! formula_value: 15.0,
-                                   project_year_id: year.id,
-                                   data_type_id: f3.id
-      f4_value = DataValue.create! formula_value: 20.0,
-                                   project_year_id: year.id,
-                                   data_type_id: f4.id
-      f5_value = DataValue.create! formula_value: nil,
-                                   value: nil,
-                                   project_year_id: year.id,
-                                   data_type_id: f5.id
-      f6_value = DataValue.create! formula_value: nil,
-                                   project_year_id: year.id,
-                                   data_type_id: f6.id
-      f7_value = DataValue.create! formula_value: nil,
-                                   project_year_id: year.id,
-                                   data_type_id: f7.id
-      f8_value = DataValue.create! formula_value: nil,
-                                   project_year_id: year.id,
-                                   data_type_id: f8.id
-      f9_value = DataValue.create! formula_value: nil,
-                                   project_year_id: year.id,
-                                   data_type_id: f9.id
+      data_types.each do |data_type|
+        f9_value = DataValue.create! value: Random.new.rand(1..30),
+                                     project_year_id: year.id,
+                                     data_type_id: data_type.id
+      end
     end
   end
   projects
 end
 
+def create_master_project_quarters
+  quarters = []
+  [3, 4, 1, 2].each do |i|
+    quarters << DataType.find_or_create_by!(name: "Q#{i} Balance", master: true)
+    quarters << DataType.find_or_create_by!(name: "Q#{i} Earnings", master: true)
+  end
+  quarters
+end
+
 def create_master_project(projects)
   project = Project.create name: "Master", master: true
-  f1 = DataType.find_or_create_by! name: 'Q3', order: 1, master: true
-  f2 = DataType.find_or_create_by! name: 'Q4', order: 2, master: true
-  f3 = DataType.find_or_create_by! name: 'Q1', order: 3, master: true
-  f4 = DataType.find_or_create_by! name: 'Q2', order: 4, master: true
-  f5 = DataType.find_or_create_by! name: "Total Acres", order: 5, master: true
-  f5.formula = create_acre_formula(projects.map(&:name))
-  f5.save
-  f6 = DataType.find_or_create_by! name: 'CPI Rate', order: 6, master: true
-  f7 = DataType.find_or_create_by! name: 'Earnings', order: 7, master: true, formula: 'Q1 + Q2 + Q3 + Q4'
-  f8 = DataType.find_or_create_by! name: 'Overhead', order: 8, master: true
-  f9 = DataType.find_or_create_by! name: 'Net', order: 9, master: true, formula: "Earnings + Overhead"
+  input_fields = create_master_project_quarters
+  formula_fields = []
+  total_acres = DataType.find_or_create_by! name: "Total Acres", master: true,
+                                            formula: create_formula(projects.map(&:name), "acres")
+  formula_fields << total_acres
+  oh_endowment = DataType.find_or_create_by! name: 'OH Endowment', master: true,
+                                             formula: create_formula(projects.map(&:name),
+                                                                     "restricted_endowment")
+  formula_fields << oh_endowment
+  cpi_rate = DataType.find_or_create_by! name: 'CPI Rate', master: true
+  formula_fields
+  formula_fields << DataType.find_or_create_by!(name: 'Earnings', master: true,
+                              formula: 'Q1_Earnings+ Q2_Earnings + Q3_Earnings + Q4_Earnings')
+  formula_fields << DataType.find_or_create_by!(name: 'Expenses', master: true)
+  input_fields << DataType.find_or_create_by!(name: 'Overhead', master: true)
+  input_fields << DataType.find_or_create_by!(name: 'EOY Unit Actual', master: true)
+  formula_fields << DataType.find_or_create_by!(name: 'Net', master: true,
+                              formula: "Earnings + Upfront - Expenses - Overhead")
+  formula_fields << DataType.find_or_create_by!(name: "Admin Draw", master: true)
+  formula_fields << DataType.find_or_create_by!(name: "Restricted Draw", master: true)
+  formula_fields << DataType.find_or_create_by!(name: "Restricted Total Draw", master: true)
+  formula_fields << DataType.find_or_create_by!(name: "Endowment Add Back", master: true)
+  formula_fields << DataType.find_or_create_by!(name: "Professional Services", master: true)
+  if Rails.env.production?
+    return
+  end
   for yyyy in 2010..Date.today.year
     y = Year.find_or_create_by!(year: yyyy)
     year = ProjectYear.create! date: yyyy, project_id: project.id, year: y
-    f1_value = DataValue.create! formula_value: Random.new.rand(1000..2000),
-                                 project_year_id: year.id,
-                                 data_type_id: f1.id
-    f2_value = DataValue.create! formula_value: Random.new.rand(1000..2000),
-                                 project_year_id: year.id,
-                                 data_type_id: f2.id
-    f3_value = DataValue.create! formula_value: Random.new.rand(1000..2000),
-                                 project_year_id: year.id,
-                                 data_type_id: f3.id
-    f4_value = DataValue.create! formula_value: Random.new.rand(1000..2000),
-                                 project_year_id: year.id,
-                                 data_type_id: f4.id
-    f5_value = DataValue.create! formula_value: nil,
-                                 project_year_id: year.id,
-                                 data_type_id: f5.id
-    f6_value = DataValue.create! formula_value: Random.new.rand(1..15),
-                                 project_year_id: year.id,
-                                 data_type_id: f6.id
-    f7_value = DataValue.create! formula_value: nil,
-                                 project_year_id: year.id,
-                                 data_type_id: f7.id
-    f8_value = DataValue.create! formula_value: Random.new.rand(1..999),
-                                 project_year_id: year.id,
-                                 data_type_id: f8.id
-
-    f9_value = DataValue.create! formula_value: nil,
-                                 project_year_id: year.id,
-                                 data_type_id: f9.id
+    input_fields.each do |input_field|
+      DataValue.create! value: Random.new.rand(1000..2000), project_year_id: year.id,
+                        data_type_id: input_field.id
+    end
+    formula_fields.each do |formula_field|
+      DataValue.create! project_year_id: year.id,
+                        data_type_id: formula_field.id
+    end
+    DataValue.create! value: Random.new.rand(1..5), project_year_id: year.id,
+                      data_type_id: cpi_rate.id
   end
 end
 
-def create_acre_formula(names)
+def create_formula(names, attribute)
   formula = ''
   names.each do |name|
     formula += name.gsub(' ', '_')
-    formula += '.acres + '
+    formula += ".#{ attribute} + "
   end
   formula[-2..-1]  = ''
   formula
 end
 
 def development
-  user = User.new email: 'admin@admin.com', password: 'password', password_confirmation: 'password', name: 'Admin'
+  user = User.new email: 'admin@admin.com', password: 'password', password_confirmation: 'password',
+                  name: 'Admin', admin: true
   user.save validate: false
   projects = create_specific_projects
   create_master_project projects

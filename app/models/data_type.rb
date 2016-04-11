@@ -23,8 +23,13 @@ class DataType < ActiveRecord::Base
                       greater_than: 0,
                       message: "invalid order."
                     }, on: [:update]
+  before_validation :set_order
 
   def has_formula?
     formula.blank?
+  end
+
+  def set_order
+    self.order ||= DataType.where(master: self.master).size + 1
   end
 end
