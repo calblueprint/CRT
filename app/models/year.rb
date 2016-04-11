@@ -14,15 +14,6 @@ class Year < ActiveRecord::Base
   validates :year, uniqueness: true
   validates :year, numericality: { only_integer: true, greater_than: 0, less_than: 10_000 }
 
-  def create_project_years
-    Project.all.each do |project|
-      project_year = ProjectYear.create(project: project, year: self)
-      DataType.all.each do |data_type|
-        project_year.create_data_value_for_data_type data_type
-      end
-    end
-  end
-
   def previous_year
     Year.find_by_year(year - 1)
   end
