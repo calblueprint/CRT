@@ -18,9 +18,9 @@
     <%= render "shared/menu" %>
     <%= yield %>
   </body>
+  <script>
+    $(document).ready(function(){
+      $('form').attr('autocomplete','off');
+    });
+  </script>
 </html>
-<script>
-$(document).ready(function(){
-  $('form').attr('autocomplete','off');
-});
-</script>
