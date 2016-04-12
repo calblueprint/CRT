@@ -3,12 +3,11 @@
   <h1 class="header"> Projects </h1>
   <div class="search-wrapper">
     <div class="container-1">
-      <table>
       <%= form_tag(projects_path, method: "get") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search projects..", autocomplete: "off" %>
-        <%= submit_tag "Search" %>
+        <div id="autocomplete-container"></div>
+        <%= submit_tag "Search", :id=> "search-button" %>
       <% end %>
-      </table>
     </div>
   </div>
   <div class="grid">
@@ -55,4 +54,14 @@
   function showLoader() {
     document.getElementById("loader").style.display = "block";
   };
+
+  var projects = <%=@projects.map(&:name).to_json.html_safe %>;
+  var top_pos = $('#search').offset().top + $('#search').height();
+  var left_pos = $('#search').offset().left;
+
+  $('#search').autocomplete({
+    source: projects,
+    appendTo: "#autocomplete-container"
+  });
+
 </script>

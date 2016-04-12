@@ -30,7 +30,6 @@ class ProjectsController < ApplicationController
                 end
     @projects = @projects.where(master: true) +
                 @projects.where(master: false).order(:name)
-
     # Export all projects to CSV
     respond_to do |format|
       format.html

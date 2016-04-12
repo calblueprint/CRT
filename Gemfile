@@ -29,6 +29,7 @@ gem 'roo', '~> 2.1.0'
 gem "autoprefixer-rails"
 gem "coffee-rails"
 gem "jquery-rails"
+gem "jquery-ui-rails"
 gem "sass-rails", "~> 4.0.3"
 gem "uglifier"
 
