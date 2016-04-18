@@ -25,7 +25,7 @@
   <div class="card">
     <h1> Project Data </h1>
     <div class="card-content">
-      <table>
+      <table class="hotkeys">
         <tr>
           <th class="attributes">Data Types</th>
           <% @project.project_years.each do |year| %>
@@ -109,4 +109,78 @@ function showFormula(link, elem) {
     $('#' + elem).css('display', 'inline-block');
   }
 }
+
+var currCell = $('td').first();
+var editing = false;
+update();
+
+function edit() {
+  if (currCell.attr('contentEditable') == 'true') {
+    editing = true;
+    currCell.focus();
+  }
+}
+
+function exit() {
+  if (editing) {
+    editing = false;
+    currCell.blur();
+    window.getSelection().removeAllRanges();
+  }
+}
+
+function update() {
+  // update css
+  $('td').css('border-color', 'rgba(0, 0, 0, 0)');
+  $('td').css('border-right', '1px solid lightgrey');
+  $('td').css('border-bottom', '1px solid lightgrey');
+  currCell.css('border', '3px solid #1CABCC');
+}
+
+// define Excel hotkeys for spreadsheet
+$('body').keydown(function(e) {
+  if (!editing && $('.hotkeys')[0]) {
+    if (e.which == 39) {
+      // right arrow
+      potentialCell = currCell.next();
+    } else if (e.which == 37) {
+      // left arrow
+      potentialCell = currCell.prev();
+    } else if (e.which == 38) {
+      // up arrow
+      potentialCell = currCell.closest('tr').prev().find('td:eq(' +
+        currCell.index() + ')');
+    } else if (e.which == 40) {
+      // down arrow
+      potentialCell = currCell.closest('tr').next().find('td:eq(' +
+        currCell.index() + ')');
+    } else if (e.which == 13 || e.which == 32) {
+      // enter or spacebar - edit cell
+      e.preventDefault();
+      e.stopPropagation();
+      edit();
+    }
+    if (potentialCell.length != 0) {
+      currCell = potentialCell;
+    }
+    update();
+  }
+});
+
+$('td').focus(function() {
+  // click into a cell
+  currCell = $(this);
+  update();
+}).blur(function() {
+  // click out of a cell
+  exit();
+}).keydown(function(e) {
+  // escape - exit edit cell
+  if (editing) {
+    if (e.which == 13 || e.which == 27) {
+      e.stopPropagation();
+      exit();
+    }
+  }
+});
 </script>
