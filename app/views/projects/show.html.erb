@@ -52,6 +52,13 @@
     </div>
   </div>
 
+  <div class="card">
+    <h1> Project Notes </h1>
+    <div class="card-content card-content-alt">
+      <p><%= simple_format(@project.notes) %></p>
+    </div>
+  </div>
+
   <% @data_types.each do |data_type| %>
     <div class="card helper" id="<%= data_type.name.split(' ').join('-') %>">
       <h1> <%= data_type.name %> </h1>

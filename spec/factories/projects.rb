@@ -15,6 +15,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  master               :boolean          default(FALSE)
+#  notes                :text
 #
 # Indexes
 #

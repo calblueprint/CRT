@@ -15,6 +15,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  master               :boolean          default(FALSE)
+#  notes                :text
 #
 # Indexes
 #
@@ -102,7 +103,7 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(
       :name, :acres, :date_closed,
       :restricted_endowment, :cap_rate, :admin_rate, :total_upfront,
-      :years_upfront, :earnings_begin
+      :years_upfront, :earnings_begin, :notes
     )
   end
 end
