@@ -20,33 +20,32 @@ def create_specific_projects
   data_types << DataType.find_or_create_by!(name: 'Restricted Draw')
   data_types << DataType.find_or_create_by!(name: 'Total Draw')
   data_types << DataType.find_or_create_by!(name: 'Edowment Add Back')
-  if Rails.env.production?
-    return
-  end
-  projects = []
-  3.times do
-    start_date = FFaker::Time.date
-    project = Project.create! name: "#{ FFaker::Address.neighborhood } Ranch".gsub('/', ' '),
-                              acres: Random.new.rand(1..69),
-                              date_closed: FFaker::Time.date,
-                              restricted_endowment: Random.new.rand(1..69),
-                              cap_rate: Random.new.rand(1..69),
-                              admin_rate: Random.new.rand(1..69),
-                              total_upfront: Random.new.rand(1..69),
-                              years_upfront: Random.new.rand(1..69),
-                              earnings_begin: start_date
-    projects << project
-    for yyyy in (Date.parse(start_date).year)..Date.today.year
-      y = Year.find_or_create_by!(year: yyyy)
-      year = ProjectYear.create! date: yyyy, project_id: project.id, year: y
-      data_types.each do |data_type|
-        f9_value = DataValue.create! value: Random.new.rand(1..30),
-                                     project_year_id: year.id,
-                                     data_type_id: data_type.id
+  unless Rails.env.production?
+    projects = []
+    3.times do
+      start_date = FFaker::Time.date
+      project = Project.create! name: "#{ FFaker::Address.neighborhood } Ranch".gsub('/', ' '),
+                                acres: Random.new.rand(1..69),
+                                date_closed: FFaker::Time.date,
+                                restricted_endowment: Random.new.rand(1..69),
+                                cap_rate: Random.new.rand(1..69),
+                                admin_rate: Random.new.rand(1..69),
+                                total_upfront: Random.new.rand(1..69),
+                                years_upfront: Random.new.rand(1..69),
+                                earnings_begin: start_date
+      projects << project
+      for yyyy in (Date.parse(start_date).year)..Date.today.year
+        y = Year.find_or_create_by!(year: yyyy)
+        year = ProjectYear.create! date: yyyy, project_id: project.id, year: y
+        data_types.each do |data_type|
+          f9_value = DataValue.create! value: Random.new.rand(1..30),
+                                       project_year_id: year.id,
+                                       data_type_id: data_type.id
+        end
       end
     end
+    projects
   end
-  projects
 end
 
 def create_master_project_quarters
@@ -62,15 +61,16 @@ def create_master_project(projects)
   project = Project.create name: "Master", master: true
   input_fields = create_master_project_quarters
   formula_fields = []
+  acres_formula = create_formula(projects.map(&:name), "acres") if projects
   total_acres = DataType.find_or_create_by! name: "Total Acres", master: true,
-                                            formula: create_formula(projects.map(&:name), "acres")
+                                            formula: acres_formula
   formula_fields << total_acres
   oh_endowment = DataType.find_or_create_by! name: 'OH Endowment', master: true,
                                              formula: create_formula(projects.map(&:name),
                                                                      "restricted_endowment")
   formula_fields << oh_endowment
   cpi_rate = DataType.find_or_create_by! name: 'CPI Rate', master: true
-  formula_fields
+  input_fields << DataType.find_or_create_by!(name: 'Upfront', master: true)
   formula_fields << DataType.find_or_create_by!(name: 'Earnings', master: true,
                               formula: 'Q1_Earnings+ Q2_Earnings + Q3_Earnings + Q4_Earnings')
   formula_fields << DataType.find_or_create_by!(name: 'Expenses', master: true)
@@ -95,7 +95,8 @@ def create_master_project(projects)
     end
     formula_fields.each do |formula_field|
       DataValue.create! project_year_id: year.id,
-                        data_type_id: formula_field.id
+                        data_type_id: formula_field.id,
+                        formula_value: 0.0
     end
     DataValue.create! value: Random.new.rand(1..5), project_year_id: year.id,
                       data_type_id: cpi_rate.id

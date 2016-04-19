@@ -27,9 +27,9 @@ RSpec.describe DataType, type: :model do
         expect(test_datatype).to_not be_valid
       end
 
-      it 'should not allow a new data type without an order to be valid' do
+      it 'should set order before validation' do
         test_datatype.order = nil
-        expect(test_datatype).to_not be_valid
+        expect(test_datatype).to be_valid
       end
 
       it 'should not allow a new data type with an order less than 1' do
