@@ -65,9 +65,8 @@ def create_master_project(projects)
   total_acres = DataType.find_or_create_by! name: "Total Acres", master: true,
                                             formula: acres_formula
   formula_fields << total_acres
-  oh_endowment = DataType.find_or_create_by! name: 'OH Endowment', master: true,
-                                             formula: create_formula(projects.map(&:name),
-                                                                     "restricted_endowment")
+  oh_formula = create_formula(projects.map(&:name), "restricted_endowment") if projects
+  oh_endowment = DataType.find_or_create_by! name: 'OH Endowment', master: true, formula: oh_formula
   formula_fields << oh_endowment
   cpi_rate = DataType.find_or_create_by! name: 'CPI Rate', master: true
   input_fields << DataType.find_or_create_by!(name: 'Upfront', master: true)
