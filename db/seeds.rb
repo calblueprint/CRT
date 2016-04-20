@@ -116,8 +116,8 @@ def development
   unless Rails.env.production?
     user = User.new email: 'admin@admin.com', password: 'password', password_confirmation: 'password',
                     name: 'Admin', admin: true
+    user.save validate: false
   end
-  user.save validate: false
   projects = create_specific_projects
   create_master_project projects
 end
