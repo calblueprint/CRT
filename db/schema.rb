@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419050050) do
+ActiveRecord::Schema.define(version: 20160420203930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20160419050050) do
 
   create_table "data_values", force: :cascade do |t|
     t.integer  "type"
-    t.decimal  "value"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "data_type_id",    null: false
-    t.integer  "project_year_id", null: false
-    t.decimal  "formula_value"
+    t.decimal  "value",           precision: 19, scale: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "data_type_id",                             null: false
+    t.integer  "project_year_id",                          null: false
+    t.decimal  "formula_value",   precision: 19, scale: 4
     t.string   "input_formula"
   end
 
