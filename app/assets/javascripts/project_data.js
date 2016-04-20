@@ -9,7 +9,9 @@ $(document).ready(function() {
 
     // populate cell with input formula if one exists
     var inputFormula = $(this).attr('data-input-formula');
-    $(this).html(inputFormula);
+    if (inputFormula) {
+      $(this).html(inputFormula);
+    }
   }).blur(function() {
     var newVal = $(this).text();
 

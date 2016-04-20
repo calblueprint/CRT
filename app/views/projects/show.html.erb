@@ -123,7 +123,7 @@ update();
 
 function edit() {
   if (currCell.attr('contentEditable') == 'true') {
-    editing = true;
+    editing = true; 
     currCell.focus();
   }
 }
@@ -131,6 +131,8 @@ function edit() {
 function exit() {
   if (editing) {
     editing = false;
+    var trimmedContent = currCell.text().trim();
+    currCell.text(trimmedContent);
     currCell.blur();
     window.getSelection().removeAllRanges();
   }
