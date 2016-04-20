@@ -113,8 +113,10 @@ def create_formula(names, attribute)
 end
 
 def development
-  user = User.new email: 'admin@admin.com', password: 'password', password_confirmation: 'password',
-                  name: 'Admin', admin: true
+  unless Rails.env.production?
+    user = User.new email: 'admin@admin.com', password: 'password', password_confirmation: 'password',
+                    name: 'Admin', admin: true
+  end
   user.save validate: false
   projects = create_specific_projects
   create_master_project projects
