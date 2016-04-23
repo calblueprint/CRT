@@ -1,10 +1,10 @@
 <div class="content">
   <h1 class="header"> <%= @project.name %> </h1>
-  <div class="card">
+  <div class="card thirds">
     <h1> Project Details </h1>
     <div class="card-content card-content-alt">
       <% @project.attributes.keys.each do |attribute| %>
-        <% if attribute != 'id' and attribute != 'created_at' and attribute != 'updated_at' and attribute != 'master' %>
+        <% if not ['id', 'created_at', 'updated_at', 'master'].include?(attribute) %>
           <p>
             <span class="heavy"> <%= attribute.humanize %> </span>
             <span class="light">
@@ -49,13 +49,6 @@
           </tr>
         <% end %>
       </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h1> Project Notes </h1>
-    <div class="card-content card-content-alt">
-      <p><%= simple_format(@project.notes) %></p>
     </div>
   </div>
 
@@ -123,7 +116,7 @@ update();
 
 function edit() {
   if (currCell.attr('contentEditable') == 'true') {
-    editing = true; 
+    editing = true;
     currCell.focus();
   }
 }
@@ -179,6 +172,7 @@ $('body').keydown(function(e) {
 $('td').focus(function() {
   // click into a cell
   currCell = $(this);
+  editing = true;
   update();
 }).blur(function() {
   // click out of a cell

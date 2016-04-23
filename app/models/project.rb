@@ -95,7 +95,7 @@ class Project < ActiveRecord::Base
 
   def no_other_master_project
     master_projects = Project.where(master: true)
-    master_projects.delete(self)
+    master_projects = master_projects.select { |project| project != self }
     errors.add(:master, 'project already exists') unless master_projects.size == 0
   end
 end
