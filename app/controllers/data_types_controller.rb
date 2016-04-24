@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  order      :integer
 #  master     :boolean          default(FALSE)
+#  input_type :integer          default(0)
 #
 
 class DataTypesController < ApplicationController

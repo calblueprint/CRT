@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  order      :integer
 #  master     :boolean          default(FALSE)
+#  input_type :integer          default(0)
 #
 
 class DataType < ActiveRecord::Base
@@ -24,6 +25,7 @@ class DataType < ActiveRecord::Base
                       message: "invalid order."
                     }, on: [:update]
   before_validation :set_order
+  enum input_type: [:currency, :rate]
 
   def has_formula?
     formula.blank?
