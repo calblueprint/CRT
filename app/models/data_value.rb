@@ -11,6 +11,7 @@
 #  project_year_id :integer          not null
 #  formula_value   :decimal(19, 4)
 #  input_formula   :string
+#  input_type      :integer          default(0)
 #
 # Indexes
 #
@@ -25,6 +26,7 @@ class DataValue < ActiveRecord::Base
   belongs_to :data_type
   has_one :project, through: :project_year
   has_one :year, through: :project_year
+  enum input_type: [:currency, :rate]
 
   validates :data_type, :project_year, presence: true
 

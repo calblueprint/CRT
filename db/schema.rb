@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420203930) do
+ActiveRecord::Schema.define(version: 20160424020400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,13 @@ ActiveRecord::Schema.define(version: 20160420203930) do
   create_table "data_values", force: :cascade do |t|
     t.integer  "type"
     t.decimal  "value",           precision: 19, scale: 4
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.integer  "data_type_id",                             null: false
-    t.integer  "project_year_id",                          null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.integer  "data_type_id",                                         null: false
+    t.integer  "project_year_id",                                      null: false
     t.decimal  "formula_value",   precision: 19, scale: 4
     t.string   "input_formula"
+    t.integer  "input_type",                               default: 0
   end
 
   add_index "data_values", ["data_type_id"], name: "index_data_values_on_data_type_id", using: :btree

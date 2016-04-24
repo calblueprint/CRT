@@ -11,6 +11,7 @@
 #  project_year_id :integer          not null
 #  formula_value   :decimal(19, 4)
 #  input_formula   :string
+#  input_type      :integer          default(0)
 #
 # Indexes
 #
