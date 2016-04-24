@@ -9,7 +9,7 @@ feature "Index shows all projects, master first", type: :feature do
 
     click_link "New Project"
 
-    fill_in 'Name', with: "Test project 2"
+    fill_in 'Name', with: "Project Test"
     fill_in 'Acres', with: 350
     select '2012', from: "project[date_closed(1i)]"
     select 'January', from: "project[date_closed(2i)]"

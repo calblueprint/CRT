@@ -34,5 +34,6 @@ FactoryGirl.define do
     years_upfront 2
     earnings_begin "2015-09-30"
     master false
+    sequence(:notes) { |n| "Notes for project #{n}" }
   end
 end
