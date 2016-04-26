@@ -105,11 +105,30 @@ select:hover, select:focus {
 }
 
 .ui-autocomplete {
-  left: 0 !important;
-  width: 376px !important;
+  background: $white;
+  float: left;
+  color: $black;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   border-radius: 4px;
-  box-sizing: border-box;
+  left: 0 !important;
+  top: 54px !important;
+  width: 339px !important;
+
+  @media (max-height: 950px) {
+    width: 346px !important;
+  }
+
+  @media (max-height: 850px) {
+    width: 355px !important;
+  }
+
+  @media (max-height: 650px) {
+    width: 373px !important;
+  }
 }
+
+
 
 .ui-menu-item {
   border-radius: 4px;

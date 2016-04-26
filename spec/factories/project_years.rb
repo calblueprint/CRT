@@ -16,8 +16,8 @@
 
 FactoryGirl.define do
   factory :project_year do
-    association :project, factory: :project
-    association :year, factory: :year
-    date 2013
+    project
+    year
+    date 1998
   end
 end

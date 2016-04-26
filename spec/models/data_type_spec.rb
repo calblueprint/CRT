@@ -15,7 +15,7 @@
 require 'rails_helper'
 
 RSpec.describe DataType, type: :model do
-  let(:test_datatype) { create :data_type, name: 'Test Data Type', order: '2' }
+  let(:test_datatype) { create :data_type, name: 'Test Data Type' }
 
   describe '#create' do
     context 'data type does not exist and' do

@@ -18,6 +18,5 @@ FactoryGirl.define do
     sequence :name do |n|
       "data_type_name #{n}"
     end
-    sequence :order
   end
 end
