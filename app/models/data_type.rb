@@ -25,7 +25,7 @@ class DataType < ActiveRecord::Base
                       message: "invalid order."
                     }, on: [:update]
   before_validation :set_order
-  enum input_type: [:currency, :rate]
+  enum input_type: [:currency, :rate, :other]
 
   def has_formula?
     formula.blank?

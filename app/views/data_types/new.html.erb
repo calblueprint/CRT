@@ -49,6 +49,9 @@
       <p>
         <%= f.input :master %>
       </p>
+      <p>
+        <%= f.input :input_type, as: :radio_buttons, collection: DataType.input_types.keys, input_html: { class: 'radio-button' } %>
+      </p>
     </div>
   </div>
 </div>

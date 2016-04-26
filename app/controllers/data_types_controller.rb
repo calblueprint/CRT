@@ -87,7 +87,7 @@ class DataTypesController < ApplicationController
   private
 
   def data_type_params
-    data_type_hash = params.require(:data_type).permit(:name, :formula, :order, :master)
+    data_type_hash = params.require(:data_type).permit(:name, :formula, :order, :master, :input_type)
     data_type_hash[:formula] = data_type_hash[:formula].blank? ? nil : data_type_hash[:formula]
     data_type_hash
   end
