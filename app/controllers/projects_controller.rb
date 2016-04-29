@@ -75,7 +75,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to @project
     else
-      redirect_to 'show'
+      render 'edit'
     end
   end
 
