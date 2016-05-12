@@ -59,6 +59,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (8.2.2)
     cancancan (1.13.1)
     capybara (2.6.2)
@@ -343,6 +346,7 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.3)
+    uniform_notifier (1.9.0)
     warden (1.2.6)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -358,6 +362,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
+  bullet
   cancancan
   capybara
   codeclimate-test-reporter

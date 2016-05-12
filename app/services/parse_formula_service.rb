@@ -42,7 +42,7 @@ class ParseFormulaService
     private
 
     def fill_dependency_graph(project, data_types, dependency_graph)
-      project.data_values.each do |data_value|
+      project.data_values.includes(:data_type).includes(:project_year).each do |data_value|
         # Only calculate data values in this project
         formula = data_value.formula
         unless formula.blank?
