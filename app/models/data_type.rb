@@ -27,10 +27,6 @@ class DataType < ActiveRecord::Base
   before_validation :set_order
   enum input_type: [:currency, :rate, :other]
 
-  def has_formula?
-    formula.blank?
-  end
-
   def set_order
     self.order ||= DataType.where(master: self.master).size + 1
   end
