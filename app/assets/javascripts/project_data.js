@@ -15,7 +15,7 @@ $(document).ready(function() {
   }).blur(function() {
     var newVal = $(this).text();
 
-    if ($(this).data('startVal') != newVal) {
+    if ($(this).data('startVal').trim() != newVal.trim()) {
       var data_id = $(this).data('id');
       $.ajax('/data_values/' + data_id, {method: 'PATCH', data: {data_value: {input_value: newVal}}, success: handleData, error: handleError});
     }
