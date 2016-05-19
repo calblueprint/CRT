@@ -17,6 +17,11 @@ After you've initialized the app, run
 
 to set up dependencies and set up the app.
 
+To start the server, run
+
+    $ rails s Puma
+
+
 ## Contributing
 
 Feel free to open issues or send pull requests with improvements. Thanks in
