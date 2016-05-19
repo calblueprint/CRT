@@ -141,6 +141,7 @@ function update() {
 
 // define Excel hotkeys for spreadsheet
 $('body').keydown(function(e) {
+  var potentialCell;
   if (!editing && $('.hotkeys')[0]) {
     if (e.which == 39) {
       // right arrow
@@ -162,7 +163,7 @@ $('body').keydown(function(e) {
       e.stopPropagation();
       edit();
     }
-    if (potentialCell.length != 0) {
+    if (potentialCell && potentialCell.length != 0) {
       currCell = potentialCell;
     }
     update();
