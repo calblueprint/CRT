@@ -16,7 +16,7 @@ $(document).ready(function() {
     var newVal = $(this).text().trim();
     var startVal = $(this).data('startVal').trim()
     var differentValue =  newVal != startVal;
-    var differentFormula = newVal != $(this).attr('data-input-formula').trim();
+    var differentFormula = newVal != String($(this).attr('data-input-formula')).trim();
 
     if (differentValue && differentFormula) {
       var data_id = $(this).data('id');
