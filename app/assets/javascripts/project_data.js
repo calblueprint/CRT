@@ -23,9 +23,9 @@ $(document).ready(function() {
     var differentValue =  newVal != startVal;
     var differentFormula = newVal != String($(this).attr('data-input-formula')).trim();
     var isCurrency = ($(this).data('type') == "currency")
+    
     if (differentValue && differentFormula) {
       var data_id = $(this).data('id');
-      console.log(newVal);
       $.ajax('/data_values/' + data_id, {method: 'PATCH', data: {data_value: {input_value: newVal}}, success: handleData, error: handleError});
     } else if (differentValue && !differentFormula) {
       if (isCurrency && startVal) {
@@ -55,7 +55,6 @@ $(document).ready(function() {
         } else
           $(dataAttrString).html(dataVal);
       } else if (!isFocus) { 
-        console.log(data_values[i].formula_value);
         if (isCurrency && data_values[i].formula_value != null) {
           $(dataAttrString).html(toCurrency(data_values[i].formula_value));
         } else
