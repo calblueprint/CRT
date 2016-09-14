@@ -39,15 +39,10 @@
             <% data_type.data_values.includes(:project_year).sort_by_year.each do |data_value| %>
               <% if @project.project_years.find_by_id(data_value.project_year.id) %>
                 <td class="data-value" data-id=<%= data_value.id %> contentEditable="true" data-input-formula="<%= data_value.input_formula %>" data-type="<%= data_value.data_type.input_type%>" onclick="showFormula(this, '<%= name %>');">
-                <% if data_value.value %>
-                  <% @val = data_value.value %>
-                <% else %>
-                  <% @val = data_value.formula_value %>
-                <% end %>
                 <% if data_value.data_type.currency? %>
-                  <%= number_to_currency(@val) %></td>
+                  <%= number_to_currency(data_value.get_value) %></td>
                 <% else %>
-                  <%= @val %></td>
+                  <%= data_value.get_value %></td>
                 <% end %>
               <% end %>
             <% end %>
