@@ -37,4 +37,8 @@ class DataValue < ActiveRecord::Base
   def formula
     self.input_formula.blank? ? data_type.formula : self.input_formula
   end
+
+  def get_value
+    self.value ? self.value : self.formula_value
+  end
 end
